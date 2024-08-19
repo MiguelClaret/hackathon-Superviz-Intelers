@@ -10,7 +10,7 @@
 .env.*
 
 # Ignore logs and temp files.
-/log/*
+/railsapp/log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
@@ -99,15 +99,18 @@ vendor/bundle
 # Ignore AWS CLI cache.
 /.aws/
 
-# Ignore the result of "rake notes" with "rake notes:optimize", "rake notes:fixme", 
+# Ignore the result of "rake notes" with "rake notes:optimize", "rake notes:fixme",
 and "rake notes:todo".
 /db/schema.rb
 /db/structure.sql
 
 # Ignore files created by editors or operating systems.
 /*.swp
-/*~ 
+/*~
 /.project
 /.idea
 /.vscode
 
+# Ignore specific files in railsapp and exemplosSuperViz directories
+/railsapp/*
+/exemplosSuperViz/*
