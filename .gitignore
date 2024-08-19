@@ -113,4 +113,7 @@ and "rake notes:todo".
 
 # Ignore specific files in railsapp and exemplosSuperViz directories
 /railsapp/*
+!/railsapp/Dockerfile
+!/railsapp/docker-compose.yml
+
 /exemplosSuperViz/*
