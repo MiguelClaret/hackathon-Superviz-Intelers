@@ -102,7 +102,7 @@
             font-size: 2rem;
             width: 50%;
             margin-top: 5vh;
-            
+
         }
 
 
@@ -119,8 +119,8 @@
 
         .loginDeco {
             width: 100%;
-            opacity: 0; 
-            animation: fadeInMove 3s ease-out forwards; 
+            opacity: 0;
+            animation: fadeInMove 3s ease-out forwards;
         }
 
         @keyframes fadeInMove {
@@ -196,7 +196,7 @@
         }
 
         .form-container input::placeholder {
-        color: #422680; 
+        color: #422680;
         }
 
         .form-container input {
@@ -215,8 +215,8 @@
             <h2>Sign up</h2>
             <div class="form-container">
                 <form id="registerForm" action="/register" method="POST">
-                    <input type="text" id="firstName" name="name" placeholder="*Name" required>
-                    <input type="text" id="lastName" name="surname" placeholder="*Surname" required>
+                    <input type="text" id="firstName" name="firstName" placeholder="*Name" required>
+                    <input type="text" id="lastName" name="lastName" placeholder="*Surname" required>
                     <input type="email" id="email" name="email" placeholder="*E-mail" required>
                     <input type="password" id="password" name="password" placeholder="*Password" required>
                     <input type="password" id="confirm-password" name="confirm-password" placeholder="*Confirm your password" required>
@@ -232,7 +232,7 @@
             var confirmPassword = document.getElementById('confirm-password').value;
             if (password !== confirmPassword) {
                 alert('Passwords do not match.');
-                event.preventDefault(); 
+                event.preventDefault();
             }
         });
     </script>

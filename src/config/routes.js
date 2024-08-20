@@ -21,12 +21,20 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': { view: 'pages/homepage' },
-  '/landingpage': {view: 'pages/landing'},
+ '/': {view: 'pages/landing'},
 
 
   'GET /register': {view: 'pages/register'},
-  'POST /register': UserController.signup
+  '/register': {view: 'pages/register'},
+  'POST /register': 'UserController.signup',
+
+
+  // Route to create a new meeting
+  'POST /meeting/create': 'MeetingController.create',
+
+  // Route to join an existing meeting
+  'GET /meeting/join/:roomId': 'MeetingController.join',
+
 
   /***************************************************************************
   *                                                                          *

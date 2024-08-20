@@ -1,0 +1,47 @@
+<!-- views/pages/join.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Meeting</title>
+</head>
+<body>
+  <h1>Welcome to the Meeting</h1>
+  <p id="status">Initializing meeting...</p>
+
+  <!-- Include Superviz SDK from a CDN -->
+  <script type="module">
+    import SupervizRoom from 'https://unpkg.com/@superviz/sdk@latest';
+
+    async function joinMeeting(roomId, groupId, groupName, userId, userName) {
+      try {
+        const room = await SupervizRoom('<YOUR_DEVELOPER_KEY>', {
+          roomId: roomId,
+          group: {
+            id: groupId,
+            name: groupName,
+          },
+          participant: {
+            id: userId,
+            name: userName,
+          },
+        });
+
+        if (room) {
+          document.getElementById('status').innerText = 'Successfully joined the meeting!';
+          // Additional client-side logic for interacting with the Superviz room
+        } else {
+          document.getElementById('status').innerText = 'Failed to join the meeting.';
+        }
+      } catch (error) {
+        console.error('Error initializing Superviz room:', error);
+        document.getElementById('status').innerText = 'Error joining the meeting.';
+      }
+    }
+
+    // Call the function with the data passed from the server
+    joinMeeting('<%= roomId %>', '<%= groupId %>', '<%= groupName %>', '<%= userId %>', '<%= userName %>');
+  </script>
+</body>
+</html>
