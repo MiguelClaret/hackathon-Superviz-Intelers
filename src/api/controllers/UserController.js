@@ -33,11 +33,11 @@ module.exports = {
           req.session.userId = newUser.id;
   
           // Return success response
-          return res.status(200).json({ message: 'Signup successful' });
+          return res.redirect('/home').status(200).json({ message: 'Signup successful' });
         }
   
         // Render the signup page with collected data
-      return res.view('pages/home');
+      return res.view('pages/register');
       } catch (error) {
         sails.log.error('Error occurred during signup:', error);
         return res.status(500).json({
@@ -71,7 +71,7 @@ module.exports = {
         await User.updateOne({ id: user.id }).set({ lastSeenAt: Date.now() });
   
         // Redirect to home page or dashboard
-        return res.status(200).json({ message: 'Login successful' });
+        return res.redirect('/home').status(200).json({ message: 'Login successful' });
       } catch (error) {
         sails.log.error('Error occurred during login:', error);
         return res.status(500).json({

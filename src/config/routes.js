@@ -26,8 +26,8 @@ module.exports.routes = {
   'GET /login': {view: 'pages/login'},
   'POST /login': 'UserController.login',
   'GET /register': {view: 'pages/register'},
-  '/register': {view: 'pages/register'},
   'POST /register': 'UserController.signup',
+  '/home': {view:'pages/homepage'},
 
 
   // Route to create a new meeting
