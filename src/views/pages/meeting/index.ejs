@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meeting Options</title>
+</head>
+<body>
+  <h1>Meeting Options</h1>
+
+  <h2>Create a New Meeting</h2>
+  <form action="/meeting/create" method="POST">
+    <input type="hidden" name="userId" value="user1">
+    <input type="hidden" name="userName" value="User One">
+    <input type="hidden" name="groupId" value="group1">
+    <input type="hidden" name="groupName" value="Group One">
+    <button type="submit">Create Meeting</button>
+  </form>
+
+  <h2>Join an Existing Meeting</h2>
+  <ul>
+    <% rooms.forEach(room => { %>
+      <li>
+        <%= room.name %> - <a href="/meeting/join/<%= room.id %>?userId=user1&userName=User%20One">Join Meeting</a>
+      </li>
+    <% }); %>
+  </ul>
+</body>
+</html>

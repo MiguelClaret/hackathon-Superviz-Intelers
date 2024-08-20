@@ -27,4 +27,9 @@ module.exports.bootstrap = async function() {
   // ]);
   // ```
 
+  await Company.create({ name: 'Company One' });
+  await Company.create({ name: 'Company Two' });
+  await Company.create({ name: 'Company Three' });
+
+
 };
