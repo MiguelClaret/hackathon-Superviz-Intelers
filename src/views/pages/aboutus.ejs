@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About us</title>
+    <link rel="stylesheet" type="text/css" href="about_us.css">
+</head>
+<style>
+    @font-face {
+        font-family: [Gotham];
+        src: url([assets/Gothan/Gotham-Book]);
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Gotham', sans-serif;
+        background-color: #422680;
+        margin: 0;
+        padding: 0;
+        color: #FFFFFF;
+    }
+
+    header {
+        background-color: #280659;
+        height: 130px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 20px;
+        box-sizing: border-box;
+    }
+
+    .name {
+        display: flex;
+        align-items: center;
+        margin-left: 5vh;
+    }
+
+    .name .dom {
+        content: url('/dom.svg');
+        margin-right: 10px;
+    }
+
+    h3 {
+        color: #F54952;
+        margin: 0;
+        font-size: 32px;
+        font-weight: 700;
+    }
+
+    h4 {
+        color: #ffffff;
+        margin: 0;
+        font-size: 16px;
+        font-weight: 200;
+    }
+
+    .infos {
+        display: flex;
+        align-items: center;
+        margin-right: 5vh;
+        gap: 2vh;
+    }
+
+    .infos .home,
+    .infos .about,
+    .infos .contact {
+        display: flex;
+        align-items: center;
+        background-color: transparent;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-left: 20px;
+        font-size: 32px;
+        padding: 10px;
+        font-weight: 500;
+    }
+
+    .infos .home:hover,
+    .infos .about:hover,
+    .infos .contact:hover {
+        text-decoration: underline;
+    }
+
+    .infos .home .icon,
+    .infos .about .icon,
+    .infos .contact .icon {
+        margin-right: 8px;
+    }
+
+    .main {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 50px 20px;
+        box-sizing: border-box;
+    }
+
+    .content {
+        max-width: 80%;
+        padding-top: 20px;
+        padding-left: 18vh;
+    }
+
+    h1 {
+        color: white;
+        margin: 0;
+        padding: 0;
+        font-size: 48px;
+        margin-bottom: 2vh;
+        font-weight: 700;
+    }
+
+    h2 {
+        color: white;
+        margin: 0 0 0 0;
+        font-size: 24px;
+        font-weight: 500;
+    }
+
+
+    .sign-up,
+    .login {
+        background-color: #F54952;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 40px;
+        cursor: pointer;
+        font-size: 32px;
+        width: 170px;
+        height: 50px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        font-weight: 400;
+    }
+
+    .sign-up:hover,
+    .login:hover {
+        background-color: #D43C3D;
+    }
+
+    .buttons {
+        display: flex;
+        align-items: flex-start;
+        width: fit-content;
+        gap: 15vh;
+        margin-left: 0;
+    }
+
+    html {
+        font-family: Gotham, sans-serif;
+        font-weight: 300;
+        font-size: 1.5rem;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    header {
+        background-color: #280659;
+        box-shadow: 0px 5px 5px #00000056;
+    }
+
+    nav {
+        margin: auto;
+        padding: 1.5rem;
+        width: 100%;
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 0 0 0 3rem;
+    }
+
+    .nome_logo {
+        color: #F54952;
+        font-weight: 700;
+        font-size: 1rem;
+    }
+
+    .menu {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+        color: #FFF2E780;
+    }
+
+    .menu_selecionado {
+        color: #ffffff
+    }
+
+    main {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .hero {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .texto {
+        width: 50%;
+    }
+
+    .texto>h1 {
+        text-align: center;
+        font-weight: 500;
+        padding: 1rem;
+    }
+
+    .tools {
+        display: flex;
+        flex-direction: column;
+        background-color: #341671;
+        margin-top: 2rem;
+    }
+
+    .tools-title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin-top: -0.5rem;
+    }
+
+    .seção-textoImg {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1rem 0 1rem 0;
+    }
+
+    .texto > h3 {
+        text-align: center;
+        font-weight: 600;
+        padding: 1rem;
+        color: #ffffff;
+    }
+
+    .seção-imgTexto {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 1rem 0 1rem 0;
+    }
+
+   @media only screen and (max-width: 600px) {
+        html {
+            font-family: 'Gothan', sans-serif;
+            font-weight: 300;
+            font-size: 1rem;
+        }
+
+        header {
+            width: 100%;
+        }
+
+        img {
+            width: 55%;
+        }
+
+        nav {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 1.5rem;
+            color: #FFF2E780;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 0 0 0 0;
+        }
+
+        ul {
+            text-align: center;
+        }
+
+        .hero {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .texto {
+            width: 100%;
+            text-align: justify;
+            padding: 1rem 1rem 2rem 1rem;
+        }
+
+        .tools-title {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            margin: -0.9rem 0 0 0;
+        }
+
+        .tools-title>img {
+            width: 20%;
+        }
+
+        .seção-textoImg {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem 0 1rem 0;
+        }
+
+        .seção-imgTexto {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem 0 1rem 0;
+        }
+    }
+</style>
+
+<body>
+    <header>
+        <div class="name">
+            <div class="dom"></div>
+            <div class="inpulse">
+                <div>
+                    <h3>InPulse</h3>
+                </div>
+                <div>
+                    <h4>by domINators</h4>
+                </div>
+            </div>
+        </div>
+        <div class="infos">
+            <button class="home">
+                <div class="icon">
+                    <img src="/home.svg" alt="Home">
+                </div>
+                Home
+            </button>
+            <button class="about">
+                <div class="icon">
+                    <img src="/about.svg" alt="About">
+                </div>
+                About us
+            </button>
+            <button class="contact">
+                <div class="icon">
+                    <img src="/contact.svg" alt="Contact">
+                </div>
+                Contact
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <img src="/aboutUs.svg" width="30%" />
+
+            <div class="texto">
+                <h1>About us</h1>
+                <p>Na domINators, acreditamos que uma equipe unida é capaz de transformar ideias em grandes realizações.
+                    Nossa missão é promover uma comunicação assertiva, respeitosa e efetiva, criando um ambiente onde
+                    transparência e colaboração são mais do que palavras, são pilares. Nascemos do desejo de um grupo de
+                    amigos por uma plataforma que realmente facilitasse o trabalho em equipe. Hoje, reunimos as
+                    principais ferramentas de comunicação e organização em um só lugar, proporcionando às empresas de
+                    tecnologia e startups a eficiência, agilidade e assertividade que elas precisam para alcançar o
+                    sucesso.</p>
+            </div>
+        </section>
+
+        <section class="tools">
+
+            <section class="tools-title">
+                <img src="/line.svg" />
+                <h2>Our tools</h2>
+                <img src="/line.svg" />
+            </section>
+
+            <section class="seção-textoImg">
+                <img src="/kanban.svg" width="20%" />
+
+                <div class="texto">
+                    <h3>Group Kanban</h3>
+                    <p>O quadro Kanban é um método de organização de tarefas e fluxo de atividades. No caso da
+                        domINators, essa ferramenta foi implementada para proporcionar a você uma visão clara não só
+                        sobre as suas atividades, mas atmbém as dos demais integrantes da equipe, garantindo assim
+                        melhor comunicação, assim como eficiência e agilidade no dia a dia.</p>
+                </div>
+            </section>
+
+            <section class="seção-imgTexto">
+                <img src="/form.svg" width="20%" />
+
+                <div class="texto">
+                    <h3>Collaborative form</h3>
+                    <p>Os collaborative Forms foram pensados pela domINators para ser uma ferramenta de gestão e
+                        organização de informações. Com os Collaborative formas é possível criar atas de reunião,
+                        invites e quaisquer outras informações que a equipe desejar documentar. Com essa ferramenta,
+                        além de criar documentos, a equipe consegue ter acesso ao histórico de criações e edições desses
+                        documentos.</p>
+                </div>
+            </section>
+
+            <section class="seção-textoImg">
+                <img src="/mySection.svg" width="20%" />
+
+                <div class="texto">
+                    <h3>My Section</h3>
+                    <p>Este espaço foi pensado para que você possa ter uma visão geral não só da sua posição na equipe,
+                        mas também de todos os integrantes dela. Com isso, é possível não só ter uma sensação de
+                        pertencimento, mas também conseguir ter uma visão geral de todos aqueles que fazem parte do seu
+                        time.</p>
+                </div>
+            </section>
+
+            <section class="seção-imgTexto">
+                <img src="/meeting.svg" width="20%" />
+
+                <div class="texto">
+                    <h3>Online meetings</h3>
+                    <p>A domINators oferece a possibilidade da equipe realizar reuniões online não só para realizar a
+                        sua organização diária, mas também para realizar qualquer outra reunião que a equipe achar
+                        necessária. Entretanto, a maior vantagem dessa ferramenta é que ela está inclusa na plataforma,
+                        ou seja, a equipe não precisa trocar de plataforma quando quiser se reunir, basta criar uma sala
+                        e esperar os teamates entrarem.</p>
+                </div>
+            </section>
+        </section>
+    </main>
+</body>
+
+</html>
