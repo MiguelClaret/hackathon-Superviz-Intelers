@@ -71,7 +71,7 @@ module.exports = {
         await User.updateOne({ id: user.id }).set({ lastSeenAt: Date.now() });
   
         // Redirect to home page or dashboard
-        return res.redirect('/home');
+        return res.status(200).json({ message: 'Login successful' });
       } catch (error) {
         sails.log.error('Error occurred during login:', error);
         return res.status(500).json({
