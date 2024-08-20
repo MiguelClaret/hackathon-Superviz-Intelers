@@ -9,7 +9,7 @@ module.exports = {
     signup: async function (req, res) {
       try {
         if (req.method === 'POST') {
-          const { email, password, firstName, lastName } = req.body;
+          const { email, password, firstName, lastName,role } = req.body;
   
           // Check if the email is already in use
           const existingUser = await User.findOne({ email });
