@@ -180,17 +180,19 @@ body * {
             <section class="right-login">
                 <div class="card-login">
                     <h1>Login</h1>
-                    <div class="text-field">
-                        <label for="usuario">Usuário</label>
-                        <input type="text" name="usuario" placeholder="Usuário">
-                    </div>
+                    <!-- Formulário de login -->
+                    <form action="/login" method="POST">
+                        <div class="text-field">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" name="email" placeholder="E-mail" required>
+                        </div>
     
-                    <div class="text-field">
-                        <label for="senha">Senha</label>
-                        <input type="password" name="senha" placeholder="Senha">
-                    </div>
-                    <button class="btn-login">Login</button>
-    
+                        <div class="text-field">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Password" required>
+                        </div>
+                        <button type="submit" class="btn-login">Login</button>
+                    </form>
                 </div>
             </section>
         <div class="error">
