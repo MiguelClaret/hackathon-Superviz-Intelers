@@ -1,0 +1,243 @@
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/gotham/Gotham-Light.otf') format('opentype');
+    font-style: normal;
+    font-weight: 300
+}
+
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/gotham/Gotham-Bold.otf') format('opentype');
+    font-style: normal;
+    font-weight: 700
+}
+
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/gotham/Gotham-Book.otf') format('opentype');
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/gotham/Gotham-Medium.otf') format('opentype');
+    font-style: normal;
+    font-weight: 500
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/gotham/Gotham-Thin.otf') format('opentype');
+    font-style: normal;
+    font-weight: 100
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/gotham/Gotham-Ultra.otf') format('opentype');
+    font-style: normal;
+    font-weight: 900
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('fonts/gotham/Gotham-XLight.otf') format('opentype');
+    font-style: normal;
+    font-weight: 200
+}
+
+
+.text-center {
+    text-align: center;
+  }
+
+.color-pink {
+    color: #AE2D68;
+  }
+
+.color-purple3 {
+    color: #280659;
+}
+
+.side-to-side10 {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex: 1
+}
+
+.side-to-side {
+    display: flex;
+    width: 100%;
+    flex: 1
+}
+
+.side-to-side.center-vertical {
+    justify-content: space-between; 
+    align-items: center;
+    display: flex;
+    width: 100%;
+}
+
+.display-light {
+    font-family: 'Gotham';
+    font-size: 48px;
+    letter-spacing: normal;
+    font-weight: 300;
+    margin-bottom: 0;
+}
+
+.margin-top10 {
+    margin-top: 10px
+}
+
+
+.display-bold {
+    font-family: 'Gotham';
+    font-size: 48px;
+    letter-spacing: normal;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.margin {
+    margin-right: 40px; 
+    margin-left: 40px
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.marginb50 {
+    margin-bottom: 50px
+}
+
+.marginb20 {
+    margin-bottom: 20px
+}
+.search-container {
+    color: #280659;
+    border-radius: 13px;
+    background: rgba(40, 6, 89, 0.25);
+    height: 50px;
+    border: none
+}
+
+.search-input {
+    border: none;
+    padding: 10px;
+    flex-grow: 1;
+    font-size: 16px;
+    background: transparent;
+    font-family: 'Gotham';
+    font-size: 16px;
+    font-weight: 400;
+    padding: 15px;
+    color: #212529;
+}
+.search-container:hover {
+    box-shadow: 0 0 0 1px rgba(40, 6, 89, 0.5);
+}
+
+.search-input:focus {
+    outline: none;
+    box-shadow: 0 transparent; 
+}
+
+.search-button {
+    display: flex;
+    align-items: center;
+    background: transparent; 
+    border: none;
+    border-radius: 0 13px 13px 0;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.search-button:hover {
+    background-color: rgba(40, 6, 89, 0.25);
+}
+
+.arrow-button {
+    display: flex;
+    align-items: center;
+    background: transparent; 
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.arrow-button:hover {
+    background-color: rgba(73, 80, 87, 0.25);
+}
+
+.h6 {
+    font-family: 'Gotham';
+    font-size: 16px;
+    letter-spacing: normal;
+    font-weight: 400;
+    margin: 0;
+    color: #212529
+}
+
+.center-vertical {
+    place-items: center
+}
+
+.margin0 {
+    margin: 0
+}
+
+
+.height {
+    height: 80px;
+}
+
+.division {
+    border-bottom: 1.25px solid #AE2D68;
+    border-radius: 0
+}
+
+.padding0 {
+    padding-top: 0
+}
+
+.hidden-text {
+    display: none;
+    padding: 10px;
+    margin-top: 0;
+    background-color: transparent;
+    color: #280659;
+    font-family: 'Gotham';
+    border-radius: 5px;
+    line-height: 25px;
+}
+
+.hidden-text.visible {
+    display: block;
+}
+
+.visible-text{
+    font-family: 'Gotham'
+}
+
+.searchable-item {
+    font-family:'Gotham'
+}
+
+
+a {
+    color:#AE2D68;
+    text-decoration: none;
+    font-weight: 700
+}
+
+a:hover{
+    text-decoration: underline;
+}

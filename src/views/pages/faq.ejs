@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faq&lt;/&gt;</title>
+    <link rel="stylesheet" href="assets/styles/faq.css">
+</head>
+<body>    
+    <main class="container margin">
+        <section class="side-to-side10 margin-top20 marginb50">
+            <h2 class="color-purple3 display-light">FAQ</h2>
+            <h2 class="color-pink display-bold">&lt;/&gt;</h2>
+        </section>
+        <section class="search-container side-to-side marginb20">
+            <input type="text" placeholder="Search..." class="search-input" id="search-input">
+            <button class="search-button" id="search-button">
+                <img src="images/search.svg" style="width: 25px; height: 25px;" alt="Descrição do SVG"> <!-- Pode substituir por um ícone de fonte ou SVG -->
+            </button>
+        </section>
+        <section>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">What is InPulse?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">InPulse is a collaborative platform designed to enhance team communication by providing real-time insights into user activities. With features that show who is online, typing, viewing the chat, or present in the session, InPulse helps teams stay connected and informed during collaborative work. This platform is built for teams and organizations that rely on seamless, real-time interactions to improve productivity and communication efficiency.</div>
+            </div>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">How to see informations about me and my team?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">To view information about yourself and your team, simply click on the "My Section" button located on the top menu of the site. This will take you to a dedicated area where you can see profiles and details about your team members, as well as your own information. This section is designed to give you a comprehensive overview of who is on your team and their roles.</div>
+            </div>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">How to start a Video Conference?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">fnoreni</div>
+            </div>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">What are the main features of the Video Conference?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">InPulse's Video Conference includes several key features: the Collaborative Whiteboard allows team members to brainstorm and visualize ideas in real-time; the Kanban board helps track project tasks and progress with an organized, drag-and-drop interface; and the Collaborative Form facilitates joint input on documents and data collection, enabling seamless collaboration.</div>
+            </div>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">How to share your screen during a Video Conference?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">fnoreni</div>
+            </div>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">How to use the Group Chat?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">fnoreni</div>
+            </div>            
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">How does the Collaborative Form work?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">vofnv</div>
+            </div>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">How to use the Collaborative Whiteboard?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">fnoreni</div>
+            </div>
+            <div class="division searchable-item">
+                <div class="side-to-side center-vertical height padding0 visible-text">
+                    <div class="h6">Who made Inpulse?
+                    </div>
+                    <button class="arrow-button">
+                        <img src="images/chevron-left.svg" style="width: 25px; height: 25px;">
+                    </button>
+                </div>    
+                <div class="hidden-text">InPulse is a initiative created by the domINators, a team of 10 innovative university students from Inteli. Our mission is to revolutionize how people interact with technology through intuitive, user-friendly solutions. Discover more about who we are and our vision at <a href="https://youtu.be/nvGcaTGcN5A?si=dmBu9p6i97uGpaXC" target="_blank">ABOUT US</a>.</div>
+            </div>
+        </section>
+    </main>
+    <script>
+        document.querySelectorAll('.arrow-button').forEach(button => {
+            button.addEventListener('click', function() {
+                const parent = this.closest('.division'); // Encontra o elemento pai
+                const textContainer = parent.querySelector('.hidden-text'); // Procura o contêiner de texto dentro do pai
+                
+                if (textContainer) {
+                    textContainer.classList.toggle('visible');
+                }
+            });
+        });
+
+        document.getElementById('search-button').addEventListener('click', searchItems);
+        document.getElementById('search-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                searchItems();
+            }
+        });
+
+        function searchItems() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            const items = document.querySelectorAll('.searchable-item');
+            
+            items.forEach(item => {
+                const visibleText = item.querySelector('.visible-text').textContent.toLowerCase();
+                const hiddenText = item.querySelector('.hidden-text').textContent.toLowerCase();
+                
+                if (visibleText.includes(searchTerm) || hiddenText.includes(searchTerm)) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
