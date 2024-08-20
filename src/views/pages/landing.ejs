@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page</title>
+    <style> 
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100; /* Thin */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200; /* ExtraLight */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-light.woff') format('woff'),
+                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300; /* Light */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-book.woff') format('woff'),
+                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400; /* Book */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500; /* Medium */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700; /* Bold */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-black.woff') format('woff'),
+                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900; /* Black */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950; /* Ultra */
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Gotham', sans-serif;
+            background-color: #422680;
+            margin: 0; 
+            padding: 0; 
+        }
+
+        header {
+            background-color: #280659;
+            height: 130px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px; 
+            box-sizing: border-box; 
+        }
+
+        .name {
+            display: flex;
+            align-items: center;
+            margin-left: 5vh;
+        }
+
+        .name .dom {
+            content: url('/dom.svg');
+            margin-right: 10px;
+        }
+
+        h3 {
+            color: #F54952;
+            margin: 0;
+            font-size: 32px;
+            font-weight: 700; 
+        }
+
+        h4{
+            color: #ffffff;
+            margin: 0;
+            font-size: 16px;
+            font-weight: 200; 
+        }
+
+        .infos {
+            display: flex;
+            align-items: center;
+            margin-right: 5vh;
+            gap: 2vh;
+        }
+
+        .infos .home,
+        .infos .about,
+        .infos .contact {
+            display: flex;
+            align-items: center;
+            background-color: transparent;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-left: 20px;
+            font-size: 32px;
+            padding: 10px;
+            font-weight: 500; 
+        }
+
+        .infos .home:hover,
+        .infos .about:hover,
+        .infos .contact:hover {
+            text-decoration: underline;
+        }
+
+        .infos .home .icon,
+        .infos .about .icon,
+        .infos .contact .icon {
+            margin-right: 8px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px 20px;
+            box-sizing: border-box;
+        }
+
+        .content {
+            max-width: 80%;
+            padding-top: 20px;
+            padding-left: 18vh;
+        }
+
+        h1 {
+            color: white;
+            margin: 0;
+            padding: 0;
+            font-size: 48px;
+            margin-bottom: 2vh;
+            font-weight: 700; 
+        }
+
+        h2 {
+            color: white;
+            margin: 10px 0;
+            font-size: 24px;
+            margin-bottom: 5vh;
+            font-weight: 500; 
+        }
+
+        p {
+            color: white;
+            margin: 20px 0;
+            font-size: 24px;
+            width: 55%;
+            margin-top: 10vh;
+            margin-bottom: 10vh;
+            font-weight: 400; 
+        }
+
+        .sign-up, .login {
+            background-color: #F54952;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 32px;
+            width: 170px;
+            height: 50px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+            font-weight: 400; 
+        }
+
+        .sign-up:hover, .login:hover {
+            background-color: #D43C3D; 
+        }
+
+        .buttons {
+            display: flex;
+            align-items: flex-start;
+            width: fit-content;
+            gap: 15vh;
+            margin-left: 0;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+                opacity: 0;
+            }
+            to {
+                transform: rotate(360deg);
+                opacity: 1;
+            }
+        }
+
+        .imagem-logo {
+            content: url('/logo.svg');
+            width: 90vh;
+            height: 70vh;
+            margin-right: 15vh;
+            margin-top: 5vh;
+            animation: spin 4s ease-in-out;
+        }
+
+
+        
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="name">
+            <div class = "dom"></div>
+            <div class = "inpulse">
+            <div><h3>InPulse</h3></div>
+            <div><h4>by domINators</h4></div>
+        </div>
+        </div>
+        <div class="infos">
+            <button class="home">
+                <div class="icon">
+                    <img src="/home.svg" alt="Home">
+                </div>
+                Home
+            </button>
+            <button class="about">
+                <div class="icon">
+                    <img src="/about.svg" alt="About">
+                </div>
+                About us
+            </button>
+            <button class="contact">
+                <div class="icon">
+                    <img src="/contact.svg" alt="Contact">
+                </div>
+                Contact
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="content">
+            <h1>InPulse</h1>
+            <h2>Boost Your Potential in Real Time</h2>
+            <p>The InPulse platform makes it easier to connect people and ideas, boosting productivity and strengthening collaboration in any work environment. Here you can centralise all your communication tools in a single space, allowing your colleagues to share ideas, organise projects and work together effectively and seamlessly.</p>
+            <div class="buttons">
+                <input type="button" class="sign-up" value="Sign-up">
+                <input type="button" class="login" value="Login">
+            </div>
+        </div>
+        <div class="imagem-logo"></div>
+    </main>
+</body>
+</html>

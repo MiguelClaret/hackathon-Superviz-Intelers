@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+         @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100; /* Thin */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200; /* ExtraLight */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-light.woff') format('woff'),
+                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300; /* Light */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-book.woff') format('woff'),
+                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400; /* Book */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500; /* Medium */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700; /* Bold */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-black.woff') format('woff'),
+                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900; /* Black */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950; /* Ultra */
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Gotham', sans-serif;
+            background-color: #422680;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: auto;
+            margin-top: 5vh;
+            gap: 30vh;
+        }
+
+        .text-section {
+            color: white;
+            font-size: 2rem;
+            width: 50%;
+            margin-top: 5vh;
+            
+        }
+
+
+        .text-section h1 {
+            font-weight: 200;
+            font-size: 50px;
+            text-align: center;
+        }
+
+        .text-section h1 span {
+            font-weight: 400;
+            font-size: 50px;
+        }
+
+        .loginDeco {
+            width: 100%;
+            opacity: 0; 
+            animation: fadeInMove 3s ease-out forwards; 
+        }
+
+        @keyframes fadeInMove {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .form-container {
+            background-color: #341671;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
+            width: 50vh;
+            height: 65vh;
+            border: 2px solid #000000;
+        }
+
+        .formulario h2 {
+            color: #F54952;
+            font-size: 45px;
+            font-weight: 500;
+            background-color: #280659;
+            margin: -10px;
+            border-radius: 20px;
+            text-align: center;
+            width: 24vh;
+            height: 7vh;
+            border: 2px solid #000000;
+            margin-left: 14vh;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 3vh;
+            margin-top: 2vh;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 2px solid #000000;
+        }
+
+        #confirm-password {
+        margin-bottom: 8vh;
+        }
+
+        .form-container input[type="submit"] {
+            background-color: #F54952;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            width: 50%;
+            font-size: 24px;
+            margin: auto;
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #d43f49;
+        }
+
+        .form-container input::placeholder {
+        color: #422680; 
+        }
+
+        .form-container input {
+            color:#422680;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="text-section">
+            <h1>Start <span>collaborating</span><br> with us</h1>
+            <img src="/loginDeco.svg" alt="Illustration" class="loginDeco">
+        </div>
+        <div class="formulario">
+            <h2>Sign up</h2>
+            <div class="form-container">
+                <form id="registerForm" action="/cadastro" method="post">
+                    <input type="text" id="name" name="name" placeholder="*Name" required>
+                    <input type="text" id="surname" name="surname" placeholder="*Surname" required>
+                    <input type="email" id="email" name="email" placeholder="*E-mail" required>
+                    <input type="password" id="password" name="password" placeholder="*Password" required>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="*Confirm your password" required>
+                    <input type="submit" class="login" value="Login">
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                event.preventDefault(); 
+            }
+        });
+    </script>
+</body>
+</html>
