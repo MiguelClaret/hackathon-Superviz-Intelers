@@ -40,7 +40,7 @@ module.exports = {
       const companies = await Company.find();
 
       // Render the signup page with the companies list
-      return res.view('pages/register', { companies });
+      return res.view('pages/signup', { companies });
     } catch (error) {
       sails.log.error('Error occurred during signup:', error);
       return res.status(500).json({

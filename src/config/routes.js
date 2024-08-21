@@ -19,13 +19,7 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
- '/': {view: 'pages/landing'},
-
-
-  'GET /login': {view: 'pages/login'},
-  'POST /login': 'UserController.login',
-  'GET /register': {view: 'pages/register'},
-  'POST /register': 'UserController.signup',
+  '/': {view: 'pages/landing'},
   '/home': {view:'pages/homepage'},
   '/aboutus': {view: 'pages/aboutus'},
 
