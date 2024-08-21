@@ -1,0 +1,251 @@
+<!-- api/views/pages/kanban.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <style>
+        /* assets/styles/style.css */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+            pointer-events: none;
+
+        }
+
+
+
+        .board {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .column {
+            width: 30%;
+            padding: 10px;
+            background-color: #e2e2e2;
+            border-radius: 5px;
+        }
+
+        .column h2 {
+            text-align: center;
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .task {
+            background-color: white;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            cursor: move;
+        }
+
+        form {
+            margin-bottom: 10px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Botão de Excluir */
+        .delete-btn {
+            background-color: #dc3545;
+            margin-top: 10px;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Kanban Board</h1>
+
+    <div class="board">
+        <!-- Coluna To Do -->
+        <div class="column todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2 draggable="false" ondragstart="return false;" ondragover="return false;">To Do</h2>
+            <% tasks.forEach(function(task) { if (task.status==='todo' ) { %>
+                <div class="task" id="task-<%= task.id %>" draggable="true" ondragstart="drag(event)">
+                    <h3>
+                        <%= task.title %>
+                    </h3>
+                    <p>
+                        <%= task.description %>
+                    </p>
+                    <p>Dificuldade: <%= task.difficulty %>
+                    </p>
+                    <p>Responsável: <%= task.assignedTo %>
+                    </p>
+                    <!-- Botão de Excluir -->
+                    <form action="/task/delete/<%= task.id %>" method="POST">
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                </div>
+                <% } }); %>
+        </div>
+
+        <!-- Coluna In Progress -->
+        <div class="column in-progress" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>In Progress</h2>
+            <% tasks.forEach(function(task) { if (task.status==='in-progress' ) { %>
+                <div class="task" id="task-<%= task.id %>" draggable="true" ondragstart="drag(event)">
+                    <h3>
+                        <%= task.title %>
+                    </h3>
+                    <p>
+                        <%= task.description %>
+                    </p>
+                    <p>Dificuldade: <%= task.difficulty %>
+                    </p>
+                    <p>Responsável: <%= task.assignedTo %>
+                    </p>
+                    <!-- Botão de Excluir -->
+                    <form action="/task/delete/<%= task.id %>" method="POST">
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                </div>
+                <% } }); %>
+        </div>
+
+        <!-- Coluna Done -->
+        <div class="column done" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Done</h2>
+            <% tasks.forEach(function(task) { if (task.status==='done' ) { %>
+                <div class="task" id="task-<%= task.id %>" draggable="true" ondragstart="drag(event)">
+                    <h3>
+                        <%= task.title %>
+                    </h3>
+                    <p>
+                        <%= task.description %>
+                    </p>
+                    <p>Dificuldade: <%= task.difficulty %>
+                    </p>
+                    <p>Responsável: <%= task.assignedTo %>
+                    </p>
+                    <!-- Botão de Excluir -->
+                    <form action="/task/delete/<%= task.id %>" method="POST">
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                </div>
+                <% } }); %>
+        </div>
+    </div>
+
+    <h2>Create a new task</h2>
+    <form action="/task/create" method="POST">
+        <label>Title:</label>
+        <input type="text" name="title" required>
+        <label>Description:</label>
+        <input type="text" name="description">
+        <label>Difficulty:</label>
+        <select name="difficulty">
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+        <label>Assigned To:</label>
+        <input type="text" name="assignedTo" required>
+        <button type="submit">Create Task</button>
+    </form>
+
+    <script>
+        // assets/js/script.js
+
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const taskElement = document.getElementById(data);
+
+            // Encontre a coluna de destino
+            let targetColumn = ev.target;
+            if (!targetColumn.classList.contains('column')) {
+                targetColumn = ev.target.closest('.column');
+            }
+
+            if (targetColumn) {
+                targetColumn.appendChild(taskElement);
+
+                // Determina o novo status com base na coluna em que a tarefa foi solta
+                let newStatus = 'todo';
+                if (targetColumn.classList.contains('in-progress')) {
+                    newStatus = 'in-progress';
+                } else if (targetColumn.classList.contains('done')) {
+                    newStatus = 'done';
+                }
+
+                // Faz a solicitação POST para atualizar o status da tarefa no servidor
+                const taskId = taskElement.id.split('-')[1];
+                fetch('/task/update-status', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: taskId, status: newStatus })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Task updated:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error updating task:', error);
+                        // Reverte a tarefa para sua posição original se a atualização falhar
+                        const originalColumn = document.querySelector(`.column.${taskElement.dataset.originalStatus}`);
+                        if (originalColumn) {
+                            originalColumn.appendChild(taskElement);
+                        }
+                    });
+            }
+        }
+
+    </script>
+</body>
+
+</html>

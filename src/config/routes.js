@@ -38,6 +38,11 @@ module.exports.routes = {
   'GET /meeting/join/:roomId': 'MeetingController.join',
 
 
+  '/kanban': 'TaskController.index',
+  'POST /task/create': 'TaskController.create',
+  'POST /task/update-status': 'TaskController.updateStatus',
+  'POST /task/delete/:id': 'TaskController.delete'
+
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
