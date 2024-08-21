@@ -22,6 +22,9 @@ module.exports.routes = {
   ***************************************************************************/
 
  '/': {view: 'pages/landing'},
+ '/teste': {view: 'pages/kanbanTeste'},
+
+
 
   'GET /login': {view: 'pages/login'},
   'POST /login': 'UserController.login',

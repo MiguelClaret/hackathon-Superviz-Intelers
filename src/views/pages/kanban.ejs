@@ -7,12 +7,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanban Board</title>
     <style>
-        /* assets/styles/style.css */
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100;
+            /* Thin */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200;
+            /* ExtraLight */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-light.woff') format('woff'),
+                url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300;
+            /* Light */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-book.woff') format('woff'),
+                url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400;
+            /* Book */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500;
+            /* Medium */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700;
+            /* Bold */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-black.woff') format('woff'),
+                url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900;
+            /* Black */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950;
+            /* Ultra */
+            font-style: normal;
+        }
+
+        header {
+            height: 10vh;
+            /* Define a altura do header */
+            background-color: #280659;
+            /* Cor de fundo opcional */
+            display: flex;
+            align-items: center;
+            /* Alinha verticalmente os itens no centro */
+            font-weight: 300;
+        }
+
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        header nav a {
+            display: flex;
+            align-items: center;
+            /* Alinha o ícone e o texto verticalmente */
+            padding: 5px 15px;
+            /* Espaçamento interno dos links */
+            text-decoration: none;
+            /* Remove sublinhado dos links */
+            color: #FFF;
+            /* Cor do texto */
+            gap: 8px;
+            /* Espaçamento entre o ícone e o texto */
+            cursor: pointer;
+            /* Define o cursor como pointer ao passar por cima */
+            transition: background-color 0.3s ease;
+            /* Suaviza a transição de cor de fundo */
+            font-weight: 400;
+        }
+
+
+        header nav a:hover {
+            background-color: #F54952;
+            /* Cor de fundo ao passar o mouse */
+            color: #FFF;
+            /* Cor do texto ao passar o mouse (opcional) */
+            border-radius: 8px;
+        }
+
+        header nav p {
+            margin-block-start: 0;
+        }
+
         body {
-            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             margin: 0;
-            padding: 20px;
+            font-family: Gotham, Sans-serif;
         }
 
         h1,
@@ -33,25 +166,41 @@
         .column {
             width: 30%;
             padding: 10px;
-            background-color: #e2e2e2;
-            border-radius: 5px;
+            background-color: #AE2D68;
+            border-radius: 30px;
+            height: 40rem;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: center;
         }
 
         .column h2 {
             text-align: center;
-            background-color: #333;
+            background-color: #AE2D68;
             color: white;
             padding: 10px;
             border-radius: 5px;
         }
 
         .task {
-            background-color: white;
-            padding: 10px;
+            background-color: #E9ECEF;
+            width: 80%;
+            padding: 15px 40px;
             margin-bottom: 10px;
             border-radius: 5px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
             cursor: move;
+            overflow: auto;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .task h3 {
+            text-align: center;
+            font-weight: 600;
+
         }
 
         form {
@@ -82,19 +231,144 @@
 
         /* Botão de Excluir */
         .delete-btn {
-            background-color: #dc3545;
+            background-color: #660F56;
             margin-top: 10px;
+            width: 20%;
+            margin-left: 22rem;
+            border-radius: 30px;
+
         }
 
         .delete-btn:hover {
-            background-color: #c82333;
+            background-color: #320329;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilos adicionais para botões e formulários */
+
+        button#openModalBtn {
+            width: 2rem;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+
+            height: fit-content;
+            font-weight: 500;
+            background-color: #660F56;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+        button#openModalBtn:hover {
+            background-color: #0056b3;
+        }
+
+        .titleKanban {
+            display: flex;
+            margin-left: 3rem;
+
+        }
+
+        .titleKanban h1 {
+            font-weight: 1000;
         }
     </style>
 </head>
 
 <body>
-    <h1>Kanban Board</h1>
+    <header>
+        <nav>
+            <a>
+                <img src="images/icon-home.svg" alt="">
+            </a>
+            <a>
+                <img src="images/icon-list.svg" alt="Descrição do SVG">
+                <p>Collaboration Form</p>
+            </a>
+            <a>
+                <img src="images/icon-kanban.svg" alt="Descrição do SVG">
+                <p>Group Kanban</p>
+            </a>
+            <a>
+                <img src="images/icon-mysection.svg" alt="Descrição do SVG">
+                <p>My section</p>
+            </a>
+            <a>
+                <img src="images/icon-faq.svg" alt="Descrição do SVG">
+                <p>FAQ</p>
+            </a>
+        </nav>
+    </header>
+    <div class="titleKanban">
+        <h1>Kanban Board</h1>
+        <button id="openModalBtn" class="botaoCriarTask">+</button>
 
+        <!-- Estrutura do Modal -->
+        <div id="taskModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Create a New Task</h2>
+                <form action="/task/create" method="POST">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description">
+
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty" name="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+
+                    <label for="assignedTo">Assigned To:</label>
+                    <input type="text" id="assignedTo" name="assignedTo" required>
+
+                    <button type="submit">Create Task</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="board">
         <!-- Coluna To Do -->
         <div class="column todo" ondrop="drop(event)" ondragover="allowDrop(event)">
@@ -105,11 +379,11 @@
                         <%= task.title %>
                     </h3>
                     <p>
-                        <%= task.description %>
+                        Description: <%= task.description %>
                     </p>
-                    <p>Dificuldade: <%= task.difficulty %>
+                    <p>Difficulty: <%= task.difficulty %>
                     </p>
-                    <p>Responsável: <%= task.assignedTo %>
+                    <p>assigned: <%= task.assignedTo %>
                     </p>
                     <!-- Botão de Excluir -->
                     <form action="/task/delete/<%= task.id %>" method="POST">
@@ -165,27 +439,31 @@
                 <% } }); %>
         </div>
     </div>
-
-    <h2>Create a new task</h2>
-    <form action="/task/create" method="POST">
-        <label>Title:</label>
-        <input type="text" name="title" required>
-        <label>Description:</label>
-        <input type="text" name="description">
-        <label>Difficulty:</label>
-        <select name="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-        </select>
-        <label>Assigned To:</label>
-        <input type="text" name="assignedTo" required>
-        <button type="submit">Create Task</button>
-    </form>
+    <!-- Botão para abrir o modal -->
 
     <script>
         // assets/js/script.js
 
+        var modal = document.getElementById("taskModal");
+        var openModalBtn = document.getElementById("openModalBtn");
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Abre o modal quando o usuário clica no botão
+        openModalBtn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // Fecha o modal quando o usuário clica no X
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Fecha o modal quando o usuário clica fora dele
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
         function allowDrop(ev) {
             ev.preventDefault();
         }
