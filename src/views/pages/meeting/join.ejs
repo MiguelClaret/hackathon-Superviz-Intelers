@@ -36,7 +36,23 @@
           },
         });
         const video = new VideoConference({participantType: 'host', styles: `
-
+          .meeting-container {
+            background-color: #343A40;
+          }
+          
+          .camera-list__header {
+            border-radius: 38px;
+            background: #F54952;
+          }
+          
+          .sv-roster-cell-background {
+            border-radius: 30px;
+            background: #CED4DA;
+            margin-top: 8px;
+            background: #F54952;
+          }
+          
+          
 
         `})
         room.addComponent(video)
