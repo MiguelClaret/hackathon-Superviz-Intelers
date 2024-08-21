@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Header</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a>
+                <img src="" alt="">
+            </a>
+            <a>
+                <img src="" alt="Descrição do SVG">
+                <p>Collaboration Form</p>
+            </a>
+            <a>
+                <img src="" alt="Descrição do SVG">
+                <p>Group Kanban</p>
+            </a>
+            <a>
+                <img src="" alt="Descrição do SVG">
+                <p>My section</p>
+            </a>
+            <a>
+                <img src="" alt="Descrição do SVG">
+                <p>FAQ</p>
+            </a>
+        </nav>
+    </header>
+    <div id="kanban">
+        <div id="titulo-kanban">
+            <h1> Kanban </h1>
+            <button id="open-popup">+</button> 
+        </div>
+         <div class="kanban-board">
+            <div class="kanban-column">
+                <h2>To Do</h2>
+                <div class="kanban-content">
+                     <div class="kanban-card"></div>
+                </div>
+            </div>
+            <div class="kanban-column"></div>
+            <div class="kanban-column"></div>
+        </div>
+    </div>
+
+    <!-- Pop-up para adicionar novos cards -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <span class="close">&times;</span>
+            <h2>Add New Card</h2>
+            <form id="new-card-form">
+                <input type="text" id="card-title" placeholder="Card Title" required>
+                <textarea id="card-description" placeholder="Card Description" required></textarea>
+                <button type="submit">Add Card</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
