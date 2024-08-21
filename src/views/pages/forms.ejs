@@ -1,0 +1,377 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Página Forms</title>
+    <link rel="stylesheet" href="forms.css">
+    <style>
+/* Fontes */
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-thin.woff') format('woff'),
+         url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+         url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+    font-weight: 200;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-light.woff') format('woff'),
+         url('/fonts/gotham/gotham-light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-book.woff') format('woff'),
+         url('/fonts/gotham/gotham-book.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-medium.woff') format('woff'),
+         url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-bold.woff') format('woff'),
+         url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-black.woff') format('woff'),
+         url('/fonts/gotham/gotham-black.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Gotham';
+    src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+         url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+         url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+    font-weight: 950;
+    font-style: normal;
+}
+
+/* Estilo global */
+body {
+    font-family: 'Gotham';
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    overflow: auto;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    height: 130px;
+    background-color: #280659;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+    padding-right: 40px;
+    font-size: 24px;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header nav a {
+    display: flex;
+    align-items: center;
+    padding: 5px 15px;
+    text-decoration: none;
+    color: #FFF;
+    gap: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-weight: 400;
+    margin: 0 0 0 0;
+}
+
+header nav a:hover {
+    background-color: #F54952;
+    color: #FFF;
+    border-radius: 8px;
+}
+
+header nav p {
+    margin-block-start: 0;
+    margin-block-end: 0;
+    margin-bottom: 0;
+}
+
+.data{
+
+}
+
+/*Início da página*/
+
+
+.textoform{
+        display: inline-block;
+        width: 405px;
+        margin: 0; /* Remove margens para alinhamento adequado */
+        text-align: center; /* Centraliza o texto */
+        font-weight: 600; /* Mantém a consistência do peso da fonte */
+        margin-top: 30px; /* Margem de cima */
+        margin-left: 0px; /* Margem esquerda */
+        color: #660F56;
+        font-size: 2rem;
+}
+
+.documents-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 70px;
+    margin-top: 50px;
+    margin-right: 100px;
+    margin-left: 95px;
+}
+
+.document-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FF5252;
+    width: 150px;
+    height: 170px;
+    border-radius: 30px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    color: black;
+    font-size: 14px;
+    text-align: center;
+}
+
+.mais-icone {
+    margin-top: 60px;
+    width: 50%; /* Mantém a proporção da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.document-item p {
+    margin: 185px 0 0 0; /* Ajusta a margem do texto abaixo do ícone */
+    color: rgb(0, 0, 0); /* Se preferir o texto em branco */
+}
+
+#adiciona {
+    margin: 70px 0 0 0; /* Ajusta a margem do texto abaixo do ícone */
+    color: #000000;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Garante que a largura do body ocupe 100% da tela */
+    height: 100%; /* Garante que a altura do body ocupe 100% da tela */
+}
+
+main {
+    padding: 10px; /* Padding opcional ao redor do conteúdo principal */
+}
+
+.documents-container {
+    margin-bottom: 20px; /* Espaço entre a lista de documentos e o botão */
+}
+
+.options {
+    margin-top: 20px; /* Espaço acima do botão */
+    text-align: center; /* Centraliza o botão */
+}
+
+.proprietario {
+    display: inline-block; /* Faz o botão ocupar apenas o espaço necessário */
+    padding: 10px 20px; /* Padding interno do botão */
+    font-size: 16px; /* Tamanho da fonte */
+}
+
+
+
+
+
+
+.dropbtn {
+    background-color: #ffffff; /*fundo do botão*/
+    color: #660F56;
+    font-family: 'Gotham';
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
+    background-color: #ddd;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #660F56;
+    font-family: 'Gotham';
+    font-size: 16px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #ddd;
+}
+
+
+.visualization {
+    color: #660F56;
+    font-family: 'Gotham';
+    margin-top: 70px;
+    margin-left: 975px;
+    display: flex;
+    flex-direction: column; 
+    text-align :center
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    margin-top: -48px;
+    margin-left: 780px;
+}
+
+.data {
+font-weight: 500;
+margin-left: 50px;
+}
+
+.data > img {
+    height: 1%;
+}
+
+.last-documents{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.last-documents img {
+    height: 3%;
+    width: 3%;
+}
+
+    </style>
+  </head>
+  <body>
+    <header>
+        <nav>
+            <a><img src="assets/icon-home.svg" alt=""></a>
+            <a><img src="assets/icon-list.svg" alt="Descrição do SVG"><p>Collaboration Form</p></a>
+            <a><img src="assets/icon-kanban.svg" alt="Descrição do SVG"><p>Group Kanban</p></a>
+            <a><img src="assets/icon-mysection.svg" alt="Descrição do SVG"><p>My section</p></a>
+            <a><img src="assets/icon-faq.svg" alt="Descrição do SVG"><p>FAQ</p></a>
+        </nav>
+    </header>
+
+    <main>
+        <div>
+            <h2 class="textoform">Collaborative Form</h2>
+        </div>
+
+        <div class="documents-container">
+            <div class="document-item">
+                <div><img class="mais-icone" src="assets/rename.png" alt="Icone"></div>
+                <p id="adiciona">Blank document</p>
+            </div>
+
+            <div class="document-item">
+                <p>Minutes of meeting</p>
+            </div>
+
+            <div class="document-item">
+                <p>Template xxx</p>
+            </div>
+
+            <div class="document-item">
+                <p>Template xxx</p>
+            </div>
+        </div>
+        
+        <div class="visualization">
+            <p id="adicionar">Last opened</p>
+        </div>
+        
+        <div class="dropdown">
+            <button class="dropbtn">Owner ▼</button>
+            <div class="dropdown-content">
+                <a href="#" data-value="anyone">Belong to anyone</a>
+                <a href="#" data-value="mine">They belong to me</a>
+                <a href="#" data-value="not-mine">They don't belong to me</a>
+            </div>
+        </div>
+
+        <div class="document-history-2">
+          <h4 class="data">Today</h4>  
+
+          <div class="last-documents">
+            <img class="docs" src="assets/docs.png"/>
+            <p>Document xxxxxxxxxxxxxx</p>
+            <p>iasmim.jesus</p>
+            <p>21:19</p>
+          </div>
+        </div>
+
+
+    </main>
+  </body>
+</html>
