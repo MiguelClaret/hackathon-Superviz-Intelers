@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-light.woff') format('woff'),
+                url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-book.woff') format('woff'),
+                url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-black.woff') format('woff'),
+                url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950;
+            font-style: normal;
+        }
+
+        /* Estilo global */
+        body {
+            font-family: 'Gotham', sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        main {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        header {
+            height: 5rem;
+            background-color: #280659;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            padding-right: 40px;
+            font-size: 24px;
+        }
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav a {
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #FFF;
+            gap: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 400;
+        }
+
+        header nav a:hover {
+            background-color: #F54952;
+            color: #FFF;
+            border-radius: 8px;
+        }
+
+        header nav p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
+        section {
+            display: flex;
+            flex-direction: column;
+            padding: 200px;
+            padding-top: 50px;
+        }
+
+        section .text {
+            display: flex;
+            flex-direction: row;
+        }
+
+        section .text h1 {
+            color: #341671;
+            font-size: 48px;
+            font-weight: 300;
+            margin: 0;
+        }
+
+        section .text h2 {
+            margin: 0;
+            margin-left: 8px;
+            font-size: 48px;
+            text-transform: uppercase;
+            color: #660F56;
+            font-weight: 700;
+        }
+
+        h3 {
+            margin: 0;
+            margin-top: 15px;
+            font-size: 26px;
+            font-weight: 400;
+            width: 454px;
+        }
+
+        section .buttons {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 598.75px;
+            padding: 50px 0px;
+        }
+
+        section .buttons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 47px;
+            width: 267.75px;
+            border: 2px solid #000;
+            border-radius: 60px;
+            font-size: 24px;
+            font-weight: 200;
+            background-color: #280659;
+            text-align: center;
+            text-decoration: none;
+            color: #FFF;
+            cursor: pointer;
+        }
+
+        section .buttons a:hover {
+            background-color: #FFF;
+            color: #000;
+        }
+
+        section img {
+            height: 282px;
+        }
+
+        /* Estilo do Chat */
+        .chat {
+            background-color: #F54952;
+            width: 500px;
+            height: 680px;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+            box-sizing: border-box;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .chat p {
+            font-size: 28px;
+            font-weight: 400;
+            color: white;
+            align-self: center;
+            margin: 0;
+            padding-top: 15px;
+        }
+
+        .messages {
+            display: flex;
+            flex-direction: column;
+            margin-top: 15px;
+            margin-bottom: 80px;
+        }
+
+        /* Balões de mensagem */
+        .messages .message {
+            background-color: #fff;
+            border-radius: 15px;
+            padding: 10px 15px;
+            margin: 10px 0;
+            position: relative;
+            min-width: 70%;
+            max-width: 80%;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .messages .message::before {
+            content: '';
+            position: absolute;
+            border-width: 10px;
+            border-style: solid;
+            display: block;
+        }
+
+        .messages .left {
+            align-self: flex-start;
+            margin-left: 10px;
+        }
+
+        .messages .left::before {
+            border-color: transparent #fff transparent transparent;
+            left: -16.5px;
+            top: 15px;
+        }
+
+        .messages .right {
+            align-self: flex-end;
+            margin-right: 10px;
+        }
+
+        .messages .right::before {
+            border-color: transparent transparent transparent #fff;
+            right: -16.5px;
+            top: 15px;
+        }
+
+        .line {
+            margin-top: 10px;
+            background-color: #280659;
+            height: 10px;
+        }
+
+        /* Estilo para o campo de mensagem */
+        .my-message {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background-color: #FFFFFF;
+            border: 2px solid #280659;
+            border-radius: 13px;
+            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            justify-content: space-between;
+            bottom: 0;
+            left: 0;
+        }
+        .my-message input {
+            border: none;
+        }
+
+        .my-message p {
+            margin: 0;
+            padding-right: 15px;
+            font-size: 34px;
+            color: #A9A9A9;
+            flex-grow: 1;
+        }
+
+        .my-message input {
+            width: 100%;
+            height: 100%;
+            outline: none;
+        }
+
+        .my-message .icon-send {
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .my-message .icon-send:hover {
+            transform: scale(1.1);
+        }
+
+        .my-message .icon-send:active {
+            transform: scale(0.9);
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a>
+                <img src="images/icon-home.svg" alt="">
+            </a>
+            <a>
+                <img src="images/icon-list.svg" alt="Descrição do SVG">
+                <p>Collaboration Form</p>
+            </a>
+            <a>
+                <img src="images/icon-kanban.svg" alt="Descrição do SVG">
+                <p>Group Kanban</p>
+            </a>
+            <a>
+                <img src="images/icon-mysection.svg" alt="Descrição do SVG">
+                <p>My section</p>
+            </a>
+            <a>
+                <img src="images/icon-faq.svg" alt="Descrição do SVG">
+                <p>FAQ</p>
+            </a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <div class="text">
+                <h1>Welcome</h1>
+                <h2>Name!</h2>
+            </div>
+            <h3>Start collaborating and communicating with your team now!</h3>
+            <div class="buttons">
+                <a>Attend a meeting ></a>
+                <a>Create a meeting ></a>
+            </div>
+            <img src="images/img-homepage.svg" alt="">
+        </section>
+
+        <section>
+            <div class="chat">
+                <p>
+                    CHAT
+                </p>
+                <div class="line"></div>
+
+                <div class="messages">
+                    <div class="message left">
+                        <div>User Name</div>
+                        <div>Message</div>
+                    </div>
+                    <div class="message right">
+                        <div>User Name</div>
+                        <div>Message</div>
+                    </div>
+                    <div class="message left">
+                        <div>User Name</div>
+                        <div>Message</div>
+                    </div>
+                    <div class="message right">
+                        <div>User Name</div>
+                        <div>Message</div>
+                    </div>
+                    <div class="message left">
+                        <div>User Name</div>
+                        <div>Message</div>
+                    </div>
+                </div>
+                <div class="my-message">
+                    <input type="text" placeholder="Send your message"></input>
+                    <img class="icon-send" src="images/icon-send.svg" alt="Enviar">
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
