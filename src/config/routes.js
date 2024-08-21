@@ -7,9 +7,6 @@
  * For more information on configuring custom routes, check out:
  * https://sailsjs.com/anatomy/config/routes-js
  */
-
-const UserController = require("../api/controllers/UserController");
-
 module.exports.routes = {
   // Static
   '/': {view: 'pages/landing'},
@@ -18,8 +15,8 @@ module.exports.routes = {
   // User auth
   'GET /login': {view: 'pages/login'},
   'POST /login': 'UserController.login',
-  'GET /register': 'UserController.signup',
-  'POST /register': 'UserController.signup',
+  'GET /signup': 'UserController.signup',
+  'POST /signup': 'UserController.signup',
 
 
   // Meeting

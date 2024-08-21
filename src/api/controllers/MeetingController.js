@@ -6,8 +6,19 @@ module.exports = {
       // Fetch all rooms (meetings) from the database
       const rooms = await Room.find();
 
+      const userId = req.session.userId;
+      if (!userId) {
+        return res.status(401).json({ error: 'You must be logged in to create a meeting.' });
+      }
+
+      // Fetch the current user to get their companyId
+      const user = await User.findOne({ id: userId }).populate('companyId');
+      if (!user) {
+        return res.status(404).json({ error: 'User not found.' });
+      }
+
       // Render the meeting options page with the list of rooms
-      return res.view('pages/meeting/index', { rooms });
+      return res.view('pages/meeting/index', { rooms, user });
     } catch (error) {
       return res.status(500).json({ error: error.message });
     }
