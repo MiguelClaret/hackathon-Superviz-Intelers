@@ -38,7 +38,8 @@ module.exports.routes = {
 
 
 
-  '/kanban': 'TaskController.index',
+  '/kanban': 'BoardController.show',
+  'GET /board/:id':'TaskController.index',
   'POST /task/create': 'TaskController.create',
   'POST /task/update-status': 'TaskController.updateStatus',
   'POST /task/delete/:id': 'TaskController.delete',

@@ -1,0 +1,532 @@
+<!-- api/views/pages/kanban.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <style>
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100;
+            /* Thin */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200;
+            /* ExtraLight */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-light.woff') format('woff'),
+                url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300;
+            /* Light */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-book.woff') format('woff'),
+                url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400;
+            /* Book */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500;
+            /* Medium */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700;
+            /* Bold */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-black.woff') format('woff'),
+                url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900;
+            /* Black */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+                url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950;
+            /* Ultra */
+            font-style: normal;
+        }
+
+        header {
+            height: 5rem;
+            background-color: #280659;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            padding-right: 40px;
+            font-size: 24px;
+        }
+
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        header nav a {
+            display: flex;
+            align-items: center;
+            /* Alinha o ícone e o texto verticalmente */
+            padding: 5px 15px;
+            /* Espaçamento interno dos links */
+            text-decoration: none;
+            /* Remove sublinhado dos links */
+            color: #FFF;
+            /* Cor do texto */
+            gap: 8px;
+            /* Espaçamento entre o ícone e o texto */
+            cursor: pointer;
+            /* Define o cursor como pointer ao passar por cima */
+            transition: background-color 0.3s ease;
+            /* Suaviza a transição de cor de fundo */
+            font-weight: 400;
+        }
+
+
+        header nav a:hover {
+            background-color: #F54952;
+            /* Cor de fundo ao passar o mouse */
+            color: #FFF;
+            /* Cor do texto ao passar o mouse (opcional) */
+            border-radius: 8px;
+        }
+
+        header nav p {
+            margin-block-start: 0;
+        }
+
+        body {
+            background-color: #f4f4f4;
+            margin: 0;
+            font-family: Gotham, Sans-serif;
+        }
+
+        h1,
+        h2 {
+            color: #333;
+            pointer-events: none;
+
+        }
+
+
+
+        .board {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .column {
+            width: 30%;
+            padding: 10px;
+            background-color: #AE2D68;
+            border-radius: 30px;
+            height: 40rem;
+            display: flex;
+            justify-content: flex-start;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .column h2 {
+            text-align: center;
+            background-color: #AE2D68;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .task {
+            background-color: #E9ECEF;
+            width: 80%;
+            padding: 15px 40px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            cursor: move;
+            overflow: auto;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            white-space: normal;
+        }
+
+        .task h3 {
+            text-align: center;
+            font-weight: 600;
+
+        }
+
+        form {
+            margin-bottom: 10px;
+        }
+
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        /* Botão de Excluir */
+        .delete-btn {
+            background-color: #660F56;
+            margin-top: 10px;
+            width: 20%;
+            margin-left: 22rem;
+            border-radius: 30px;
+
+        }
+
+        .delete-btn:hover {
+            background-color: #320329;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        /* Estilos adicionais para botões e formulários */
+
+        button#openModalBtn {
+            width: 2rem;
+            margin-left: 2rem;
+            margin-bottom: 1.5rem;
+
+            height: fit-content;
+            font-weight: 500;
+            background-color: #660F56;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            align-self: flex-end;
+        }
+
+        button#openModalBtn:hover {
+            background-color: #0056b3;
+        }
+
+        .titleKanban {
+            display: flex;
+            margin-left: 3rem;
+
+        }
+
+        .titleKanban h1 {
+            font-weight: 1000;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav>
+            <a>
+                <img src="/images/icon-home.svg" alt="">
+            </a>
+            <a>
+                <img src="/images/icon-home.svg" alt="Descrição do SVG">
+                <p>Collaboration Form</p>
+            </a>
+            <a href="/kanban">
+                <img src="/images/icon-home.svg" alt="Descrição do SVG">
+                <p>Group Kanban</p>
+            </a>
+            <a>
+                <img src="/images/icon-home.svg" alt="Descrição do SVG">
+                <p>My section</p>
+            </a>
+            <a>
+                <img src="/images/icon-home.svg" alt="Descrição do SVG">
+                <p>FAQ</p>
+            </a>
+        </nav>
+    </header>
+
+    <div class="titleKanban">
+        <h1>Kanban Board - <%= companyUser.name %> - <%= board.name %> </h1>
+
+        <button id="openModalBtn" class="botaoCriarTask">+</button>
+        
+        <!-- Estrutura do Modal -->
+        <div id="taskModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Create a New Task</h2>
+                <form action="/task/create" method="POST">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" required>
+
+                    <label for="description">Description:</label>
+                    <input type="text" id="description" name="description">
+
+                    <label for="difficulty">Difficulty:</label>
+                    <select id="difficulty" name="difficulty">
+                        <option value="easy">Easy</option>
+                        <option value="medium">Medium</option>
+                        <option value="hard">Hard</option>
+                    </select>
+
+                    <label for="assignedTo">Assigned To:</label>
+                    <input type="text" id="assignedTo" name="assignedTo" required>
+
+                    <input type="hidden" id="boardId" name="boardId" value="<%= board.id %>">
+                    <button type="submit">Create Task</button>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="board">
+        <!-- Coluna To Do -->
+        <div class="column todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2 draggable="false" ondragstart="return false;" ondragover="return false;">To Do</h2>
+            <% tasks.forEach(function(task) { if (task.status==='todo' ) { %>
+                <div class="task" id="task-<%= task.id %>" draggable="true" ondragstart="drag(event)">
+                    <h3>
+                        <%= task.title %>
+                    </h3>
+                    <p>
+                        Description: <%= task.description %>
+                    </p>
+                    <p>Difficulty: <%= task.difficulty %>
+                    </p>
+                    <p>assigned: <%= task.assignedTo %>
+                    </p>
+                    <!-- Botão de Excluir -->
+                    <form action="/task/delete/<%= task.id %>" method="POST">
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                </div>
+                <% } }); %>
+        </div>
+
+        <!-- Coluna In Progress -->
+        <div class="column in-progress" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>In Progress</h2>
+            <% tasks.forEach(function(task) { if (task.status==='in-progress' ) { %>
+                <div class="task" id="task-<%= task.id %>" draggable="true" ondragstart="drag(event)">
+                    <h3>
+                        <%= task.title %>
+                    </h3>
+                    <p>
+                        <%= task.description %>
+                    </p>
+                    <p>Dificuldade: <%= task.difficulty %>
+                    </p>
+                    <p>Responsável: <%= task.assignedTo %>
+                    </p>
+                    <!-- Botão de Excluir -->
+                    <form action="/task/delete/<%= task.id %>" method="POST">
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                </div>
+                <% } }); %>
+        </div>
+
+        <!-- Coluna Done -->
+        <div class="column done" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Done</h2>
+            <% tasks.forEach(function(task) { if (task.status==='done' ) { %>
+                <div class="task" id="task-<%= task.id %>" draggable="true" ondragstart="drag(event)">
+                    <h3>
+                        <%= task.title %>
+                    </h3>
+                    <p>
+                        <%= task.description %>
+                    </p>
+                    <p>Dificuldade: <%= task.difficulty %>
+                    </p>
+                    <p>Responsável: <%= task.assignedTo %>
+                    </p>
+                    <!-- Botão de Excluir -->
+                    <form action="/task/delete/<%= task.id %>" method="POST">
+                        <button type="submit" class="delete-btn">Excluir</button>
+                    </form>
+                </div>
+                <% } }); %>
+        </div>
+    </div>
+    <!-- Botão para abrir o modal -->
+
+    <script>
+        // assets/js/script.js
+
+        var modal = document.getElementById("taskModal");
+        var openModalBtn = document.getElementById("openModalBtn");
+        var closeBtn = document.getElementsByClassName("close")[0];
+
+        // Abre o modal quando o usuário clica no botão
+        openModalBtn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // Fecha o modal quando o usuário clica no X
+        closeBtn.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // Fecha o modal quando o usuário clica fora dele
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        function allowDrop(ev) {
+            ev.preventDefault();
+        }
+
+        function drag(ev) {
+            ev.dataTransfer.setData("text", ev.target.id);
+        }
+
+        function drop(ev) {
+            ev.preventDefault();
+            const data = ev.dataTransfer.getData("text");
+            const taskElement = document.getElementById(data);
+
+            // Encontre a coluna de destino
+            let targetColumn = ev.target;
+            if (!targetColumn.classList.contains('column')) {
+                targetColumn = ev.target.closest('.column');
+            }
+
+            if (targetColumn) {
+                targetColumn.appendChild(taskElement);
+
+                // Determina o novo status com base na coluna em que a tarefa foi solta
+                let newStatus = 'todo';
+                if (targetColumn.classList.contains('in-progress')) {
+                    newStatus = 'in-progress';
+                } else if (targetColumn.classList.contains('done')) {
+                    newStatus = 'done';
+                }
+
+                // Faz a solicitação POST para atualizar o status da tarefa no servidor
+                const taskId = taskElement.id.split('-')[1];
+                fetch('/task/update-status', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ id: taskId, status: newStatus })
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Task updated:', data);
+                    })
+                    .catch(error => {
+                        console.error('Error updating task:', error);
+                        // Reverte a tarefa para sua posição original se a atualização falhar
+                        const originalColumn = document.querySelector(`.column.${taskElement.dataset.originalStatus}`);
+                        if (originalColumn) {
+                            originalColumn.appendChild(taskElement);
+                        }
+                    });
+            }
+        }
+
+    </script>
+</body>
+
+</html>

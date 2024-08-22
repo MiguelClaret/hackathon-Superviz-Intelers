@@ -3,25 +3,26 @@
 module.exports = {
   create: async function (req, res) {
     try {
-      const { title, description, difficulty, assignedTo, boardId } = req.body;
+      const { title, description, difficulty, assignedTo } = req.body;
 
       const userId = req.session.userId;
       if (!userId) {
         return res.redirect('/login')
       }
 
+      const selectedBoardId = req.body.boardId;  // Alterar de req.params.id para req.body.boardId
 
       const newTask = await Task.create({
         title,
         description,
         difficulty,
         assignedTo,
-        boardId
+        boardId: selectedBoardId
       }).fetch();
 
 
 
-      return res.redirect('/kanban');
+      return res.redirect(`/board/${selectedBoardId}`);
     } catch (error) {
       return res.status(500).json({ error: 'Error creating task' });
     }
@@ -34,15 +35,20 @@ module.exports = {
             return res.redirect('/login');
         }
 
-        const user = await User.findOne({ id: userId });
-        const company = await Company.findOne({ id: user.companyId });
-        const boards = await Board.find({ companyId: company.id });
+        const selectedBoardId = req.params.id;
 
-        const selectedBoardId = req.query.boardId || boards[0]?.id;
+
+        const user = await User.findOne({ id: userId });
+        const companyUser = await Company.findOne({ id: user.companyId });
+        const board = await Board.findOne({id: selectedBoardId}).populate("companyId")
         
+        if(companyUser.name != board.companyId.name ){
+          return res.status(500).json({ error: "You don't have access to this board" });
+        }
+
         const tasks = await Task.find({ boardId: selectedBoardId });
         
-        return res.view('pages/kanban', { tasks, boards, selectedBoardId });
+        return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId});
     } catch (error) {
         return res.status(500).json({ error: 'Error fetching tasks' });
     }
@@ -71,7 +77,7 @@ module.exports = {
 
       await Task.destroyOne({ id });
 
-      return res.redirect(`/kanban`);
+      return res.redirect(`/board/${task.boardId}`);
     } catch (error) {
       return res.status(500).json({ error: 'Error deleting task' });
     }
