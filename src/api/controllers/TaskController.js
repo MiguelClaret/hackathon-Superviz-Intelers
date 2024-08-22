@@ -75,5 +75,21 @@ module.exports = {
     } catch (error) {
       return res.status(500).json({ error: 'Error deleting task' });
     }
+  },
+
+  card_moved: async function (req, res) {
+    try {
+      const { status, title, description, assignedTo, boardId } = req.body;
+
+      sails.log(`Webhook recebido: Status: ${status}, Título: ${title}, Descrição: ${description}, Responsável: ${assignedTo}, BoardID: ${boardId}`)
+
+      return res.status(200).json({
+        message: 'processou o Webhook!',
+        data: { status, title, description, assignedTo, boardId }
+      });
+    } catch (error) {
+      sails.log.error('Erro ao processar este webhook:', error);
+      return res.status(500).json({ error: 'Erro ao processar o webhook!'})
+    }
   }
 };

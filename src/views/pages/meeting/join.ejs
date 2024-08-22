@@ -14,8 +14,19 @@
 
     function  cardMoved(params) {
       console.log('moved', params)
-    }
 
+    fetch('/webhook/card-moved', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(params)
+    })
+    .then(response => response.json())
+    .then(data => console.log('resposta', data))
+    .catch(error => console.error('Erro ao enviar o webhook:', error));
+  }
+  
     async function joinMeeting(roomId, companyId, roomName, userId, userName) {
       try {
         const room = await SuperVizRoom('vt2gjg3o5bk1x7md4jquhwkv2pti77', {

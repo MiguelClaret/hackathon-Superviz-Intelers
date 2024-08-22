@@ -19,12 +19,12 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {view: 'pages/landing'},
-  '/home': {view:'pages/homepage'},
-  '/aboutus': {view: 'pages/aboutus'},
+  '/': { view: 'pages/landing' },
+  '/home': { view: 'pages/homepage' },
+  '/aboutus': { view: 'pages/aboutus' },
 
   // User auth
-  'GET /login': {view: 'pages/login'},
+  'GET /login': { view: 'pages/login' },
   'POST /login': 'UserController.login',
   'GET /signup': 'UserController.signup',
   'POST /signup': 'UserController.signup',
@@ -41,8 +41,9 @@ module.exports.routes = {
   '/kanban': 'TaskController.index',
   'POST /task/create': 'TaskController.create',
   'POST /task/update-status': 'TaskController.updateStatus',
-  'POST /task/delete/:id': 'TaskController.delete'
-
+  'POST /task/delete/:id': 'TaskController.delete',
+  'POST /task/delete/:id': 'TaskController.delete',
+  'POST /webhook/card-moved': 'TaskController.card_moved'
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
