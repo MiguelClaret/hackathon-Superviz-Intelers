@@ -8,6 +8,10 @@ module.exports = {
     users: {
       collection: 'user',
       via: 'companyId'
+    },
+    boards: {
+      collection: 'board',
+      via: 'companyId' // Corrigido para "companyId"
     }
   }
 };

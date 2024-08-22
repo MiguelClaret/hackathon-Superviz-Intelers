@@ -27,9 +27,30 @@ module.exports.bootstrap = async function() {
   // ]);
   // ```
 
-  // await Company.create({ name: 'Company One' });
-  // await Company.create({ name: 'Company Two' });
-  // await Company.create({ name: 'Company Three' });
+  if (await Company.count() > 0) {
+    return;
+  }
+
+  if (await Board.count() > 0) {
+    return;
+  }
+
+  await Company.create({ name: 'Company One' });
+  await Company.create({ name: 'Company Two' });
+  await Company.create({ name: 'Company Three' });
+
+  await Board.create({
+    name: 'Board one',
+    companyId: 1
+  });
+  await Board.create({
+    name: 'Board two',
+    companyId: 1
+  });
+  await Board.create({
+    name: 'Board three',
+    companyId: 1
+  });
 
 
 };

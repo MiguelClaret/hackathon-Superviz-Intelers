@@ -21,6 +21,8 @@ module.exports = {
       type: 'string',
       isIn: ['todo', 'in-progress', 'done'],
       defaultsTo: 'todo',
-    }
+    },
+    boardId: { model: 'board', required: true },
+
   }
 };

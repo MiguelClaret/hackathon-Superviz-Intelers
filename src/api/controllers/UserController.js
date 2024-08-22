@@ -60,6 +60,7 @@ module.exports = {
         return res.view('pages/login', { error: 'User not found' });
       }
 
+
       // Check the password
       await sails.helpers.checkPassword
         .with({ password, hashedPassword: user.password })
@@ -70,11 +71,16 @@ module.exports = {
       // Set user session
       req.session.userId = user.id;
 
+      const company = await Company.findOne({ id: user.companyId });
+      const boards = await Board.find({ companyId: company.id });
+
+      const selectedBoardId = boards[0].id;
+
       // Update last seen timestamp
       await User.updateOne({ id: user.id }).set({ lastSeenAt: Date.now() });
 
       // Redirect to home page or dashboard
-      return res.redirect('/meeting').status(200).json({ message: 'Login successful' });
+      return res.view('pages/homepage', {selectedBoardId}).status(200).json({ message: 'Login successful' });
     } catch (error) {
       sails.log.error('Error occurred during login:', error);
       return res.status(500).json({

@@ -323,7 +323,7 @@
                 <img src="images/icon-list.svg" alt="Descrição do SVG">
                 <p>Collaboration Form</p>
             </a>
-            <a>
+            <a href="/kanban">
                 <img src="images/icon-kanban.svg" alt="Descrição do SVG">
                 <p>Group Kanban</p>
             </a>
@@ -340,7 +340,13 @@
     <div class="titleKanban">
         <h1>Kanban Board</h1>
         <button id="openModalBtn" class="botaoCriarTask">+</button>
-
+        <select class="boardSelector" id="boardSelector">
+            <% boards.forEach(function(board) { %>
+                <option value="<%= board.id %>" <% if (board.id == selectedBoardId) { %> selected <% } %>>
+                    <%= board.name %>
+                </option>
+            <% }); %>
+        </select>
         <!-- Estrutura do Modal -->
         <div id="taskModal" class="modal">
             <div class="modal-content">
@@ -363,7 +369,9 @@
                     <label for="assignedTo">Assigned To:</label>
                     <input type="text" id="assignedTo" name="assignedTo" required>
 
+                    <input type="hidden" id="boardId" name="boardId" value="<%= selectedBoardId %>">
                     <button type="submit">Create Task</button>
+
                 </form>
             </div>
         </div>
@@ -442,6 +450,12 @@
 
     <script>
         // assets/js/script.js
+
+        document.getElementById('boardSelector').addEventListener('change', function () {
+            const selectedBoardId = this.value;
+            window.location.href = `/kanban/?boardId=${selectedBoardId}`;
+        });
+
 
         var modal = document.getElementById("taskModal");
         var openModalBtn = document.getElementById("openModalBtn");
