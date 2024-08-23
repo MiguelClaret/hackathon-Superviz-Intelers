@@ -145,13 +145,22 @@
       background-color: #f4f4f4;
       margin: 0;
       font-family: Gotham, Sans-serif;
+      min-height: 100vh
+    }
+
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-y: auto;
     }
 
     h1,
     h2 {
       color: #333;
       pointer-events: none;
-
+      text-align: center;
     }
 
 
@@ -160,6 +169,8 @@
       display: flex;
       justify-content: space-around;
       margin-bottom: 20px;
+      overflow-y: hidden;
+      height: auto;
     }
 
     .column {
@@ -167,39 +178,47 @@
       padding: 10px;
       background-color: #AE2D68;
       border-radius: 30px;
-      height: 40rem;
+      min-height: 40rem;
       display: flex;
       justify-content: flex-start;
       flex-direction: column;
       align-items: center;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.40);
+      height: auto;
+      overflow-y: visible;
+      height: auto;
+      border: 1px, solid, black;
     }
 
     .column h2 {
       text-align: center;
-      background-color: #AE2D68;
       color: white;
-      padding: 10px;
-      border-radius: 5px;
+      padding: 6px;
+      border-radius: 10px;
+      font-weight: 400;
+      border: 0.3px, solid, #422680;
     }
 
     .task {
       background-color: #E9ECEF;
       width: 80%;
       padding: 15px 40px;
-      margin-bottom: 10px;
+      margin-bottom: 20px;
       border-radius: 5px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.40);
       cursor: move;
-      overflow: auto;
       word-wrap: break-word;
-      overflow-wrap: break-word;
       white-space: normal;
+      border-radius: 20px;
     }
 
     .task h3 {
       text-align: center;
       font-weight: 600;
-
+      background-color: #422680;
+      color: #E9ECEF;
+      width: 100%;
+      border-radius: 10px;
     }
 
     form {
@@ -218,28 +237,29 @@
     }
 
     button {
-      background-color: #28a745;
+      background-color: #422680;
       color: white;
       border: none;
       cursor: pointer;
+      border-radius: 40px;
     }
 
     button:hover {
-      background-color: #218838;
+      background-color: #2f5ddb;
     }
 
     /* Botão de Excluir */
     .delete-btn {
-      background-color: #660F56;
+      background-color: #422680;
       margin-top: 10px;
-      width: 20%;
-      margin-left: 22rem;
+      width: 30%;
+      margin-left: 20.5rem;
       border-radius: 30px;
 
     }
 
     .delete-btn:hover {
-      background-color: #320329;
+      background-color: #e70d0d;
     }
 
     .modal {
@@ -251,20 +271,75 @@
       width: 100%;
       height: 100%;
       overflow: auto;
-      background-color: rgb(0, 0, 0);
       background-color: rgba(0, 0, 0, 0.4);
       padding-top: 60px;
+    }
+
+    @keyframes border-blink {
+      0% {
+        border-color: #6814df;
+      }
+
+      50% {
+        border-color: #AE2D68;
+      }
+
+      100% {
+        border-color: #6814df;
+      }
+    }
+
+    @keyframes modal-fade-in {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     .modal-content {
       background-color: #fefefe;
       margin: 5% auto;
       padding: 20px;
-      border: 1px solid #888;
+      border: 3px solid #6814df;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.40);
       width: 80%;
       max-width: 500px;
       border-radius: 10px;
+      animation: border-blink 1s infinite, modal-fade-in 0.5s ease-out;
     }
+
+
+    .form-group {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      width: 30%;
+      font-weight: bold;
+      margin-right: 10px;
+      text-align: right;
+    }
+
+    .form-group input,
+    .form-group select {
+      width: 65%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .modal-content label {
+      color: #422680;
+    }
+
 
     .close {
       color: #aaa;
@@ -289,7 +364,7 @@
 
       height: fit-content;
       font-weight: 500;
-      background-color: #660F56;
+      background-color: #F54952;
       color: #fff;
       border: none;
       border-radius: 50%;
@@ -298,7 +373,7 @@
     }
 
     button#openModalBtn:hover {
-      background-color: #0056b3;
+      background-color: #47C931;
     }
 
     .titleKanban {
@@ -308,35 +383,49 @@
     }
 
     .titleKanban h1 {
-      font-weight: 1000;
+      font-weight: 600;
+      color: #660F56
+    }
+
+    .task.dragging {
+      opacity: 0.5;
+      transform: scale(1.05);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .task.dropped {
+      transform: scale(1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.4);
     }
   </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a>
-                <img src="/images/icon-home.svg" alt="">
-            </a>
-            <a>
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>Collaboration Form</p>
-            </a>
-            <a href="/kanban">
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>Company Kanban's</p>
-            </a>
-            <a>
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>My section</p>
-            </a>
-            <a>
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>FAQ</p>
-            </a>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a>
+        <img src="/images/icon-home.svg" alt="">
+      </a>
+      <a>
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>Collaboration Form</p>
+      </a>
+      <a href="/kanban">
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>Company Kanban's</p>
+      </a>
+      <a>
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>My section</p>
+      </a>
+      <a>
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>FAQ</p>
+      </a>
+    </nav>
+  </header>
 
   <div class="titleKanban" id="titleKanban">
     <h1>Kanban Board - <%= companyUser.name %> - <%= board.name %>
@@ -350,32 +439,40 @@
         <span class="close">&times;</span>
         <h2>Create a New Task</h2>
         <form action="/task/create" method="POST">
-          <label for="title">Title:</label>
-          <input type="text" id="title" name="title" required>
+          <div class="form-group">
+            <label for="title">Title:</label>
+            <input type="text" id="title" name="title" required>
+          </div>
 
-          <label for="description">Description:</label>
-          <input type="text" id="description" name="description">
+          <div class="form-group">
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description">
+          </div>
 
-          <label for="difficulty">Difficulty:</label>
-          <select id="difficulty" name="difficulty">
-            <option value="easy">Easy</option>
-            <option value="medium">Medium</option>
-            <option value="hard">Hard</option>
-          </select>
+          <div class="form-group">
+            <label for="difficulty">Difficulty:</label>
+            <select id="difficulty" name="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium">Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
 
-          <label for="assignedTo">Assigned To:</label>
-          <select id="assignedTo" name="assignedTo" required>
-            <% users.forEach(function(user) { %>
-              <option value="<%=user.firstName %> <%= user.lastName%>">
-                <%=user.firstName %>
-                  <%= user.lastName%>
-              </option>
-              <% }) %>
-          </select>
+          <div class="form-group">
+            <label for="assignedTo">Assigned To:</label>
+            <select id="assignedTo" name="assignedTo" required>
+              <% users.forEach(function(user) { %>
+                <option value="<%=user.firstName %> <%= user.lastName%>">
+                  <%=user.firstName %>
+                    <%= user.lastName%>
+                </option>
+                <% }) %>
+            </select>
+          </div>
+
           <input type="hidden" id="boardId" name="boardId" value="<%= board.id %>">
           <input type="hidden" id="roomId" name="roomId" value="<%= roomId %>">
           <button id="create-task-btn" type="submit">Create Task</button>
-
         </form>
       </div>
     </div>
@@ -403,11 +500,14 @@
             <%= task.title %>
           </h3>
           <p>
-            Description: <%= task.description %>
+            <strong>Description:</strong>
+            <%= task.description %>
           </p>
-          <p>Difficulty: <%= task.difficulty %>
+          <p><strong>Difficulty:</strong>
+            <%= task.difficulty %>
           </p>
-          <p>assigned: <%= task.assignedTo %>
+          <p><strong>Assigned:</strong>
+            <%= task.assignedTo %>
           </p>
           <!-- Botão de Excluir -->
           <form action="/task/delete/<%= task.id %>" method="POST">
@@ -497,16 +597,16 @@
 
     function drag(ev) {
       ev.dataTransfer.setData("text", ev.target.id);
+      ev.target.classList.add("dragging");
     }
 
     function drop(ev) {
       ev.preventDefault();
       const data = ev.dataTransfer.getData("text");
       const taskElement = document.getElementById(data);
-      console.log(ev);
 
-      // Encontre a coluna de destino
       let targetColumn = ev.target;
+      // Verifica se o alvo é uma coluna
       if (!targetColumn.classList.contains('column')) {
         targetColumn = ev.target.closest('.column');
       }
@@ -514,22 +614,25 @@
       if (targetColumn) {
         targetColumn.appendChild(taskElement);
 
-        // Determina o novo status com base na coluna em que a tarefa foi solta
-        let newStatus = 'todo';
-        if (targetColumn.id == 'in-progress') {
-          newStatus = 'in-progress';
-        } else if (targetColumn.id == 'done') {
-          newStatus = 'done';
-        }
+        // Remove a classe .dragging e adiciona a classe .dropped após o drop
+        taskElement.classList.remove("dragging");
+        taskElement.classList.add("dropped");
 
-        // Faz a solicitação POST para atualizar o status da tarefa no servidor
+        // Remove a classe .dropped após a animação
+        setTimeout(() => {
+          taskElement.classList.remove("dropped");
+        }, 200); // Duração da animação em ms
+
+        // Atualiza o status no servidor
+        let newStatus = targetColumn.id;
+
         const taskId = taskElement.id.split('-')[1];
         fetch('/task/update-status', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ roomId: '<%= roomId %>', id: taskId, status: newStatus, targetId: targetColumn.id })
+          body: JSON.stringify({ roomId: '<%= roomId %>', id: taskId, status: newStatus })
         })
           .then(response => {
             if (!response.ok) {
@@ -542,7 +645,6 @@
           })
           .catch(error => {
             console.error('Error updating task:', error);
-            // Reverte a tarefa para sua posição original se a atualização falhar
             const originalColumn = document.querySelector(`.column.${taskElement.dataset.originalStatus}`);
             if (originalColumn) {
               originalColumn.appendChild(taskElement);
@@ -550,6 +652,11 @@
           });
       }
     }
+
+    function scrollToBottom(container) {
+      container.scrollTop = container.scrollHeight;
+    }
+
 
   </script>
 
