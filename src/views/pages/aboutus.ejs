@@ -13,29 +13,19 @@
         src: url([assets/Gothan/Gotham-Book]);
     }
 
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
     body {
         font-family: 'Gotham', sans-serif;
         background-color: #422680;
         margin: 0;
         padding: 0;
         color: #FFFFFF;
+        overflow: auto;
     }
 
     header {
-        background-color: #280659;
-        height: 130px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 0 20px;
-        box-sizing: border-box;
+        height: 80px;
     }
+
 
     .name {
         display: flex;
@@ -169,11 +159,6 @@
         list-style: none;
     }
 
-    header {
-        background-color: #280659;
-        box-shadow: 0px 5px 5px #00000056;
-    }
-
     nav {
         margin: auto;
         padding: 1.5rem;
@@ -221,6 +206,7 @@
         flex-direction: row;
         justify-content: space-around;
         align-items: center;
+        padding-bottom: 3.5rem;
     }
 
     .texto {
@@ -237,7 +223,9 @@
         display: flex;
         flex-direction: column;
         background-color: #341671;
-        margin-top: 2rem;
+        margin-top: 0;
+        padding: 0;
+
     }
 
     .tools-title {
@@ -246,7 +234,10 @@
         align-items: center;
         justify-content: center;
         gap: 1rem;
-        margin-top: -0.5rem;
+        height: 30%;
+        padding: 0;
+        margin-top: -6rem;
+        margin-bottom: -4rem;
     }
 
     .seção-textoImg {
@@ -257,7 +248,7 @@
         padding: 1rem 0 1rem 0;
     }
 
-    .texto > h3 {
+    .texto>h3 {
         text-align: center;
         font-weight: 600;
         padding: 1rem;
@@ -272,7 +263,7 @@
         padding: 1rem 0 1rem 0;
     }
 
-   @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 600px) {
         html {
             font-family: 'Gothan', sans-serif;
             font-weight: 300;
@@ -334,8 +325,8 @@
             margin: -0.9rem 0 0 0;
         }
 
-        .tools-title>img {
-            width: 20%;
+        .title-tools img {
+            width: 1rem;
         }
 
         .seção-textoImg {
@@ -410,9 +401,9 @@
         <section class="tools">
 
             <section class="tools-title">
-                <img src="/line.svg" />
+                <img src="/line.svg" width="20%" />
                 <h2>Our tools</h2>
-                <img src="/line.svg" />
+                <img src="/line.svg" width="20%" />
             </section>
 
             <section class="seção-textoImg">
@@ -427,7 +418,7 @@
                 </div>
             </section>
 
-            <section class="seção-imgTexto">
+            <!-- <section class="seção-imgTexto">
                 <img src="/form.svg" width="20%" />
 
                 <div class="texto">
@@ -438,9 +429,9 @@
                         além de criar documentos, a equipe consegue ter acesso ao histórico de criações e edições desses
                         documentos.</p>
                 </div>
-            </section>
+            </section> -->
 
-            <section class="seção-textoImg">
+            <section class="seção-imgTexto">
                 <img src="/mySection.svg" width="20%" />
 
                 <div class="texto">
@@ -452,7 +443,7 @@
                 </div>
             </section>
 
-            <section class="seção-imgTexto">
+            <section class="seção-textoImg">
                 <img src="/meeting.svg" width="20%" />
 
                 <div class="texto">
