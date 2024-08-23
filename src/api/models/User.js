@@ -12,6 +12,10 @@ module.exports = {
     meetings: {
       collection: 'meeting',
       via: 'userId'
+    },
+    usertype:{
+      type:'string', 
+      isIn: ['admin', 'employee'],
     }
   }
 };
