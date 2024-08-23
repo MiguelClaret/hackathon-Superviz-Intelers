@@ -62,4 +62,13 @@ module.exports.bootstrap = async function() {
     usertype: 'admin',
   })
 
+  await User.create({
+    email: 'thaly@teste.com',
+    password: await sails.helpers.hashPassword('123'),
+    companyId: 1,
+    firstName: 'Thalyta',
+    lastName: 'Viana',
+    usertype: 'employee',
+  })
+
 };

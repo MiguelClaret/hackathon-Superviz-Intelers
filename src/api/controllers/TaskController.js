@@ -69,7 +69,9 @@ module.exports = {
       userId = `user-${userId}`; // Ensures it's at least 5 characters long
       const userName = user.firstName;
 
-      return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId, userId, userName, roomId });
+      const users = await User.find({companyId: user.companyId})
+
+      return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId, userId, userName, roomId, users });
     } catch (error) {
       return res.status(500).json({ error: 'Error fetching tasks' });
     }

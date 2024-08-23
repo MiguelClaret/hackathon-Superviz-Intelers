@@ -363,8 +363,11 @@
                     </select>
 
                     <label for="assignedTo">Assigned To:</label>
-                    <input type="text" id="assignedTo" name="assignedTo" required>
-
+                    <select id="assignedTo" name="assignedTo" required>
+                    <% users.forEach(function(user) { %>
+                        <option value="<%=user.firstName %> <%= user.lastName%>"><%=user.firstName %> <%= user.lastName%></option>
+                        <% }) %>
+                    </select>
                     <input type="hidden" id="boardId" name="boardId" value="<%= board.id %>">
                     <button type="submit">Create Task</button>
 
