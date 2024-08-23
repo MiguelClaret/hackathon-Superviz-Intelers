@@ -10,7 +10,7 @@
 
   <!-- Include Superviz SDK from a CDN -->
   <script type="module">
-    import SuperVizRoom, {VideoConference, Realtime, RealtimeComponentEvent, RealtimeComponentState} from "https://unpkg.com/@superviz/sdk@latest";
+    import SuperVizRoom, {VideoConference, Realtime, RealtimeComponentEvent, RealtimeComponentState, WhoIsOnline} from "https://unpkg.com/@superviz/sdk@latest";
 
     function  cardMoved(params) {
       console.log('moved', params)
@@ -26,7 +26,7 @@
     .then(data => console.log('resposta', data))
     .catch(error => console.error('Erro ao enviar o webhook:', error));
   }
-  
+
     async function joinMeeting(roomId, companyId, roomName, userId, userName) {
       try {
         const room = await SuperVizRoom('vt2gjg3o5bk1x7md4jquhwkv2pti77', {
@@ -42,9 +42,14 @@
         });
         const video = new VideoConference({
           participantType: 'host',
-          styles: ``
+          styles: ``,
+          position: "bottom"
         })
         room.addComponent(video)
+        const whoIsOnline = new WhoIsOnline({
+	        position: "bottom-left"
+        });
+        room.addComponent(whoIsOnline)
 
         const realtime = new Realtime();
         room.addComponent(realtime);

@@ -43,7 +43,6 @@ module.exports.routes = {
   'POST /task/create': 'TaskController.create',
   'POST /task/update-status': 'TaskController.updateStatus',
   'POST /task/delete/:id': 'TaskController.delete',
-  'POST /task/delete/:id': 'TaskController.delete',
   'POST /webhook/card-moved': 'TaskController.card_moved'
   /***************************************************************************
   *                                                                          *

@@ -338,11 +338,11 @@
         </nav>
     </header>
 
-    <div class="titleKanban">
+    <div class="titleKanban" id="titleKanban">
         <h1>Kanban Board - <%= companyUser.name %> - <%= board.name %> </h1>
 
         <button id="openModalBtn" class="botaoCriarTask">+</button>
-        
+
         <!-- Estrutura do Modal -->
         <div id="taskModal" class="modal">
             <div class="modal-content">
@@ -372,7 +372,20 @@
             </div>
         </div>
     </div>
-    <div class="board">
+
+
+    <!-- Modal Structure -->
+    <div id="videoConferenceModal" class="modal">
+      <div class="modal-content">
+          <h2>Join Video Conference</h2>
+          <p>Do you want to join the video conference for this board?</p>
+          <button id="joinVideoConferenceBtn" class="join-btn">Join Video Conference</button>
+          <button id="declineVideoConferenceBtn" class="decline-btn">Don't Join</button>
+      </div>
+    </div>
+
+
+    <div class="board" id="board">
         <!-- Coluna To Do -->
         <div class="column todo" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2 draggable="false" ondragstart="return false;" ondragover="return false;">To Do</h2>
@@ -441,6 +454,9 @@
                 </div>
                 <% } }); %>
         </div>
+    </div>
+
+    <div id="footer" style="margin: 10px;">
     </div>
     <!-- Botão para abrir o modal -->
 
@@ -527,6 +543,143 @@
         }
 
     </script>
+
+
+    <!-- Modal Trigger Superviz connection -->
+<script type="module">
+
+  // Show the modal when the page loads
+  window.onload = function() {
+      const modal = document.getElementById('videoConferenceModal');
+      modal.style.display = "block";
+      initializeRoom('<%= roomId %>', '<%= companyUser.id %>', '<%= board.name %>', '<%= userId %>', '<%= userName %>');
+  };
+
+  // Handle the join video conference button click
+  document.getElementById('joinVideoConferenceBtn').addEventListener('click', function() {
+      joinVideoConference();
+  });
+
+  // Handle the decline button click
+  document.getElementById('declineVideoConferenceBtn').addEventListener('click', function() {
+      const modal = document.getElementById('videoConferenceModal');
+      modal.style.display = "none";
+  });
+
+
+  import SuperVizRoom, {VideoConference, Realtime, RealtimeComponentEvent, RealtimeComponentState, WhoIsOnline, MousePointers} from "https://unpkg.com/@superviz/sdk@latest";
+  let room;  // Make the room variable accessible to all functions
+  async function initializeRoom(roomId, companyId, roomName, userId, userName) {
+      try {
+          room = await SuperVizRoom('vt2gjg3o5bk1x7md4jquhwkv2pti77', {
+              roomId: roomId,
+              group: {
+                  id: companyId,
+                  name: roomName,
+              },
+              participant: {
+                  id: userId,
+                  name: userName,
+              },
+          });
+
+          initializeWhoIsOnline();
+          initializeMousePointers();
+
+          console.log("Room initialized successfully.");
+      } catch (error) {
+          console.error('Error initializing room:', error);
+          alert('Failed to initialize the room.');
+      }
+  }
+
+  function initializeWhoIsOnline() {
+    try {
+        const whoIsOnline = new WhoIsOnline({
+            position: "footer"
+        });
+        room.addComponent(whoIsOnline);
+        console.log("WhoIsOnline component initialized.");
+    } catch (error) {
+        console.error('Error initializing WhoIsOnline:', error);
+    }
+}
+
+function initializeMousePointers() {
+    try {
+        const canvasId = "board";
+        const mousePointer = new MousePointers(canvasId);
+        room.addComponent(mousePointer);
+        console.log("MousePointers component initialized.");
+    } catch (error) {
+        console.error('Error initializing MousePointers:', error);
+    }
+}
+
+function joinVideoConference() {
+    try {
+        const video = new VideoConference({
+            participantType: 'host',
+            styles: ``,
+            collaborationMode: {
+              position: "bottom",
+              initialView: "list"
+            },
+        });
+        room.addComponent(video);
+
+        const modal = document.getElementById('videoConferenceModal');
+        modal.style.display = "none";
+
+        console.log("Joined the video conference successfully.");
+    } catch (error) {
+        console.error('Error joining video conference:', error);
+        alert('Failed to join the video conference.');
+    }
+}
+//   async function joinVideoConference(roomId, companyId, roomName, userId, userName) {
+//     try {
+//         const room = await SuperVizRoom('vt2gjg3o5bk1x7md4jquhwkv2pti77', {
+//             roomId: roomId,
+//             group: {
+//                 id: companyId,
+//                 name: roomName,
+//             },
+//             participant: {
+//                 id: userId,
+//                 name: userName,
+//             },
+//         });
+
+//         const video = new VideoConference({
+//             participantType: 'host',
+//             styles: ``,
+//             collaborationMode: {
+//               position: "bottom",
+//               initialView: "list"
+//             },
+//         });
+//         room.addComponent(video);
+
+//         const whoIsOnline = new WhoIsOnline({
+//             position: "top-right"
+//         });
+//         room.addComponent(whoIsOnline);
+
+//         const canvasId = "board";
+//         const mousePointer = new MousePointers(canvasId);
+//         room.addComponent(mousePointer);
+
+//         const modal = document.getElementById('videoConferenceModal');
+//         modal.style.display = "none";
+
+//         console.log("Joined the video conference successfully.");
+//     } catch (error) {
+//         console.error('Error joining video conference:', error);
+//         alert('Failed to join the video conference.');
+//     }
+// }
+</script>
 </body>
 
 </html>

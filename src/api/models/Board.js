@@ -12,6 +12,10 @@ module.exports = {
       collection: 'task',
       via: 'boardId'
     },
+    roomId: {
+      type: 'string',
+      allowNull: true, // To allow boards without an initial roomId
+    },
 
     // Relacionamento: Cada Board pertence a uma única Empresa
     companyId: { model: 'company', required: true },

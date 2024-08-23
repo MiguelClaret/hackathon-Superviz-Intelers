@@ -1,4 +1,5 @@
 // api/controllers/TaskController.js
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   create: async function (req, res) {
@@ -30,29 +31,50 @@ module.exports = {
 
   index: async function (req, res) {
     try {
-        const userId = req.session.userId;
-        if (!userId) {
-            return res.redirect('/login');
-        }
+      let userId = req.session.userId;
+      if (!userId) {
+        return res.redirect('/login');
+      }
 
-        const selectedBoardId = req.params.id;
+      const selectedBoardId = req.params.id;
+
+      const user = await User.findOne({ id: userId });
+      const companyUser = await Company.findOne({ id: user.companyId });
+      const board = await Board.findOne({ id: selectedBoardId }).populate('companyId');
+      const tasks = await Task.find({ boardId: selectedBoardId });
+
+      if (companyUser.name !== board.companyId.name) {
+        return res.status(500).json({ error: "You don't have access to this board" });
+      }
+
+      // Check if the board already has a roomId
+      let roomId = board.roomId;
+      if (!roomId) {
+        // Generate a new roomId using the logic from your MeetingController#create
+        roomId = uuidv4();
+
+        // Create a new room associated with this board
+        await Room.create({
+          id: roomId,
+          name: `Room for ${board.name}`,
+          companyId: companyUser.id // Associate with the company's board
+        });
+
+        // Update the board with the new roomId
+        await Board.updateOne({ id: selectedBoardId }).set({ roomId });
+      }
 
 
-        const user = await User.findOne({ id: userId });
-        const companyUser = await Company.findOne({ id: user.companyId });
-        const board = await Board.findOne({id: selectedBoardId}).populate("companyId")
-        
-        if(companyUser.name != board.companyId.name ){
-          return res.status(500).json({ error: "You don't have access to this board" });
-        }
+      // Generate a valid participant ID for Superviz
+      userId = `user-${userId}`; // Ensures it's at least 5 characters long
+      const userName = user.firstName;
 
-        const tasks = await Task.find({ boardId: selectedBoardId });
-        
-        return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId});
+      return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId, userId, userName, roomId });
     } catch (error) {
-        return res.status(500).json({ error: 'Error fetching tasks' });
+      return res.status(500).json({ error: 'Error fetching tasks' });
     }
   },
+
 
   updateStatus: async function (req, res) {
     try {
@@ -95,7 +117,7 @@ module.exports = {
       });
     } catch (error) {
       sails.log.error('Erro ao processar este webhook:', error);
-      return res.status(500).json({ error: 'Erro ao processar o webhook!'})
+      return res.status(500).json({ error: 'Erro ao processar o webhook!' })
     }
   }
 };
