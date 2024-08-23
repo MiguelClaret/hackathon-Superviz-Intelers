@@ -6,92 +6,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <style>
-        @font-face {
+         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-thin.woff') format('woff'),
-                url('/fonts/gotham/gotham-thin.ttf') format('truetype');
-            font-weight: 100;
+                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100; /* Thin */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-extralight.woff') format('woff'),
-                url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
-            font-weight: 200;
+                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200; /* ExtraLight */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-light.woff') format('woff'),
-                url('/fonts/gotham/gotham-light.ttf') format('truetype');
-            font-weight: 300;
+                 url('/fonts/gotham/gotham-light.woff') format('woff'),
+                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300; /* Light */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-book.woff') format('woff'),
-                url('/fonts/gotham/gotham-book.ttf') format('truetype');
-            font-weight: 400;
+                 url('/fonts/gotham/gotham-book.woff') format('woff'),
+                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400; /* Book */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-medium.woff') format('woff'),
-                url('/fonts/gotham/gotham-medium.ttf') format('truetype');
-            font-weight: 500;
+                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500; /* Medium */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-bold.woff') format('woff'),
-                url('/fonts/gotham/gotham-bold.ttf') format('truetype');
-            font-weight: 700;
+                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700; /* Bold */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-black.woff') format('woff'),
-                url('/fonts/gotham/gotham-black.ttf') format('truetype');
-            font-weight: 900;
+                 url('/fonts/gotham/gotham-black.woff') format('woff'),
+                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900; /* Black */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-ultra.woff') format('woff'),
-                url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
-            font-weight: 950;
+                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950; /* Ultra */
             font-style: normal;
         }
 
-        /* Estilo global */
         body {
             font-family: 'Gotham', sans-serif;
             margin: 0;
             padding: 0;
-            overflow: hidden;
+            overflow: visible;
+            min-height: 100vh;
         }
 
-        main {
-            display: flex;
-            justify-content: space-between;
+        html, body {
+        overflow: auto; 
         }
 
-        header {
+        .header {
             height: 5rem;
             background-color: #280659;
             display: flex;
@@ -101,7 +100,7 @@
             font-size: 24px;
         }
 
-        header nav {
+        .header-nav {
             display: flex;
             flex-direction: row;
             height: 100%;
@@ -111,7 +110,7 @@
             align-items: center;
         }
 
-        header nav a {
+        .header-nav a {
             display: flex;
             align-items: center;
             padding: 5px 15px;
@@ -123,97 +122,134 @@
             font-weight: 400;
         }
 
-        header nav a:hover {
+        .header-nav a:hover {
             background-color: #F54952;
             color: #FFF;
             border-radius: 8px;
         }
 
-        header nav p {
-            margin-block-start: 0;
-            margin-block-end: 0;
-        }
-
-        section {
-            display: flex;
-            flex-direction: column;
-            padding: 200px;
-            padding-top: 50px;
-        }
-
-        section .text {
-            display: flex;
-            flex-direction: row;
-        }
-
-        section .text h1 {
-            color: #341671;
-            font-size: 48px;
-            font-weight: 300;
+        .header-nav p {
             margin: 0;
         }
 
-        section .text h2 {
-            margin: 0;
-            margin-left: 8px;
-            font-size: 48px;
-            text-transform: uppercase;
-            color: #660F56;
-            font-weight: 700;
+        .main {
+            padding: 50px 40px;
         }
 
-        h3 {
-            margin: 0;
-            margin-top: 15px;
+        .section-title {
             font-size: 26px;
             font-weight: 400;
-            width: 454px;
+            margin-bottom: 10px;
+            color: #341671;
         }
 
-        section .buttons {
+        .user-info {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 598.75px;
-            padding: 50px 0px;
+            flex-direction: column;
+            margin-bottom: 50px;
         }
 
-        section .buttons a {
+        .team {
             display: flex;
-            align-items: center;
             justify-content: center;
-            height: 47px;
-            width: 267.75px;
-            border: 2px solid #000;
-            border-radius: 60px;
-            font-size: 24px;
-            font-weight: 200;
-            background-color: #280659;
-            text-align: center;
-            text-decoration: none;
-            color: #FFF;
+            margin-bottom: 50px;
+            flex-direction: column;
+            margin-right: 5vh;
+        }
+
+        .team-title {
+            color: #660F56;
+            font-size: 48px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: left;
+            width: 100%;
+            text-shadow:
+        2px 2px 0 #280659,
+        -1px -1px 0 #280659,
+        1px -1px 0 #280659,
+        -1px 1px 0 #280659;
+        }
+
+        .team-section {
+            padding: 20px;
+            background-color: #AE2D68;
+            border-radius: 40px;
+            display: inline-block;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8vh;
+            justify-items: center;
+            margin-top: 5vh;
+        }
+
+        .team-card {
+            background-color: #fff;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 37vh;
+            height: 30vh;
+            margin-top: 5vh;
+            overflow: visible;
         }
 
-        section .buttons a:hover {
-            background-color: #FFF;
-            color: #000;
+        .team-card:hover {
+            transform: scale(1.05);
         }
 
-        section img {
-            height: 282px;
+        .team-card img {
+            border-radius: 50%;
+            border: 1vh solid #341671;
+            width: 200px;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            position: relative; 
+            top: -8vh;
         }
 
-        .cardsCoworker {
-            background-color: #660F56;
-            gap: 4rem;
+        .team-card p {
+            margin: 0;
+            font-size: 20px;
+            font-weight: 300;
+            color: #000000;
+            text-align: center;
+            text-shadow:
+        1px 1px 0 #280659,
+        -1px -1px 0 #280659,
+        1px -1px 0 #280659,
+        -1px 1px 0 #280659;
         }
+
+        .team-card .role {
+            font-size: 20px;
+            color: #660F56;
+            font-weight: 500;
+        }
+
+        .team-card a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: inherit; /* Herda a cor do texto */
+}
+
+
     </style>
 </head>
 
 <body>
-    <header>
-        <nav>
+    <header class="header">
+        <nav class="header-nav">
             <a>
                 <img src="images/icon-home.svg" alt="">
             </a>
@@ -236,48 +272,38 @@
         </nav>
     </header>
 
-    <main>
-        <div>
-            <h3>Meu perfil</h3>
-            <p>
-                <%= user.firstName %>
-            </p>
-            <p>
-                <%= user.lastName %>
-            </p>
-            <p>
-                <%= user.email %>
-            </p>
-            <p>
-                <%= user.companyId %>
-            </p>
-
+    <main class="main">
+        <!-- Título "My section" alinhado à esquerda -->
+        <div class="user-info">
+            <h3 class="section-title">My section</h3>
+            <p><%= user.firstName %></p>
+            <p><%= user.lastName %></p>
+            <p><%= user.email %></p>
+            <p><%= user.companyId %></p>
         </div>
 
-        <div>
-            <h3> Meu colegas de equipe</h3>
-            <% coworkers.forEach(function(coworker){ %>
-                <div class="cardsCoworker">
-                    <a href="/profile/<%=coworker.id%>  ">
-                        <div>
-                            <% if(coworker.id===user.id){return}%>
-                                <p>
-                                    <%= coworker.firstName %>
-                                </p>
-                                <p>
-                                    <%= coworker.lastName %>
-                                </p>
-                                <p>
-                                    <%= coworker.companyId %>
-                                </p>
+        <!-- Seção do time com o título e a área da equipe -->
+        <div class="team">
+            <!-- Título "My team" centralizado acima da parte roxa -->
+            <h3 class="team-title">My team</h3>
+            
+            <!-- Seção da equipe -->
+            <div class="team-section">
+                <div class="team-grid">
+                    <% coworkers.forEach(function(coworker){ %>
+                        <% if(coworker.id===user.id){ return; } %>
+                        <div class="team-card">
+                            <a href="/profile/<%= coworker.id %>">
+                                <img src="path_to_image/<%= coworker.image %>">
+                                <p><%= coworker.firstName %> <%= coworker.lastName %></p>
+                                <p class="role"><%= coworker.companyId %></p>
+                            </a>
                         </div>
-                    </a>
+                    <% }) %>
                 </div>
-                <% }) %>
+            </div>
         </div>
-
     </main>
-
 </body>
 
 </html>
