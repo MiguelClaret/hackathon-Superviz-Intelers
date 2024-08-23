@@ -85,7 +85,7 @@ main {
 }
 
 header {
-    height: 130px;
+    height: 5rem;
     background-color: #280659;
     display: flex;
     align-items: center;
