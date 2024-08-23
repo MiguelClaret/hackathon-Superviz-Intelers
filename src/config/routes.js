@@ -44,6 +44,11 @@ module.exports.routes = {
   'POST /task/create': 'TaskController.create',
   'POST /task/update-status': 'TaskController.updateStatus',
   'POST /task/delete/:id': 'TaskController.delete',
+
+
+  // profiles
+
+  '/myprofile': 'UserController.getCurrentUser'
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

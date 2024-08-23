@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>My Profile</title>
     <style>
         @font-face {
             font-family: 'Gotham';
@@ -203,135 +204,13 @@
             height: 282px;
         }
 
-        /* Estilo do Chat */
-        .chat {
-            background-color: #F54952;
-            width: 500px;
-            height: 680px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            position: relative;
+        .cardsCoworker {
+            background-color: #660F56;
+            gap: 4rem;
         }
-
-        .chat p {
-            font-size: 28px;
-            font-weight: 400;
-            color: white;
-            align-self: center;
-            margin: 0;
-            padding-top: 15px;
-        }
-
-        .messages {
-            display: flex;
-            flex-direction: column;
-            margin-top: 15px;
-            margin-bottom: 80px;
-        }
-
-        /* Balões de mensagem */
-        .messages .message {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 10px 15px;
-            margin: 10px 0;
-            position: relative;
-            min-width: 70%;
-            max-width: 80%;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .messages .message::before {
-            content: '';
-            position: absolute;
-            border-width: 10px;
-            border-style: solid;
-            display: block;
-        }
-
-        .messages .left {
-            align-self: flex-start;
-            margin-left: 10px;
-        }
-
-        .messages .left::before {
-            border-color: transparent #fff transparent transparent;
-            left: -16.5px;
-            top: 15px;
-        }
-
-        .messages .right {
-            align-self: flex-end;
-            margin-right: 10px;
-        }
-
-        .messages .right::before {
-            border-color: transparent transparent transparent #fff;
-            right: -16.5px;
-            top: 15px;
-        }
-
-        .line {
-            margin-top: 10px;
-            background-color: #280659;
-            height: 10px;
-        }
-
-        /* Estilo para o campo de mensagem */
-        .my-message {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            background-color: #FFFFFF;
-            border: 2px solid #280659;
-            border-radius: 13px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            box-sizing: border-box;
-            position: absolute;
-            justify-content: space-between;
-            bottom: 0;
-            left: 0;
-        }
-        .my-message input {
-            border: none;
-        }
-
-        .my-message p {
-            margin: 0;
-            padding-right: 15px;
-            font-size: 34px;
-            color: #A9A9A9;
-            flex-grow: 1;
-        }
-
-        .my-message input {
-            width: 100%;
-            height: 100%;
-            outline: none;
-        }
-
-        .my-message .icon-send {
-            width: 24px;
-            height: 24px;
-            cursor: pointer;
-            transition: transform 0.2s ease-in-out;
-        }
-
-        .my-message .icon-send:hover {
-            transform: scale(1.1);
-        }
-
-        .my-message .icon-send:active {
-            transform: scale(0.9);
-        }
-
     </style>
 </head>
+
 <body>
     <header>
         <nav>
@@ -356,55 +235,49 @@
             </a>
         </nav>
     </header>
+
     <main>
-        <section>
-            <div class="text">
-                <h1>Welcome</h1>
-                <h2>Name!</h2>
-            </div>
-            <h3>Start collaborating and communicating with your team now!</h3>
-            <div class="buttons">
-                <a>Attend a meeting ></a>
-                <a>Create a meeting ></a>
-            </div>
-            <img src="images/img-homepage.svg" alt="">
-        </section>
+        <div>
+            <h3>Meu perfil</h3>
+            <p>
+                <%= user.firstName %>
+            </p>
+            <p>
+                <%= user.lastName %>
+            </p>
+            <p>
+                <%= user.email %>
+            </p>
+            <p>
+                <%= user.companyId %>
+            </p>
 
-        <section>
-            <div class="chat">
-                <p>
-                    CHAT
-                </p>
-                <div class="line"></div>
+        </div>
 
-                <div class="messages">
-                    <div class="message left">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                    <div class="message right">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                    <div class="message left">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                    <div class="message right">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                    <div class="message left">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
+        <div>
+            <h3> Meu colegas de equipe</h3>
+            <% coworkers.forEach(function(coworker){ %>
+                <div class="cardsCoworker">
+                    <a href="/profile/<%=coworker.id%>  ">
+                        <div>
+                            <% if(coworker.id===user.id){return}%>
+                                <p>
+                                    <%= coworker.firstName %>
+                                </p>
+                                <p>
+                                    <%= coworker.lastName %>
+                                </p>
+                                <p>
+                                    <%= coworker.companyId %>
+                                </p>
+                        </div>
+                    </a>
                 </div>
-                <div class="my-message">
-                    <input type="text" placeholder="Send your message"></input>
-                    <img class="icon-send" src="images/icon-send.svg" alt="Enviar">
-                </div>
-            </div>
-        </section>
+                <% }) %>
+        </div>
+
     </main>
+
 </body>
+
 </html>
