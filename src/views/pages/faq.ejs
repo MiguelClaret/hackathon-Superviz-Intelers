@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ Page</title>
+    <style>
+
+        html{
+            height: auto;
+            overflow: auto;
+        }
+        header {
+            height: 5rem;
+            background-color: #280659;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            padding-right: 40px;
+            font-size: 24px;
+        }
+
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+        }
+
+        header nav a {
+            display: flex;
+            align-items: center;
+            /* Alinha o ícone e o texto verticalmente */
+            padding: 5px 15px;
+            /* Espaçamento interno dos links */
+            text-decoration: none;
+            /* Remove sublinhado dos links */
+            color: #FFF;
+            /* Cor do texto */
+            gap: 8px;
+            /* Espaçamento entre o ícone e o texto */
+            cursor: pointer;
+            /* Define o cursor como pointer ao passar por cima */
+            transition: background-color 0.3s ease;
+            /* Suaviza a transição de cor de fundo */
+            font-weight: 400;
+        }
+
+
+        header {
+            height: 5rem;
+            background-color: #280659;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            padding-right: 40px;
+            font-size: 24px;
+        }
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav a {
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #FFF;
+            gap: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 400;
+        }
+
+        header nav a:hover {
+            background-color: #F54952;
+            color: #FFF;
+            border-radius: 8px;
+        }
+
+        header nav p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
+        .title {
+            display: flex;
+            margin-bottom: 60px; 
+        }
+        
+        .title1 {
+            font-family: 'Gotham';
+            font-size: 48px;
+            letter-spacing: normal;
+            font-weight: 300;
+            color: #280659;
+
+        }
+
+        .title2 {
+            font-family: 'Gotham';
+            font-size: 48px;
+            letter-spacing: normal;
+            font-weight: 700;
+            color: #AE2D68;
+
+        }
+
+        .content {
+            margin: 70px auto;
+            padding: 0 70px;
+        }
+
+        .search-container {
+            text-align: left;
+            margin: 0 50px 20px 50px;
+            border-radius: 20px;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            background: rgba(40, 6, 89, 0.25);
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .search-bar {
+            font-family: 'Gotham';
+            width: 97%;
+            padding: 10px;
+            border: transparent;
+            font-size: 16px;
+            background-color: transparent
+        }
+
+        .search-bar:focus {
+            outline: none;
+        }
+
+        .search-container img {
+            transition: background-color 0.3s ease;
+            padding: 10px;
+        }
+        
+        .search-container img:hover {
+            background-color: rgba(40, 6, 89, 0.25); 
+        }
+
+        .faq-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+            font-family: 'Gotham';
+            font-size: 16px;
+        }
+
+        .faq-item {
+            background-color: white;
+            margin-bottom: 10px;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(40, 6, 89, 0.25);
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+        }
+        .faq-item:hover {
+            background-color: #DEE2E6;
+        }
+        .faq-item .question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px
+            
+        }
+        .faq-item .answer {
+            display: none;
+            margin-top: 10px;
+            color: #343A40;
+            height: 100%
+        }
+        .faq-item.active .answer {
+            display: block;
+        }
+        .faq-item.active .answer a {
+            color:#AE2D68;
+            text-decoration: none;
+            font-weight: 700
+        }
+        
+        .faq-item.active .answer a:hover{
+            text-decoration: underline;
+        }
+
+        .faq-item img {
+            color: #E4415D;
+            transition: transform 0.5s;
+        }
+        .faq-item.active img {
+            transform: rotate(90deg);
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a>
+                <img src="images/icon-home.svg" alt="">
+            </a>
+            <a>
+                <img src="images/icon-list.svg" alt="Descrição do SVG">
+                <p>Collaboration Form</p>
+            </a>
+            <a href="/kanban">
+                <img src="images/icon-kanban.svg" alt="Descrição do SVG">
+                <p>Company Kanban's</p>
+            </a>
+            <a>
+                <img src="images/icon-mysection.svg" alt="Descrição do SVG">
+                <p>My section</p>
+            </a>
+            <a>
+                <img src="images/icon-faq.svg" alt="Descrição do SVG">
+                <p>FAQ</p>
+            </a>
+        </nav>
+    </header>
+
+    <div class="content">
+        <div class="title">
+            <div class="title1">FAQ </div>
+            <div class="title2">&lt;/&gt;</div>
+        </div>
+        <div class="search-container">
+            <input type="text" class="search-bar" placeholder="Search">
+            <img src="/images/icon-search.svg">
+        </div>
+  
+
+    <ul class="faq-list">
+        <li class="faq-item">
+            <div class="question">
+                <span>What is Inpulse?</span>
+                <img src="images/chevron-left.svg" style="width: 15px; height: 15px;">
+            </div>
+            <div class="answer">
+                InPulse is a collaborative platform designed to enhance team communication by providing real-time insights into user activities. With features that show who is online, typing, viewing the chat, or present in the session, InPulse helps teams stay connected and informed during collaborative work. This platform is built for teams and organizations that rely on seamless, real-time interactions to improve productivity and communication efficiency.
+            </div>
+        </li>
+        <li class="faq-item">
+            <div class="question">
+                <span>How to see informations about me and my team?</span>
+                <img src="images/chevron-left.svg" style="width: 15px; height: 15px;">
+            </div>
+            <div class="answer">
+                To view information about yourself and your team, simply click on the "My Section" button located on the top menu of the site. This will take you to a dedicated area where you can see profiles and details about your team members, as well as your own information. This section is designed to give you a comprehensive overview of who is on your team and their roles.
+            </div>
+        </li>
+        <li class="faq-item">
+            <div class="question">
+                <span>How to start a Video Conference?</span>
+                <img src="images/chevron-left.svg" style="width: 15px; height: 15px;">
+            </div>
+            <div class="answer">
+                To view information about yourself and your team, simply click on the "My Section" button located on the top menu of the site. This will take you to a dedicated area where you can see profiles and details about your team members, as well as your own information. This section is designed to give you a comprehensive overview of who is on your team and their roles.
+            </div>
+        </li>
+        <li class="faq-item">
+            <div class="question">
+                <span>What are the main features of the Video Conference?</span>
+                <img src="images/chevron-left.svg" style="width: 15px; height: 15px;">
+            </div>
+            <div class="answer">
+                InPulse's Video Conference includes several key features: the Collaborative Whiteboard allows team members to brainstorm and visualize ideas in real-time; the Kanban board helps track project tasks and progress with an organized, drag-and-drop interface; and the Collaborative Form facilitates joint input on documents and data collection, enabling seamless collaboration.
+            </div>
+        </li>
+        <li class="faq-item">
+            <div class="question">
+                <span>What are the main features of the Video Conference?</span>
+                <img src="images/chevron-left.svg" style="width: 15px; height: 15px;">
+            </div>
+            <div class="answer">
+                InPulse's Video Conference includes several key features: the Collaborative Whiteboard allows team members to brainstorm and visualize ideas in real-time; the Kanban board helps track project tasks and progress with an organized, drag-and-drop interface; and the Collaborative Form facilitates joint input on documents and data collection, enabling seamless collaboration.
+            </div>
+        </li>
+        <li class="faq-item">
+            <div class="question">
+                <span>How to use the Collaborative Whiteboard?</span>
+                <img src="images/chevron-left.svg" style="width: 15px; height: 15px;">
+            </div>
+            <div class="answer">
+                InPulse's Video Conference includes several key features: the Collaborative Whiteboard allows team members to brainstorm and visualize ideas in real-time; the Kanban board helps track project tasks and progress with an organized, drag-and-drop interface; and the Collaborative Form facilitates joint input on documents and data collection, enabling seamless collaboration.
+            </div>
+        </li>
+        <li class="faq-item">
+            <div class="question">
+                <span>Who made Inpulse?</span>
+                <img src="images/chevron-left.svg" style="width: 15px; height: 15px;">
+            </div>
+            <div class="answer">
+                InPulse is a initiative created by the domINators, a team of 10 innovative university students from Inteli. Our mission is to revolutionize how people interact with technology through intuitive, user-friendly solutions. Discover more about who we are and our vision at <a href="/aboutus" target="_blank">ABOUT US
+            </div>
+        </li>
+        </ul>
+</div>
+
+<script>
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.addEventListener('click', () => {
+            item.classList.toggle('active');
+        });
+    });
+    document.addEventListener('DOMContentLoaded', () => {
+        const searchBar = document.querySelector('.search-bar');
+        const searchIcon = document.querySelector('.search-container img');
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        function searchFAQs() {
+            const query = searchBar.value.toLowerCase();
+            faqItems.forEach(item => {
+                const text = item.textContent.toLowerCase(); // Pega todo o texto do item
+                item.style.display = text.includes(query) ? 'block' : 'none'; // Mostra/esconde baseado na query
+            });
+        }
+
+        [searchBar, searchIcon].forEach(el => {
+            el.addEventListener('keyup', (event) => {
+                if (event.key === 'Enter') {
+                    searchFAQs();
+                }
+            });
+            el.addEventListener('click', () => {
+                searchFAQs();
+            });
+        });
+    });
+    </script>
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
