@@ -159,6 +159,7 @@
             <h1>
                 <%= company.name %>
             </h1>
+            <% if( user.usertype === "admin"){ %>
             <button id="openModalBtn" class="botaoCriarBoard">+</button>
 
             <!-- Estrutura do Modal -->
@@ -174,6 +175,7 @@
                     </form>
                 </div>
             </div>
+            <% } %>
         </div>
 
         <section class="lista-kanban">

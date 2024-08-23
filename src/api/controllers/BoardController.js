@@ -19,7 +19,7 @@ module.exports = {
             const company = await Company.findOne({ id: user.companyId });
             const boards = await Board.find({ companyId: company.id });
     
-            return res.view('pages/kanban', {boards, company})
+            return res.view('pages/kanban', {boards, company, user})
 
         } catch {
             return res.status(500).json({ error: 'Error fetching boards' });
