@@ -11,6 +11,7 @@
     "@superviz/sdk": "^6.5.4",
     "bcrypt": "^5.1.1",
     "grunt": "1.0.4",
+    "node-fetch": "^3.3.2",
     "sails": "^1.5.10",
     "sails-hook-grunt": "^5.0.0",
     "sails-hook-orm": "^4.0.3",

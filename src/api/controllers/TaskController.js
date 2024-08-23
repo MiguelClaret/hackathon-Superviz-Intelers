@@ -1,10 +1,11 @@
 // api/controllers/TaskController.js
 const { v4: uuidv4 } = require('uuid');
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 module.exports = {
   create: async function (req, res) {
     try {
-      const { title, description, difficulty, assignedTo } = req.body;
+      const { title, description, difficulty, assignedTo, roomId } = req.body;
 
       const userId = req.session.userId;
       if (!userId) {
@@ -12,6 +13,26 @@ module.exports = {
       }
 
       const selectedBoardId = req.body.boardId;  // Alterar de req.params.id para req.body.boardId
+
+      const data = {
+        'name': 'create',
+        'data': {
+          'title': title,
+          'description': description,
+          'difficulty': difficulty,
+          'assignedTo': assignedTo,
+          'boardId': selectedBoardId
+        }
+      };
+
+      fetch(`https://nodeapi.superviz.com/realtime/${roomId}/board/publish`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apiKey': 'vt2gjg3o5bk1x7md4jquhwkv2pti77',
+        },
+        body: JSON.stringify(data)
+      })
 
       const newTask = await Task.create({
         title,
@@ -21,9 +42,7 @@ module.exports = {
         boardId: selectedBoardId
       }).fetch();
 
-
-
-      return res.redirect(`/board/${selectedBoardId}`);
+      return res.view(`/board/${selectedBoardId}`);
     } catch (error) {
       return res.status(500).json({ error: 'Error creating task' });
     }
@@ -44,7 +63,7 @@ module.exports = {
       const tasks = await Task.find({ boardId: selectedBoardId });
 
       if (companyUser.name !== board.companyId.name) {
-        return res.status(500).json({ error: "You don't have access to this board" });
+        return res.status(500).json({ error: 'You don\'t have access to this board' });
       }
 
       // Check if the board already has a roomId
@@ -69,7 +88,7 @@ module.exports = {
       userId = `user-${userId}`; // Ensures it's at least 5 characters long
       const userName = user.firstName;
 
-      const users = await User.find({companyId: user.companyId})
+      const users = await User.find({ companyId: user.companyId })
 
       return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId, userId, userName, roomId, users });
     } catch (error) {
@@ -80,7 +99,29 @@ module.exports = {
 
   updateStatus: async function (req, res) {
     try {
-      const { id, status } = req.body;
+      const { id, status, roomId, targetId } = req.body;
+      console.log(id);
+      console.log(roomId);
+      console.log(status);
+      const data = {
+        'name': 'updateStatus',
+        'data': {
+          'status': status,
+          'id': id,
+          'targetId': targetId
+        }
+      };
+
+      fetch(`https://nodeapi.superviz.com/realtime/${roomId}/board/publish`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'apiKey': 'vt2gjg3o5bk1x7md4jquhwkv2pti77',
+        },
+        body: JSON.stringify(data)
+      })
+        .then(data => console.log('resposta', data))
+        .catch(error => console.error('Erro ao enviar o webhook:', error));
 
       await Task.updateOne({ id }).set({ status });
 
@@ -106,20 +147,4 @@ module.exports = {
       return res.status(500).json({ error: 'Error deleting task' });
     }
   },
-
-  card_moved: async function (req, res) {
-    try {
-      const { status, title, description, assignedTo, boardId } = req.body;
-
-      sails.log(`Webhook recebido: Status: ${status}, Título: ${title}, Descrição: ${description}, Responsável: ${assignedTo}, BoardID: ${boardId}`)
-
-      return res.status(200).json({
-        message: 'processou o Webhook!',
-        data: { status, title, description, assignedTo, boardId }
-      });
-    } catch (error) {
-      sails.log.error('Erro ao processar este webhook:', error);
-      return res.status(500).json({ error: 'Erro ao processar o webhook!' })
-    }
-  }
 };

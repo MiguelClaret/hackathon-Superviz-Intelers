@@ -1,31 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Join Meeting</title>
   <script type="module" src="https://unpkg.com/@superviz/sdk@latest"></script>
 </head>
+
 <body>
 
   <!-- Include Superviz SDK from a CDN -->
   <script type="module">
-    import SuperVizRoom, {VideoConference, Realtime, RealtimeComponentEvent, RealtimeComponentState, WhoIsOnline} from "https://unpkg.com/@superviz/sdk@latest";
+    import SuperVizRoom, { VideoConference, Realtime, RealtimeComponentEvent, RealtimeComponentState, WhoIsOnline } from "https://unpkg.com/@superviz/sdk@latest";
 
-    function  cardMoved(params) {
+    function cardMoved(params) {
       console.log('moved', params)
 
-    fetch('/webhook/card-moved', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(params)
-    })
-    .then(response => response.json())
-    .then(data => console.log('resposta', data))
-    .catch(error => console.error('Erro ao enviar o webhook:', error));
-  }
+      fetch('/webhook/card-moved', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(params)
+      })
+        .then(response => response.json())
+        .then(data => console.log('resposta', data))
+        .catch(error => console.error('Erro ao enviar o webhook:', error));
+    }
 
     async function joinMeeting(roomId, companyId, roomName, userId, userName) {
       try {
@@ -47,7 +49,7 @@
         })
         room.addComponent(video)
         const whoIsOnline = new WhoIsOnline({
-	        position: "bottom-left"
+          position: "bottom-left"
         });
         room.addComponent(whoIsOnline)
 
@@ -73,4 +75,5 @@
     joinMeeting('<%= roomId %>', '<%= companyId %>', '<%= roomName %>', '<%= userId %>', '<%= userName %>');
   </script>
 </body>
+
 </html>
