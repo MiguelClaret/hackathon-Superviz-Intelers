@@ -22,6 +22,8 @@ module.exports.routes = {
   '/': { view: 'pages/landing' },
   '/home': 'CompanyController.showNotices',
   '/aboutus': { view: 'pages/aboutus' },
+  '/faq': { view: 'pages/faq' },
+  
 
   // User auth
   'GET /login': { view: 'pages/login' },
