@@ -70,12 +70,13 @@
             display: flex;
             justify-content: space-around;
             background-color: #280659;
+            gap: 20px;
             
         }
 
         .lista-kanban button {
-            width: 313px;
-            height: 370px;
+            width: 280px;
+            height: 290px;
             border: none;
             background-color: #F54952;
             font-weight: 700;
@@ -85,6 +86,8 @@
         .titleKanban {
             display: flex;
             gap: 3rem;
+            color: #660F56;
+            margin-left: 5%;
         }
 
         .modal {
@@ -158,15 +161,15 @@
         .card-icon {
             background-color: #3E206D;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             display: flex;
             align-items: center;
             justify-content: center;
             position: absolute;
-            top: 150px;
-            left: 80px;
-        }
+            top: 60px;
+            left: 20px;
+            }
 
         .card h2 {
             width: 100%;
@@ -179,7 +182,15 @@
             border-bottom-right-radius: 30px;
             position: absolute;
             bottom: 0;
+            padding-top: 40px;
         }
+
+        .card-icon img {
+            width: 50px;  
+            height: 50px;
+            object-fit: contain;  /* Garante que a imagem se ajuste ao container */
+            }
+
     </style>
 </head>
 
@@ -236,16 +247,16 @@
         </div>
 
 
-                <section class="lista-kanban">
-                    <h1><% boards.forEach(function(board) { %></h1>
-                            <button class="card" onclick="window.location.href='/board/<%= board.id %>'"  class="card">
-                                    <h2><%= board.name %></h2>
-                                    <div class="card-icon"></div>
-                            </button>
-        
-                            <% }); %>
-                </section>
-
+        <section class="lista-kanban">
+            <h1><% boards.forEach(function(board) { %></h1>
+            <button class="card" onclick="window.location.href='/board/<%= board.id %>'">
+              <h2><%= board.name %></h2>
+              <div class="card-icon">
+                <img src="/images/group.svg" alt="Group Icon">
+              </div>
+            </button>
+            <% }); %>
+          </section>
         
         </section>
     </main>
