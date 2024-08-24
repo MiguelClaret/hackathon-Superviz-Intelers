@@ -137,16 +137,102 @@
         }
 
         .section-title {
-            font-size: 26px;
+            color: #660F56;
+            font-size: 48px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            text-align: left;
+            width: 100%;
             font-weight: 400;
-            margin-bottom: 10px;
-            color: #341671;
         }
 
         .user-info {
             display: flex;
             flex-direction: column;
-            margin-bottom: 50px;
+            margin-left: 5vh;
+        }
+
+        .user-card {
+            background-color: #AE2D68;
+            border-radius: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 800px;
+            height: 90vh;
+            overflow: visible;
+            padding: 0
+        }
+
+        .user-card .cardd {
+            display: flex;  
+            flex-direction: column; 
+            align-items: center;
+            justify-content: center; 
+            gap: 10px;
+            margin-top: 70px
+        }
+
+        .user-card p {
+            color: #E9ECEF;
+            font-family: 'Gotham';
+            font-size: 32px;
+            font-weight: 400;
+            margin:0
+        }
+
+        .image {
+            display: flex;
+            align-items: baseline;
+            margin-top: -30px
+        }
+
+        .profilei {
+            border-radius: 50%;
+            border: 1vh solid #341671;
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            position: relative; 
+            top: 0vh;
+        }
+
+        .image button{
+            height: 80px;
+            width: 100%;
+            margin-left: -100px;
+            border-color: transparent;
+            border-radius: 20%;
+            background-color: #341671;
+            z-index: 3;
+            transition: scale 0.4 ease;
+        }
+        .image button:hover {
+            scale: 1.05;
+        }
+        
+        .square {
+            background-color: #341671;
+            color:transparent;
+            height: 2px;
+            width: 150%;
+
+        }
+
+        .image button img {
+            height: 75%;
+            width: 83%;
+        }
+
+
+        .user-name{
+            display: flex;
+            gap: 8px
         }
 
         .team {
@@ -172,7 +258,7 @@
         }
 
         .team-section {
-            padding: 20px;
+            padding: 40px;
             background-color: #AE2D68;
             border-radius: 40px;
             display: inline-block;
@@ -196,7 +282,7 @@
             cursor: pointer;
             transition: transform 0.3s ease;
             width: 37vh;
-            height: 30vh;
+            height: 25vh;
             margin-top: 5vh;
             overflow: visible;
         }
@@ -211,7 +297,7 @@
             width: 200px;
             height: 200px;
             object-fit: cover;
-            margin-bottom: 15px;
+            margin-bottom: -30px;
             position: relative; 
             top: -8vh;
         }
@@ -236,11 +322,11 @@
         }
 
         .team-card a {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-    color: inherit; /* Herda a cor do texto */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: inherit; /* Herda a cor do texto */
 }
 
 
@@ -276,10 +362,19 @@
         <!-- Título "My section" alinhado à esquerda -->
         <div class="user-info">
             <h3 class="section-title">My section</h3>
-            <p><%= user.firstName %></p>
-            <p><%= user.lastName %></p>
-            <p><%= user.email %></p>
-            <p><%= user.companyId %></p>
+            <div class="user-card">
+                <div class="image">
+                    <img class="profilei" src="path_to_image/<%= user.image %>">
+                    <button class="upload">
+                        <img src="images/icon-upload.svg" alt="Upload" />
+                    </button>
+                </div>
+                <div class="cardd">
+                    <p><%= user.firstName %> <%= user.lastName %></p><div class="square">-</div>
+                    <p><%= user.email %></p><div class="square">-</div>
+                    <p class="role"><%= user.companyId %></p><div class="square">-</div>
+                </div>    
+            </div>    
         </div>
 
         <!-- Seção do time com o título e a área da equipe -->
