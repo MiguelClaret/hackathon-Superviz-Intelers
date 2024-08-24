@@ -87,4 +87,27 @@ module.exports = {
       });
     }
   },
+  getCurrentUser: async function (req, res) {
+    try {
+      const userId = req.session.userId;
+      if (!userId) {
+        return res.redirect('/login')
+      }
+
+      const user = await User.findOne({ id: userId });
+
+      const company = await Company.find({ id: user.companyId })
+
+      const coworkers = await User.find({ companyId: user.companyId })
+
+
+      return res.view('pages/profile', { user, company, coworkers })
+    } catch {
+      return res.status(500).json({
+        error: 'An error occurred during the process ',
+        details: error.message,
+      });
+    }
+  }
+
 };

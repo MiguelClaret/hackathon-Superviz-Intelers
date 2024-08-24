@@ -50,6 +50,10 @@ module.exports.routes = {
   //admin dashboard
   '/admin': 'AdminController.show',
   'POST /notice/create': 'AdminController.createNotice',
+
+  // profiles
+
+  '/myprofile': 'UserController.getCurrentUser'
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
