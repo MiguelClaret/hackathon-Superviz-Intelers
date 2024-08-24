@@ -57,12 +57,14 @@
             display: flex;
             flex-direction: column;
         }
-        .creates{
+
+        .creates {
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .createNotice{
+
+        .createNotice {
             display: flex;
             flex-direction: column;
         }
@@ -102,12 +104,12 @@
         <div class="creates">
 
             <div class="createBoard">
-                    <h2>Create a New Board</h2>
-                    <form action="/board/create" method="POST">
-                        <label for="name">Name:</label>
-                        <input type="text" id="name" name="name" required>
-                        <button type="submit">Create Board</button>
-                    </form>
+                <h2>Create a New Board</h2>
+                <form action="/board/create" method="POST">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" required>
+                    <button type="submit">Create Board</button>
+                </form>
             </div>
 
             <div class="createNotice">
@@ -120,7 +122,28 @@
                     <input type="text" id="description" name="description" required>
                     <button type="submit">Create Notice</button>
                 </form>
-        </div>
+            </div>
+
+            <div class="assignedRole">
+                <h2>assigned a Role</h2>
+                <form action="/assignedrole" method="POST">
+                    <label for="employeeId">Assigned To:</label>
+                    <select id="employeeId" name="employeeId" required>
+                        <% employees.forEach(function(employee) { %>
+                            <% if(employee.id===user.id){ return; } %>
+
+                                <option value="<%=employee.id %>">
+                                    <%=employee.firstName %>
+                                        <%= employee.lastName%>
+                                </option>
+                                <% }) %>
+                    </select>
+
+                    <label for="role">Role:</label>
+                    <input type="text" id="role" name="role" required>
+                    <button type="submit">Assigned Role</button>
+                </form>
+            </div>
         </div>
     </main>
 

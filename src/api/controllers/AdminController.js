@@ -8,7 +8,7 @@
 module.exports = {
 
     show: async function (req, res) {
-        try{
+        try {
 
             const userId = req.session.userId;
             if (!userId) {
@@ -20,9 +20,14 @@ module.exports = {
                 return res.json({ error: "You are not authorized to enter the dashboard" });
             }
 
-            return res.view('pages/admin', {user})
+            const company = await Company.find({ id: user.companyId })
 
-        }catch (error) {
+            const employees = await User.find({ companyId: user.companyId })
+
+
+            return res.view('pages/admin', { user, company, employees })
+
+        } catch (error) {
             return res.json({ error: "Error logging into the dashboard", details: error.message });
         }
     },
@@ -85,6 +90,36 @@ module.exports = {
             return res.json({ error: "Error creating notice", details: error.message });
         }
     },
+
+    assignedRole: async function (req, res) {
+        try {
+
+            const userId = req.session.userId;
+            if (!userId) {
+                return res.redirect('/login');
+            }
+
+            const user = await User.findOne({ id: userId });
+            if (user.usertype !== 'admin') {
+                return res.json({ error: "You don't have permission to create a notice" });
+            }
+
+
+            const { employeeId, role } = req.body;
+
+            const updatedFields = { employeeId, role }
+
+            const updatedUser = await User.updateOne({ id: employeeId }).set(
+                updatedFields
+            );
+
+            return res.redirect('/admin')
+
+        } catch (error) {
+            return res.json({ error: "Error assigneding role", details: error.message });
+        }
+
+    }
 
 
 

@@ -50,6 +50,8 @@ module.exports.routes = {
   //admin dashboard
   '/admin': 'AdminController.show',
   'POST /notice/create': 'AdminController.createNotice',
+  'POST /assignedrole': 'AdminController.assignedRole',
+
 
   // profiles
 
