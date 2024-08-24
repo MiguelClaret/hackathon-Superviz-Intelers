@@ -59,18 +59,25 @@
         }
 
         .lista-kanban {
+            text-align: center;
             display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
+            min-height: 100vh;
             flex-direction: row;
+            border-radius: 20px;
+            margin: 20px 60px;
+            padding: 50px;
+            text-align: center;
+            display: flex;
+            justify-content: space-around;
+            background-color: #280659;
+            
         }
 
         .lista-kanban button {
-            width: 12rem;
-            height: 6rem;
+            width: 313px;
+            height: 370px;
             border: none;
             background-color: #F54952;
-            border-radius: 15px;
             font-weight: 700;
             color: #ffffff;
         }
@@ -109,7 +116,6 @@
             width: 2rem;
             margin-left: 2rem;
             margin-bottom: 1.5rem;
-
             height: fit-content;
             font-weight: 500;
             background-color: #660F56;
@@ -122,6 +128,57 @@
 
         button#openModalBtn:hover {
             background-color: #0056b3;
+        }
+
+        main {
+          padding: 20px;
+        }
+
+        .board-section h1 {
+            color: #1e8000;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background-color: #F94144;
+            width: 150px;
+            height: 200px;
+            border-radius: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            color: #fff;
+            text-align: center;
+            padding: 0;
+            display: flex;
+            position: relative;
+        }
+
+        .card-icon {
+            background-color: #3E206D;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            top: 150px;
+            left: 80px;
+        }
+
+        .card h2 {
+            width: 100%;
+            height: 50%;
+            font-size: 1.1em;
+            margin: 0;
+            color: #333;
+            background-color: #fff;
+            border-bottom-left-radius: 30px; /* Adiciona borda arredondada no canto inferior esquerdo */
+            border-bottom-right-radius: 30px;
+            position: absolute;
+            bottom: 0;
         }
     </style>
 </head>
@@ -178,12 +235,18 @@
             <% } %>
         </div>
 
-        <section class="lista-kanban">
-            <% boards.forEach(function(board) { %>
-                <button onclick="window.location.href='/board/<%= board.id %>'">
-                    <%= board.name %>
-                </button>
-                <% }); %>
+
+                <section class="lista-kanban">
+                    <h1><% boards.forEach(function(board) { %></h1>
+                            <button class="card" onclick="window.location.href='/board/<%= board.id %>'"  class="card">
+                                    <h2><%= board.name %></h2>
+                                    <div class="card-icon"></div>
+                            </button>
+        
+                            <% }); %>
+                </section>
+
+        
         </section>
     </main>
 
