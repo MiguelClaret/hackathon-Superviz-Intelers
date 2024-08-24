@@ -5,202 +5,274 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+         @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100; /* Thin */
+            font-style: normal;
+        }
 
-body {
-    margin:0;
-    font-family: 'Noto Sans', sans-serif;
-}
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200; /* ExtraLight */
+            font-style: normal;
+        }
 
-body * {
-    box-sizing: border-box;
-}
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-light.woff') format('woff'),
+                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300; /* Light */
+            font-style: normal;
+        }
 
-.main-login {
-    width: 100vw;
-    height: 100vh;
-    background: #422680;
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-book.woff') format('woff'),
+                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400; /* Book */
+            font-style: normal;
+        }
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500; /* Medium */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700; /* Bold */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-black.woff') format('woff'),
+                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900; /* Black */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950; /* Ultra */
+            font-style: normal;
+        }
+
+        body {
+            font-family: 'Gotham', sans-serif;
+            background-color: #422680;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .text-section {
+            color: #F1F3F5;
+            font-size: 2rem;
+            width: 50%;
+            margin-top: 0vh;
+            margin-right: 40vh
+        }
 
 
-.left-login {
-    width: 50vw;
-    height: 100vh;
+        .text-section h1 {
+            font-weight: 200;
+            font-size: 50px;
+            text-align: center;
+        }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
+        .text-section h1 span {
+            font-weight: 400;
+            font-size: 50px;
+        }
 
-.left-login > h1 {
-    font-size: 3vw;
-    font-weight: 400;
-    color: #FFFFFF;
-    text-align: center;
-}
+        .loginDeco {
+            width: 100%;
+            opacity: 0;
+            animation: fadeInMove 3s ease-out forwards;
+        }
 
-.left-login > h1 > span {
-    font-size: 3vw;
-    font-weight: 700;
-    color: #FFFFFF;
-}
+        @keyframes fadeInMove {
+            from {
+                opacity: 0;
+                transform: translateX(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
 
-.left-login-image {
-    width: 35vw;
-}
+        .form-container {
+            background-color: #341671;
+            padding: 20px;
+            border-radius: 20px;
+            width: 35vh;
+            height: 100%;
+            border: transparent;
+            box-shadow: 10px 10px 5px rgba(40, 6, 89, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
 
-.right-login {
-    width: 50vw;
-    height: 100vh;
+        .form-container:hover {
+            box-shadow: 20px 20px 10px rgba(40, 6, 89, 0.5);
+        }
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;  
-}
+        .formulario {
+            transition: transform 0.4s ease;
+            justify-content: center;
+            font-family: 'Gotham';
+            margin-left: 30vh;
 
-.card-login {
-    width: 60%;
+        }
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 30px 35px;
+        .formulario:hover {
+            transform: scale(1.03);
+        }
 
-    background: #341671;
-    border-radius: 20px;
-    box-shadow: 0px 10px 40px #00000056;
-}
+        .formulario h2 {
+            color: #F54952;
+            font-size: 40px;
+            font-weight: 500;
+            background-color: #280659;
+            margin: 0px;
+            border-radius: 20px 20px 0px 0px;
+            text-align: center;
+            width: 24vh;
+            height: 5vh;
+            border: transparent;
+            margin-left: 7vh;
+        }
 
-.card-login > h1 {
-    color: #ffffff;
-    font-weight: 800;
-    margin: 0;
-    text-shadow: 5px 5px #00000056;
-}
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+            gap: 2vh;
+            margin-top: 2vh;
+            margin-left: 20px;
+            margin-right: 20px;
+        }
 
-.text-field {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    margin: 10px 0px;
-}
+        .form-container input[type="email"],
+        .form-container input[type="password"] {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            border: 3px solid transparent;
+            transition: border-color 0.4s ease;
+            background-color: #DEE2E6;
+        }
 
-.text-field > input {
-    width: 100%;
-    border: none;
-    border-radius: 10px;
-    padding: 15px;
 
-    background: #514869;
-    color: #f0ffffde;
-    font-size: 12pt;
-    box-shadow: 0px 10px 40px #00000056;
-    outline: none;
-    box-sizing: border-box;
-}
+        .form-container input:focus {
+            outline: none;
+            border-color: #F54952;
+        }
 
-.text-field > label {
-    color: #f0ffffde;
-    margin-bottom: 10px;
-}
+        #password {
+            margin-bottom: -1vh;
+        }
 
-.text-field > input::placeholder {
-    color: #f0ffff94;
-}
+        .form-container button {
+            background-color: #F54952;
+            color: #F1F3F5;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 50%;
+            font-size: 24px;
+            margin-top: 10px;
+            margin-bottom: 20px; 
+            margin-right: 0px;
+            margin-left: 90px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
 
-.btn-login {
-    width: 100%;
-    padding: 16px 0px;
-    margin: 25px;
-    border: none;
-    border-radius: 8px;
-    outline: none;
-    text-transform: uppercase;
-    font-weight: 800;
-    letter-spacing: 3px;
-    color: #FFFFFF;
-    background: #dc3545;
-    cursor: pointer;
-    box-shadow: 0px 10px 40px -12px #b1424d;
-}
+        .form-container button:hover {
+            transform: scale(1.05);
+        }
 
-@media only screen and (max-width: 950px) {
-    .card-login{
-        width: 85%;
-    }
-}
+        .form-container input::placeholder {
+            color: #422680;
+        }
 
-@media only screen and (max-width: 600px) {
-    .main-login {
-        flex-direction: column;
-    }
+        .form-container input {
+            color:#422680;
+        }
+        #loginForm div {
+            color: #F1F3F5;
+        }
+        #loginForm div a{
+            color: #F54952;
+            text-decoration: none;
+            font-weight: 700
+        }
+        #loginForm div a:hover{
+            text-decoration: underline;
+        }
 
-    .left-login > h1 {
-        display: none;
-    }
 
-    .left-login {
-        width: 100%;
-        height: auto;
-    }
-
-    .right-login {
-        width: 100%;
-        height: auto;
-    }
-
-    .left-login-image {
-        width: 50vw;
-    }
-
-    .card-login {
-        width: 90%;
-    }
-}
     </style>
 </head>
+
 <body>
-    <body>
-        <main class="main-login">
-            <section class="left-login">
-                <h1>Start <span>collaborating</span> <br>with us</h1>
-                <img src="/office.svg" class="left-login-image">
-            </section>
-    
-            <section class="right-login">
-                <div class="card-login">
-                    <h1>Login</h1>
-                    <!-- Formulário de login -->
-                    <form action="/login" method="POST">
-                        <div class="text-field">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" name="email" placeholder="E-mail" required>
-                        </div>
-    
-                        <div class="text-field">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Password" required>
-                        </div>
-                        <button type="submit" class="btn-login">Login</button>
-                    </form>
-                </div>
-            </section>
-        <div class="error">
-            <!-- Display error message here if any -->
-            <% if (typeof error !== 'undefined') { %>
-                <p><%= error %></p>
-            <% } %>
+    <div class="container">
+        <div class="formulario">
+            <h2>Login</h2>
+            <div class="form-container">
+                <form id="loginForm" action="/login" method="POST">
+                    <input type="email" id="email" name="email" placeholder="*E-mail" required>
+                    <input type="password" id="password" name="password" placeholder="*Password" required>
+                    <div>Don't have an account? <a href="/signup" target="_blank">Register</a></div>
+                    <button type="submit" class="btn-login">Login</button>
+                </form>
+            </div>
         </div>
-    </main>
+    </div>
+    <div class="text-section">
+        <h1>Start <span>collaborating</span><br> with us</h1>
+        <img src="/office.svg" alt="Illustration" class="loginDeco">
+    </div>
+    <script>
+        document.getElementById('registerForm').addEventListener('submit', function(event) {
+            var password = document.getElementById('password').value;
+            var confirmPassword = document.getElementById('confirm-password').value;
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                event.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

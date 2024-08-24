@@ -98,7 +98,7 @@
         }
 
         .text-section {
-            color: white;
+            color: #F1F3F5;
             font-size: 2rem;
             width: 50%;
             margin-top: 5vh;
@@ -137,62 +137,93 @@
         .form-container {
             background-color: #341671;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.8);
-            width: 50vh;
-            height: 65vh;
-            border: 2px solid #000000;
+            border-radius: 20px;
+            width: 40vh;
+            height: 100%;
+            border: transparent;
+            box-shadow: 10px 10px 5px rgba(40, 6, 89, 0.5);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+
+        }
+
+        .form-container:hover {
+            box-shadow: 20px 20px 10px rgba(40, 6, 89, 0.5);
+        }
+
+        .formulario {
+            transition: transform 0.4s ease;
+            justify-content: center;
+            font-family: 'Gotham';
+        }
+
+        .formulario:hover {
+            transform: scale(1.03);
         }
 
         .formulario h2 {
             color: #F54952;
-            font-size: 45px;
+            font-size: 40px;
             font-weight: 500;
             background-color: #280659;
-            margin: -10px;
-            border-radius: 20px;
+            margin: 0px;
+            border-radius: 20px 20px 0px 0px;
             text-align: center;
             width: 24vh;
-            height: 7vh;
-            border: 2px solid #000000;
-            margin-left: 14vh;
+            height: 5vh;
+            border: transparent;
+            margin-left: 10vh;
         }
 
         .form-container form {
             display: flex;
             flex-direction: column;
-            gap: 3vh;
+            gap: 2vh;
             margin-top: 2vh;
+            margin-left: 20px;
+            margin-right: 20px;
         }
 
         .form-container input[type="text"],
         .form-container input[type="email"],
         .form-container input[type="password"] {
-            padding: 10px;
+            padding: 15px;
             margin-top: 20px;
             border-radius: 10px;
-            border: 2px solid #000000;
+            border: 3px solid transparent;
+            transition: border-color 0.4s ease;
+            background-color: #DEE2E6;
+
+        }
+
+
+        .form-container input:focus {
+            outline: none;
+            border-color: #F54952;
         }
 
         #confirm-password {
-        margin-bottom: 8vh;
+            margin-bottom: 2vh;
         }
 
         .form-container input[type="submit"] {
             background-color: #F54952;
-            color: white;
+            color: #F1F3F5;
             padding: 10px;
             border: none;
-            border-radius: 40px;
+            border-radius: 10px;
             cursor: pointer;
             width: 50%;
             font-size: 24px;
-            margin: auto;
-            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+            margin-top: 10px;
+            margin-bottom: 20px; 
+            margin-right: 0px;
+            margin-left: 100px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
         }
 
         .form-container input[type="submit"]:hover {
-            background-color: #d43f49;
+            transform: scale(1.05);
         }
 
         .form-container input::placeholder {
@@ -201,6 +232,41 @@
 
         .form-container input {
             color:#422680;
+        }
+
+        .form-container label {
+            color: #F54952;
+            font-size: 32px;
+            font-weight: 500;
+            margin: 0
+        }
+
+        .form-container select {
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 5px;
+            margin-bottom: -55px;
+            border: 3px solid transparent;
+            transition: border-color 0.4s ease;
+            background-color: #DEE2E6;
+            color: #422680;
+        }
+
+        .form-container select:focus {
+            outline: none;
+            border-color: #F54952;
+        }
+        
+        #registerForm div {
+            color: #F1F3F5;
+        }
+        #registerForm div a{
+            color: #F54952;
+            text-decoration: none;
+            font-weight: 700
+        }
+        #registerForm div a:hover{
+            text-decoration: underline;
         }
 
     </style>
@@ -228,7 +294,8 @@
                         <option value="<%= company.id %>"><%= company.name %></option>
                       <% }); %>
                     </select><br>
-                    <input type="submit" class="login" value="Login">
+                    <div>Already have an account? <a href="/login" target="_blank">Log in</a></div>
+                    <input type="submit" class="login" value="Sign up">
                 </form>
             </div>
         </div>
