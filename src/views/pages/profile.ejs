@@ -6,75 +6,83 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Profile</title>
     <style>
-         @font-face {
+        @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
-                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
-            font-weight: 100; /* Thin */
+                url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100;
+            /* Thin */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
-                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
-            font-weight: 200; /* ExtraLight */
+                url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200;
+            /* ExtraLight */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-light.woff') format('woff'),
-                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
-            font-weight: 300; /* Light */
+                url('/fonts/gotham/gotham-light.woff') format('woff'),
+                url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300;
+            /* Light */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-book.woff') format('woff'),
-                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
-            font-weight: 400; /* Book */
+                url('/fonts/gotham/gotham-book.woff') format('woff'),
+                url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400;
+            /* Book */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
-                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
-            font-weight: 500; /* Medium */
+                url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500;
+            /* Medium */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
-                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
-            font-weight: 700; /* Bold */
+                url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700;
+            /* Bold */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-black.woff') format('woff'),
-                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
-            font-weight: 900; /* Black */
+                url('/fonts/gotham/gotham-black.woff') format('woff'),
+                url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900;
+            /* Black */
             font-style: normal;
         }
 
         @font-face {
             font-family: 'Gotham';
             src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
-                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
-            font-weight: 950; /* Ultra */
+                url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950;
+            /* Ultra */
             font-style: normal;
         }
 
@@ -86,8 +94,9 @@
             min-height: 100vh;
         }
 
-        html, body {
-        overflow: auto; 
+        html,
+        body {
+            overflow: auto;
         }
 
         .header {
@@ -160,7 +169,6 @@
             align-items: center;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             justify-content: center;
-            cursor: pointer;
             transition: transform 0.3s ease;
             width: 800px;
             height: 90vh;
@@ -169,10 +177,10 @@
         }
 
         .user-card .cardd {
-            display: flex;  
-            flex-direction: column; 
+            display: flex;
+            flex-direction: column;
             align-items: center;
-            justify-content: center; 
+            justify-content: center;
             gap: 10px;
             margin-top: 70px
         }
@@ -182,7 +190,7 @@
             font-family: 'Gotham';
             font-size: 32px;
             font-weight: 400;
-            margin:0
+            margin: 0
         }
 
         .image {
@@ -198,11 +206,11 @@
             height: 400px;
             object-fit: cover;
             margin-bottom: 15px;
-            position: relative; 
+            position: relative;
             top: 0vh;
         }
 
-        .image button{
+        .image button {
             height: 80px;
             width: 100%;
             margin-left: -100px;
@@ -212,13 +220,14 @@
             z-index: 3;
             transition: scale 0.4 ease;
         }
+
         .image button:hover {
             scale: 1.05;
         }
-        
+
         .square {
             background-color: #341671;
-            color:transparent;
+            color: transparent;
             height: 2px;
             width: 150%;
 
@@ -230,7 +239,7 @@
         }
 
 
-        .user-name{
+        .user-name {
             display: flex;
             gap: 8px
         }
@@ -251,10 +260,10 @@
             text-align: left;
             width: 100%;
             text-shadow:
-        2px 2px 0 #280659,
-        -1px -1px 0 #280659,
-        1px -1px 0 #280659,
-        -1px 1px 0 #280659;
+                2px 2px 0 #280659,
+                -1px -1px 0 #280659,
+                1px -1px 0 #280659,
+                -1px 1px 0 #280659;
         }
 
         .team-section {
@@ -298,7 +307,7 @@
             height: 200px;
             object-fit: cover;
             margin-bottom: -30px;
-            position: relative; 
+            position: relative;
             top: -8vh;
         }
 
@@ -309,10 +318,10 @@
             color: #000000;
             text-align: center;
             text-shadow:
-        1px 1px 0 #280659,
-        -1px -1px 0 #280659,
-        1px -1px 0 #280659,
-        -1px 1px 0 #280659;
+                1px 1px 0 #280659,
+                -1px -1px 0 #280659,
+                1px -1px 0 #280659,
+                -1px 1px 0 #280659;
         }
 
         .team-card .role {
@@ -326,10 +335,12 @@
             flex-direction: column;
             align-items: center;
             text-decoration: none;
-            color: inherit; /* Herda a cor do texto */
-}
-
-
+            color: inherit;
+            /* Herda a cor do texto */
+        }
+        .upload{
+            cursor: pointer
+        }
     </style>
 </head>
 
@@ -370,31 +381,46 @@
                     </button>
                 </div>
                 <div class="cardd">
-                    <p><%= user.firstName %> <%= user.lastName %></p><div class="square">-</div>
-                    <p><%= user.email %></p><div class="square">-</div>
-                    <p class="role"><%= user.companyId %></p><div class="square">-</div>
-                </div>    
-            </div>    
+                    <p>
+                        <%= user.firstName %>
+                            <%= user.lastName %>
+                    </p>
+                    <div class="square">-</div>
+                    <p>
+                        <%= user.email %>
+                    </p>
+                    <div class="square">-</div>
+                    <p class="role">
+                        <%= user.role %>
+                    </p>
+                    <div class="square">-</div>
+                </div>
+            </div>
         </div>
 
         <!-- Seção do time com o título e a área da equipe -->
         <div class="team">
             <!-- Título "My team" centralizado acima da parte roxa -->
             <h3 class="team-title">My team</h3>
-            
+
             <!-- Seção da equipe -->
             <div class="team-section">
                 <div class="team-grid">
                     <% coworkers.forEach(function(coworker){ %>
                         <% if(coworker.id===user.id){ return; } %>
-                        <div class="team-card">
-                            <a href="/profile/<%= coworker.id %>">
-                                <img src="path_to_image/<%= coworker.image %>">
-                                <p><%= coworker.firstName %> <%= coworker.lastName %></p>
-                                <p class="role"><%= coworker.companyId %></p>
-                            </a>
-                        </div>
-                    <% }) %>
+                            <div class="team-card">
+                                <a href="/profile/<%= coworker.id %>">
+                                    <img src="path_to_image/<%= coworker.image %>">
+                                    <p>
+                                        <%= coworker.firstName %>
+                                            <%= coworker.lastName %>
+                                    </p>
+                                    <p class="role">
+                                        <%= coworker.role %>
+                                    </p>
+                                </a>
+                            </div>
+                            <% }) %>
                 </div>
             </div>
         </div>
