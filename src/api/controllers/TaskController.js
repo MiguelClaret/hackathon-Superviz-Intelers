@@ -14,9 +14,18 @@ module.exports = {
 
       const selectedBoardId = req.body.boardId;  // Alterar de req.params.id para req.body.boardId
 
+      const newTask = await Task.create({
+        title,
+        description,
+        difficulty,
+        assignedTo,
+        boardId: selectedBoardId
+      }).fetch();
+
       const data = {
         'name': 'create',
         'data': {
+          'id': newTask.id,
           'title': title,
           'description': description,
           'difficulty': difficulty,
@@ -34,15 +43,8 @@ module.exports = {
         body: JSON.stringify(data)
       })
 
-      const newTask = await Task.create({
-        title,
-        description,
-        difficulty,
-        assignedTo,
-        boardId: selectedBoardId
-      }).fetch();
 
-      return res.view(`/board/${selectedBoardId}`);
+      return res.json({ message: 'Task created' });
     } catch (error) {
       return res.status(500).json({ error: 'Error creating task' });
     }

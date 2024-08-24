@@ -314,29 +314,29 @@
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a>
-                <img src="/images/icon-home.svg" alt="">
-            </a>
-            <a>
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>Collaboration Form</p>
-            </a>
-            <a href="/kanban">
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>Company Kanban's</p>
-            </a>
-            <a>
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>My section</p>
-            </a>
-            <a>
-                <img src="/images/icon-home.svg" alt="Descrição do SVG">
-                <p>FAQ</p>
-            </a>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <a>
+        <img src="/images/icon-home.svg" alt="">
+      </a>
+      <a>
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>Collaboration Form</p>
+      </a>
+      <a href="/kanban">
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>Company Kanban's</p>
+      </a>
+      <a>
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>My section</p>
+      </a>
+      <a>
+        <img src="/images/icon-home.svg" alt="Descrição do SVG">
+        <p>FAQ</p>
+      </a>
+    </nav>
+  </header>
 
   <div class="titleKanban" id="titleKanban">
     <h1>Kanban Board - <%= companyUser.name %> - <%= board.name %>
@@ -639,8 +639,33 @@
           });
 
       });
+      
     function cardCreated(params) {
       console.log('created: ', params);
+
+      // Create a new task element
+      const taskElement = document.createElement('div');
+      taskElement.className = 'task';
+      taskElement.id = `task-${params.data.id}`;
+      taskElement.draggable = true;
+      taskElement.ondragstart = (event) => drag(event);
+
+      // Add the task details
+      taskElement.innerHTML = `
+        <h3>${params.data.title}</h3>
+        <p>Description: ${params.data.description}</p>
+        <p>Difficulty: ${params.data.difficulty}</p>
+        <p>Assigned: ${params.data.assignedTo}</p>
+        <form action="/task/delete/${params.data.id}" method="POST">
+          <button type="submit" class="delete-btn">Excluir</button>
+        </form>
+  `;
+
+      // Append the task to the "To Do" column
+      const todoColumn = document.getElementById('todo');
+      if (todoColumn) {
+        todoColumn.appendChild(taskElement);
+      }
     }
 
     import SuperVizRoom, { VideoConference, Realtime, RealtimeComponentEvent, RealtimeComponentState, WhoIsOnline, MousePointers } from "https://unpkg.com/@superviz/sdk@latest";
@@ -725,48 +750,7 @@
         alert('Failed to join the video conference.');
       }
     }
-    //   async function joinVideoConference(roomId, companyId, roomName, userId, userName) {
-    //     try {
-    //         const room = await SuperVizRoom('rwnm19hh75ompvxg6qaviczpp56i97', {
-    //             roomId: roomId,
-    //             group: {
-    //                 id: companyId,
-    //                 name: roomName,
-    //             },
-    //             participant: {
-    //                 id: userId,
-    //                 name: userName,
-    //             },
-    //         });
 
-    //         const video = new VideoConference({
-    //             participantType: 'host',
-    //             styles: ``,
-    //             collaborationMode: {
-    //               position: "bottom",
-    //               initialView: "list"
-    //             },
-    //         });
-    //         room.addComponent(video);
-
-    //         const whoIsOnline = new WhoIsOnline({
-    //             position: "top-right"
-    //         });
-    //         room.addComponent(whoIsOnline);
-
-    //         const canvasId = "board";
-    //         const mousePointer = new MousePointers(canvasId);
-    //         room.addComponent(mousePointer);
-
-    //         const modal = document.getElementById('videoConferenceModal');
-    //         modal.style.display = "none";
-
-    //         console.log("Joined the video conference successfully.");
-    //     } catch (error) {
-    //         console.error('Error joining video conference:', error);
-    //         alert('Failed to join the video conference.');
-    //     }
-    // }
   </script>
 </body>
 
