@@ -242,10 +242,19 @@
             text-decoration: underline;
         }
 
+        .form-container .error {
+            color: #F1F3F5;
+            margin-left: 122px;
+            border-radius: 5px;
+            background-color: #D60000;
+            text-align: center;
+            width: 150px;
+        }
+
+
 
     </style>
 </head>
-
 <body>
     <div class="container">
         <div class="formulario">
@@ -257,22 +266,18 @@
                     <div>Don't have an account? <a href="/signup" target="_blank">Register</a></div>
                     <button type="submit" class="btn-login">Login</button>
                 </form>
+                <div class="error">
+                    <!-- Display error message here if any -->
+                    <% if (typeof error !== 'undefined') { %>
+                        <p><%= error %></p>
+                    <% } %>
+                </div>
             </div>
         </div>
     </div>
     <div class="text-section">
         <h1>Start <span>collaborating</span><br> with us</h1>
         <img src="/office.svg" alt="Illustration" class="loginDeco">
-    </div>
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm-password').value;
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                event.preventDefault();
-            }
-        });
-    </script>
+    </div>   
 </body>
 </html>
