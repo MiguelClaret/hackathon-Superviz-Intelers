@@ -12,6 +12,12 @@ module.exports = {
     boards: {
       collection: 'board',
       via: 'companyId' // Corrigido para "companyId"
+    },
+
+    notices: {
+      collection: 'notice',
+      via: 'companyId' // Corrigido para "companyId"
     }
   }
+  
 };

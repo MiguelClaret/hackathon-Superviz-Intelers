@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanbans</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        header {
+            height: 5rem;
+            background-color: #280659;
+            display: flex;
+            align-items: center;
+            padding-left: 40px;
+            padding-right: 40px;
+            font-size: 24px;
+        }
+
+        header nav {
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+            width: 100%;
+            flex-wrap: nowrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header nav a {
+            display: flex;
+            align-items: center;
+            padding: 5px 15px;
+            text-decoration: none;
+            color: #FFF;
+            gap: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-weight: 400;
+        }
+
+        header nav a:hover {
+            background-color: #F54952;
+            color: #FFF;
+            border-radius: 8px;
+        }
+
+        header nav p {
+            margin-block-start: 0;
+            margin-block-end: 0;
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+        }
+        .creates{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .createNotice{
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <header>
+        <nav>
+            <a>
+                <img src="images/icon-home.svg" alt="">
+            </a>
+            <a>
+                <img src="images/icon-list.svg" alt="Descrição do SVG">
+                <p>Collaboration Form</p>
+            </a>
+            <a href="/kanban">
+                <img src="images/icon-kanban.svg" alt="Descrição do SVG">
+                <p>company Kanban's</p>
+            </a>
+            <a>
+                <img src="images/icon-mysection.svg" alt="Descrição do SVG">
+                <p>My section</p>
+            </a>
+            <a>
+                <img src="images/icon-faq.svg" alt="Descrição do SVG">
+                <p>FAQ</p>
+            </a>
+        </nav>
+    </header>
+
+    <main>
+        <h1> Welcome, <%= user.firstName %>!</h1>
+        <div class="creates">
+
+            <div class="createBoard">
+                    <h2>Create a New Board</h2>
+                    <form action="/board/create" method="POST">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <button type="submit">Create Board</button>
+                    </form>
+            </div>
+
+            <div class="createNotice">
+                <h2>Create a New Notice</h2>
+                <form action="/notice/create" method="POST">
+                    <label for="name">Title:</label>
+                    <input type="text" id="title" name="title" required>
+
+                    <label for="name">Description:</label>
+                    <input type="text" id="description" name="description" required>
+                    <button type="submit">Create Notice</button>
+                </form>
+        </div>
+        </div>
+    </main>
+
+
+
+</body>
+
+</html>

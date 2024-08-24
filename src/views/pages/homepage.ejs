@@ -360,49 +360,20 @@
         <section>
             <div class="text">
                 <h1>Welcome</h1>
-                <h2>Name!</h2>
+                <h2><%= user.firstName %>!</h2>
             </div>
             <h3>Start collaborating and communicating with your team now!</h3>
-            <div class="buttons">
-                <a>Attend a meeting ></a>
-                <a>Create a meeting ></a>
-            </div>
             <img src="images/img-homepage.svg" alt="">
         </section>
 
         <section>
-            <div class="chat">
-                <p>
-                    CHAT
-                </p>
-                <div class="line"></div>
-
-                <div class="messages">
-                    <div class="message left">
-                        <div>User Name</div>
-                        <div>Message</div>
+            <div class="boardNotices">
+                <% notices.forEach(function(notice){ %>
+                    <div class="notices">
+                        <h3> <%= notice.title %></h3>
+                        <p> <%= notice.description %></p>
                     </div>
-                    <div class="message right">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                    <div class="message left">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                    <div class="message right">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                    <div class="message left">
-                        <div>User Name</div>
-                        <div>Message</div>
-                    </div>
-                </div>
-                <div class="my-message">
-                    <input type="text" placeholder="Send your message"></input>
-                    <img class="icon-send" src="images/icon-send.svg" alt="Enviar">
-                </div>
+                    <% }) %>
             </div>
         </section>
     </main>

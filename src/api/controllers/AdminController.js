@@ -7,6 +7,26 @@
 
 module.exports = {
 
+    show: async function (req, res) {
+        try{
+
+            const userId = req.session.userId;
+            if (!userId) {
+                return res.redirect('/login');
+            }
+
+            const user = await User.findOne({ id: userId });
+            if (user.usertype !== 'admin') {
+                return res.json({ error: "You are not authorized to enter the dashboard" });
+            }
+
+            return res.view('pages/admin', {user})
+
+        }catch (error) {
+            return res.json({ error: "Error logging into the dashboard", details: error.message });
+        }
+    },
+
     createBoard: async function (req, res) {
         try {
             const userId = req.session.userId;
@@ -35,6 +55,38 @@ module.exports = {
         } catch (error) {
             return res.json({ error: "Error creating board", details: error.message });
         }
-    }
+    },
 
-};
+    createNotice: async function (req, res) {
+        try {
+            const userId = req.session.userId;
+            if (!userId) {
+                return res.redirect('/login');
+            }
+
+            const user = await User.findOne({ id: userId });
+            if (user.usertype !== 'admin') {
+                return res.json({ error: "You don't have permission to create a notice" });
+            }
+
+            const companyId = user.companyId;
+            const { title, description } = req.body;
+
+            const newNotice = await Notice.create({
+                title,
+                description,
+                companyId: companyId,
+
+            }).fetch();
+
+            return res.redirect("/admin");
+
+        } catch (error) {
+            return res.json({ error: "Error creating notice", details: error.message });
+        }
+    },
+
+
+
+}
+

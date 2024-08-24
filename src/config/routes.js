@@ -20,7 +20,7 @@ module.exports.routes = {
   ***************************************************************************/
 
   '/': { view: 'pages/landing' },
-  '/home': { view: 'pages/homepage' },
+  '/home': 'CompanyController.showNotices',
   '/aboutus': { view: 'pages/aboutus' },
 
   // User auth
@@ -44,6 +44,10 @@ module.exports.routes = {
   'POST /task/create': 'TaskController.create',
   'POST /task/update-status': 'TaskController.updateStatus',
   'POST /task/delete/:id': 'TaskController.delete',
+
+  //admin dashboard
+  '/admin': 'AdminController.show',
+  'POST /notice/create': 'AdminController.createNotice',
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
