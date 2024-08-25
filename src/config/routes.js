@@ -30,17 +30,10 @@ module.exports.routes = {
   'POST /login': 'UserController.login',
   'GET /signup': 'UserController.signup',
   'POST /signup': 'UserController.signup',
+  '/logout': 'UserController.logout',
 
 
-  // Meeting
-  'GET /meeting': 'MeetingController.index',
-  'POST /meeting/create': 'MeetingController.create',
-  // Route to join an existing meeting
-  'GET /meeting/join/:roomId': 'MeetingController.join',
-
-
-
-  '/kanban': 'BoardController.show',
+  // kanban
   'POST /board/create': 'AdminController.createBoard',
   'GET /board/:id':'TaskController.index',
   'POST /task/create': 'TaskController.create',

@@ -97,8 +97,6 @@ module.exports = {
       // Set user session
       req.session.userId = user.id;
 
-
-
       // Update last seen timestamp
       await User.updateOne({ id: user.id }).set({ lastSeenAt: Date.now() });
 
@@ -110,6 +108,23 @@ module.exports = {
         error: 'An error occurred during login.',
         details: error.message,
       });
+    }
+  },
+
+  logout: async function (req, res) {
+    try {
+      // Destroy the user's session
+      req.session.userId = null;
+
+      return res.redirect('/login');
+    } catch (error) {
+      sails.log.error('Error occurred during logout:', error);
+      return res
+        .status(500)
+        .json({
+          error: 'An error occurred during logout.',
+          details: error.message,
+        });
     }
   },
 

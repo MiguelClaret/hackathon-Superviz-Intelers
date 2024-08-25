@@ -7,86 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Kanban Board</title>
   <style>
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-thin.woff') format('woff'),
-        url('/fonts/gotham/gotham-thin.ttf') format('truetype');
-      font-weight: 100;
-      /* Thin */
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-extralight.woff') format('woff'),
-        url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
-      font-weight: 200;
-      /* ExtraLight */
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-light.woff') format('woff'),
-        url('/fonts/gotham/gotham-light.ttf') format('truetype');
-      font-weight: 300;
-      /* Light */
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-book.woff') format('woff'),
-        url('/fonts/gotham/gotham-book.ttf') format('truetype');
-      font-weight: 400;
-      /* Book */
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-medium.woff') format('woff'),
-        url('/fonts/gotham/gotham-medium.ttf') format('truetype');
-      font-weight: 500;
-      /* Medium */
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-bold.woff') format('woff'),
-        url('/fonts/gotham/gotham-bold.ttf') format('truetype');
-      font-weight: 700;
-      /* Bold */
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-black.woff') format('woff'),
-        url('/fonts/gotham/gotham-black.ttf') format('truetype');
-      font-weight: 900;
-      /* Black */
-      font-style: normal;
-    }
-
-    @font-face {
-      font-family: 'Gotham';
-      src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
-        url('/fonts/gotham/gotham-ultra.woff') format('woff'),
-        url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
-      font-weight: 950;
-      /* Ultra */
-      font-style: normal;
-    }
-
     header {
       height: 5rem;
       background-color: #280659;
@@ -406,13 +326,9 @@
       <a href="/home">
           <img src="/images/icon-home.svg" alt="Home Icon">
       </a>
-      <a href="/kanban">
-          <img src="/images/icon-kanban.svg" alt="Kanban Icon">
-          <p>Company Kanban's</p>
-      </a>
       <a href="/myprofile">
           <img src="/images/icon-mysection.svg" alt="My Section Icon">
-          <p>My section</p>
+          <p>Work Station</p>
       </a>
       <a href="/faq">
           <img src="/images/icon-faq.svg" alt="FAQ Icon">
@@ -424,6 +340,10 @@
           <p>Admin</p>
       </a>
       <% } %>
+      <a href="/logout">
+        <img src="images/logout.svg" alt="Logout icon">
+        <p>Logout</p>
+      </a>
   </nav>
   </header>
 

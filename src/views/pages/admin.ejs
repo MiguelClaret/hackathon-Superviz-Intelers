@@ -157,10 +157,10 @@
             align-items: center;
             justify-content: center;
             background-color: #280659;
-            border-radius: 38px 38px 0px 0px;  
+            border-radius: 38px 38px 0px 0px;
             gap: 180px;
-            flex-wrap: wrap;   
-            min-height: 70.81vh; 
+            flex-wrap: wrap;
+            min-height: 70.81vh;
             padding: 30px
         }
 
@@ -185,19 +185,19 @@
 
 
         .popup {
-            display: none; 
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.459); 
+            background-color: rgba(0, 0, 0, 0.459);
             align-items: center;
             justify-content: center;
-            z-index: 1000; 
-            
+            z-index: 1000;
+
         }
-        
+
         .popup-content {
             background-color: #fff;
             padding: 20px;
@@ -208,7 +208,7 @@
             margin: 0 auto;
 
         }
-        
+
         .close-btn {
             position: absolute;
             top: 5px;
@@ -274,14 +274,14 @@
         }
 
         form {
-            display: flex;              
-            flex-direction: column;     
-            align-items: center;       
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             justify-content: center;
-            gap: 3vh;                   
-            width: 100%;               
-            max-width: 500px;           
-            margin: 0 auto; 
+            gap: 3vh;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
         }
 
         button {
@@ -305,7 +305,7 @@
         section {
             display: flex;
             width: 100%;
-            align-items: center;       
+            align-items: center;
             justify-content: center;
             margin-right: 20px;
             font-size: 32px;
@@ -344,13 +344,9 @@
             <a href="/home">
                 <img src="images/icon-home.svg" alt="Home Icon">
             </a>
-            <a href="/kanban">
-                <img src="images/icon-kanban.svg" alt="Kanban Icon">
-                <p>Company Kanban's</p>
-            </a>
             <a href="/myprofile">
                 <img src="images/icon-mysection.svg" alt="My Section Icon">
-                <p>My section</p>
+                <p>Work Station</p>
             </a>
             <a href="/faq">
                 <img src="images/icon-faq.svg" alt="FAQ Icon">
@@ -362,6 +358,10 @@
                 <p>Admin</p>
             </a>
             <% } %>
+            <a href="/logout">
+              <img src="images/logout.svg" alt="Logout icon">
+              <p>Logout</p>
+            </a>
         </nav>
     </header>
     <main>
@@ -390,7 +390,7 @@
                     <form action="/notice/create" method="POST">
                         <input type="text" id="title" name="title" required placeholder="Add title">
                         <textarea type="text" id="description" name="description" required placeholder="Add description"></textarea>
-                        <button type="submit">Create Notice</button> 
+                        <button type="submit">Create Notice</button>
                     </form>
                 </div>
             </div>
@@ -425,11 +425,11 @@
             function openPopup(popupId) {
                 document.getElementById(popupId).style.display = 'flex';
             }
-        
+
             function closePopup(popupId) {
                 document.getElementById(popupId).style.display = 'none';
             }
-        
+
             document.getElementById('openBoardPopup').addEventListener('click', function() {
                 openPopup('boardPopup');
             });
@@ -437,7 +437,7 @@
             document.getElementById('openNoticePopup').addEventListener('click', function() {
                 openPopup('noticePopup');
             });
-        
+
             document.getElementById('openRolePopup').addEventListener('click', function() {
                 openPopup('rolePopup');
             });
@@ -445,22 +445,21 @@
             document.getElementById('closeBoardPopup').addEventListener('click', function() {
                 closePopup('boardPopup');
             });
-        
+
             document.getElementById('closeNoticePopup').addEventListener('click', function() {
                 closePopup('noticePopup');
             });
-        
+
             document.getElementById('closeRolePopup').addEventListener('click', function() {
                 closePopup('rolePopup');
             });
-        
+
             window.addEventListener('click', function(event) {
                 if (event.target.classList.contains('popup')) {
                     event.target.style.display = 'none';
                 }
             });
-        });     
+        });
     </script>
 </body>
 </html>
-
