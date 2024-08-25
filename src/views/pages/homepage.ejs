@@ -333,7 +333,7 @@
 <body>
     <header>
         <nav>
-            <a>
+            <a href="/home">
                 <img src="images/icon-home.svg" alt="Home Icon">
             </a>
             <a href="/kanban">
@@ -348,6 +348,12 @@
                 <img src="images/icon-faq.svg" alt="FAQ Icon">
                 <p>FAQ</p>
             </a>
+            <% if(user.usertype === "admin"){ %>
+            <a href="/admin">
+                <img src="/adm.svg" alt="ADM Icon">
+                <p>Admin</p>
+            </a>
+            <% } %>
         </nav>
     </header>
     <main>
