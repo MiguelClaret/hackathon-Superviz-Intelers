@@ -277,6 +277,8 @@
             align-items: center;
             width: 100%;
             height: auto;
+            word-wrap: break-word;
+            white-space: normal;
         }
 
         .postit {
@@ -320,7 +322,7 @@
             cursor: pointer;
         }
 
-        .notices-section h2{
+        .notices-section h2 {
             font-size: 48px;
             font-weight: 700;
             color: #660F56;
@@ -348,12 +350,12 @@
                 <img src="images/icon-faq.svg" alt="FAQ Icon">
                 <p>FAQ</p>
             </a>
-            <% if(user.usertype === "admin"){ %>
-            <a href="/admin">
-                <img src="/adm.svg" alt="ADM Icon">
-                <p>Admin</p>
-            </a>
-            <% } %>
+            <% if(user.usertype==="admin" ){ %>
+                <a href="/admin">
+                    <img src="/adm.svg" alt="ADM Icon">
+                    <p>Admin</p>
+                </a>
+                <% } %>
         </nav>
     </header>
     <main>
@@ -378,7 +380,7 @@
                             <img src="/postit.svg" alt="Post-it" class="postit">
                             <div class="notices-content">
                                 <h3>
-                                    <%= notice.title %>
+                                    <strong><%= notice.title %></strong>
                                 </h3>
                                 <p>
                                     <%= notice.description %>
@@ -401,7 +403,7 @@
         if (notices.classList.contains('expanded')) {
             expandButton.src = '/seta-up.svg';
         } else {
-            expandButton.src = '/seta.svg'; 
+            expandButton.src = '/seta.svg';
         }
     });
 </script>
