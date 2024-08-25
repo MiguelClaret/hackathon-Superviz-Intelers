@@ -38,7 +38,7 @@ module.exports = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apiKey': 'rwnm19hh75ompvxg6qaviczpp56i97',
+          'apiKey': '3fnmikwkbpy2hwt2c0ppqxd3zucpgz',
         },
         body: JSON.stringify(data)
       })
@@ -118,7 +118,7 @@ module.exports = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'apiKey': 'rwnm19hh75ompvxg6qaviczpp56i97',
+          'apiKey': '3fnmikwkbpy2hwt2c0ppqxd3zucpgz',
         },
         body: JSON.stringify(data)
       })
