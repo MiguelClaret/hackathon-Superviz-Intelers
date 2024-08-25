@@ -267,10 +267,10 @@
           <p>Admin</p>
         </a>
         <% } %>
-        <a href="/logout">
-          <img src="images/logout.svg" alt="Logout icon">
-          <p>Logout</p>
-        </a>
+          <a href="/logout">
+            <img src="/images/logout.svg" alt="Logout icon">
+            <p>Logout</p>
+          </a>
     </nav>
   </header>
   <main>
@@ -290,21 +290,21 @@
       <div class="boardNoticesContainer">
         <img src="/pin.svg" alt="Pin" class="pin">
         <div class="boardNotices" id="notices">
-          <% notices.forEach(function(notice){ %>
-            <div class="notices">
-              <img src="/postit.svg" alt="Post-it" class="postit">
-              <div class="notices-content">
-                <h3>
-                  <strong>
-                    <%= notice.title %>
-                  </strong>
-                </h3>
-                <p>
-                  <%= notice.description %>
-                </p>
-              </div>
-            </div>
-            <% }) %>
+              <% notices.forEach(function(notice){ %>
+                <div class="notices">
+                  <img src="/postit.svg" alt="Post-it" class="postit">
+                  <div class="notices-content">
+                    <h3>
+                      <strong>
+                        <%= notice.title %>
+                      </strong>
+                    </h3>
+                    <p>
+                      <%= notice.description %>
+                    </p>
+                  </div>
+                </div>
+                <% }) %>
         </div>
         <img src="/seta.svg" alt="Expand Button" class="seta" id="expandButton">
       </div>

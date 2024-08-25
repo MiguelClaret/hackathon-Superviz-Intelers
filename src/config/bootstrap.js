@@ -146,8 +146,8 @@ module.exports.bootstrap = async function() {
     email: 'mark@meta.com',
     password: await sails.helpers.hashPassword('123'),
     companyId: 1,
-    firstName: 'Miguel',
-    lastName: 'Claret',
+    firstName: 'Mark',
+    lastName: 'Zuck',
     usertype: 'admin',
   });
 

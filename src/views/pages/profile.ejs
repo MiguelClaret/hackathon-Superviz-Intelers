@@ -387,10 +387,10 @@
           <p>Admin</p>
         </a>
         <% } %>
-        <a href="/logout">
-          <img src="images/logout.svg" alt="Logout icon">
-          <p>Logout</p>
-        </a>
+          <a href="/logout">
+            <img src="/images/logout.svg" alt="Logout icon">
+            <p>Logout</p>
+          </a>
     </nav>
   </header>
 
@@ -537,12 +537,26 @@
       chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the bottom
     }
 
-    document.getElementById('send-message-btn').addEventListener('click', () => {
+    // Function to send the message
+    function sendMessage() {
       const chatInput = document.getElementById('chat-input');
       const message = chatInput.value;
       if (channel && message) {
         channel.publish('message', { sender: "<%= user.firstName%> <%= user.lastName%>", text: message });
-        chatInput.value = '';
+        chatInput.value = ''; // Clear the input field
+      }
+    }
+
+    // Event listener for the send button click
+    document.getElementById('send-message-btn').addEventListener('click', () => {
+      sendMessage();
+    });
+
+    // Event listener for the "Enter" key press
+    document.getElementById('chat-input').addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        event.preventDefault(); // Prevent the default action (e.g., form submission)
+        sendMessage();
       }
     });
 
