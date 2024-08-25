@@ -2,410 +2,327 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <style>
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-thin.woff') format('woff'),
-                url('/fonts/gotham/gotham-thin.ttf') format('truetype');
-            font-weight: 100;
-            /* Thin */
-            font-style: normal;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Homepage</title>
+  <style>
+    body {
+      font-family: 'Gotham', sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: auto;
+      box-sizing: border-box;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-extralight.woff') format('woff'),
-                url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
-            font-weight: 200;
-            /* ExtraLight */
-            font-style: normal;
-        }
+    * {
+      box-sizing: inherit;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-light.woff') format('woff'),
-                url('/fonts/gotham/gotham-light.ttf') format('truetype');
-            font-weight: 300;
-            /* Light */
-            font-style: normal;
-        }
+    main {
+      display: flex;
+      justify-content: space-between;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-book.woff') format('woff'),
-                url('/fonts/gotham/gotham-book.ttf') format('truetype');
-            font-weight: 400;
-            /* Book */
-            font-style: normal;
-        }
+    header {
+      height: 5rem;
+      background-color: #280659;
+      display: flex;
+      align-items: center;
+      padding-left: 40px;
+      padding-right: 40px;
+      font-size: 24px;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-medium.woff') format('woff'),
-                url('/fonts/gotham/gotham-medium.ttf') format('truetype');
-            font-weight: 500;
-            /* Medium */
-            font-style: normal;
-        }
+    header nav {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-bold.woff') format('woff'),
-                url('/fonts/gotham/gotham-bold.ttf') format('truetype');
-            font-weight: 700;
-            /* Bold */
-            font-style: normal;
-        }
+    header nav a {
+      display: flex;
+      align-items: center;
+      padding: 5px 15px;
+      text-decoration: none;
+      color: #FFF;
+      gap: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: 400;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-black.woff') format('woff'),
-                url('/fonts/gotham/gotham-black.ttf') format('truetype');
-            font-weight: 900;
-            /* Black */
-            font-style: normal;
-        }
+    header nav a:hover {
+      background-color: #F54952;
+      color: #FFF;
+      border-radius: 8px;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-ultra.woff') format('woff'),
-                url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
-            font-weight: 950;
-            /* Ultra */
-            font-style: normal;
-        }
+    .intro-section {
+      display: flex;
+      flex-direction: column;
+      padding-top: 2vh;
+      width: 90vh;
+      margin-left: 6vh;
+      margin-top: 6vh;
+    }
 
-        body {
-            font-family: 'Gotham', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-            box-sizing: border-box;
-        }
+    .intro-section .text {
+      display: flex;
+      flex-direction: row;
+    }
 
-        * {
-            box-sizing: inherit;
-        }
+    .intro-section .text h1 {
+      color: #341671;
+      font-size: 48px;
+      font-weight: 300;
+      margin: 0;
+    }
 
-        main {
-            display: flex;
-            justify-content: space-between;
-            padding: 40px;
-        }
+    .intro-section .text h2 {
+      margin: 0;
+      margin-left: 8px;
+      font-size: 48px;
+      text-transform: uppercase;
+      color: #660F56;
+      font-weight: 700;
+    }
 
-        header {
-            height: 5rem;
-            background-color: #280659;
-            display: flex;
-            align-items: center;
-            padding-left: 40px;
-            padding-right: 40px;
-            font-size: 24px;
-        }
+    .intro-section h3 {
+      margin: 0;
+      margin-top: 15px;
+      font-size: 26px;
+      font-weight: 400;
+      width: 454px;
+    }
 
-        header nav {
-            display: flex;
-            flex-direction: row;
-            height: 100%;
-            width: 100%;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .intro-section .buttons {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 598.75px;
+      padding: 50px 0px;
+    }
 
-        header nav a {
-            display: flex;
-            align-items: center;
-            padding: 5px 15px;
-            text-decoration: none;
-            color: #FFF;
-            gap: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: 400;
-        }
+    .intro-section .buttons a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 47px;
+      width: 267.75px;
+      border: 2px solid #000;
+      border-radius: 60px;
+      font-size: 24px;
+      font-weight: 200;
+      background-color: #280659;
+      text-align: center;
+      text-decoration: none;
+      color: #FFF;
+      cursor: pointer;
+    }
 
-        header nav a:hover {
-            background-color: #F54952;
-            color: #FFF;
-            border-radius: 8px;
-        }
+    .intro-section .buttons a:hover {
+      background-color: #FFF;
+      color: #000;
+    }
 
-        .intro-section {
-            display: flex;
-            flex-direction: column;
-            padding-top: 2vh;
-            width: 90vh;
-            margin-left: 6vh;
-            margin-top: 6vh;
-        }
+    .intro-section img {
+      width: 80vh;
+      margin-right: 8vh;
+    }
 
-        .intro-section .text {
-            display: flex;
-            flex-direction: row;
-        }
+    .notices-section {
+      display: flex;
+      flex-direction: column;
+      margin-right: 20px;
+      margin-bottom: 20px;
+    }
 
-        .intro-section .text h1 {
-            color: #341671;
-            font-size: 48px;
-            font-weight: 300;
-            margin: 0;
-        }
+    .boardNoticesContainer {
+      position: relative;
+      background-color: #F54952;
+      padding: 20px;
+      padding-top: 0;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      border: 1px solid #341671;
+      box-shadow: 10px 8px 15px #422680;
+    }
 
-        .intro-section .text h2 {
-            margin: 0;
-            margin-left: 8px;
-            font-size: 48px;
-            text-transform: uppercase;
-            color: #660F56;
-            font-weight: 700;
-        }
+    .pin {
+      position: absolute;
+      top: -26px;
+      z-index: 2;
+      width: 40px;
+      left: 0vh;
+    }
 
-        .intro-section h3 {
-            margin: 0;
-            margin-top: 15px;
-            font-size: 26px;
-            font-weight: 400;
-            width: 454px;
-        }
+    .boardNotices {
+      position: relative;
+      background-color: #FFF;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      padding-left: 0;
+      padding-right: 0;
+      border: 2px solid #000000;
+    }
 
-        .intro-section .buttons {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            width: 598.75px;
-            padding: 50px 0px;
-        }
+    .boardNotices.expanded {
+      max-height: 1000px;
+      overflow-y: auto;
+    }
 
-        .intro-section .buttons a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 47px;
-            width: 267.75px;
-            border: 2px solid #000;
-            border-radius: 60px;
-            font-size: 24px;
-            font-weight: 200;
-            background-color: #280659;
-            text-align: center;
-            text-decoration: none;
-            color: #FFF;
-            cursor: pointer;
-        }
+    .notices {
+      position: relative;
+      background-color: transparent;
+      padding: 0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: auto;
+      word-wrap: break-word;
+      white-space: normal;
+    }
 
-        .intro-section .buttons a:hover {
-            background-color: #FFF;
-            color: #000;
-        }
+    .postit {
+      position: relative;
+      width: 40vh;
+      height: auto;
+      background: url('/postit.svg') no-repeat center center;
+      background-size: cover;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-        .intro-section img {
-            width: 80vh;
-            margin-right: 8vh;
-        }
+    .notices-content {
+      position: absolute;
+      text-align: center;
+      width: 30vh;
+      left: 5vh;
+      top: 2vh;
+    }
 
-        .notices-section {
-            display: flex;
-            flex-direction: column;
-            padding-top: 2vh;
-            width: 90vh;
-            margin-left: 6vh;
-            margin-top: 6vh;
-        }
+    .notices h3 {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 10px;
+      width: 30vh;
+    }
 
-        .boardNoticesContainer {
-            position: relative;
-            background-color: #F54952;
-            padding: 20px;
-            padding-top: 0;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border: 1px solid #341671;
-            box-shadow: 10px 8px 15px #422680;
-            padding-bottom: 5vh;
-        }
+    .notices p {
+      font-size: 14px;
+      font-weight: 300;
+      width: 30vh;
+    }
 
-        .pin {
-            position: absolute;
-            top: -26px;
-            z-index: 2;
-            width: 40px;
-            left: 0vh;
-        }
+    .seta {
+      position: absolute;
+      width: 4vh;
+      height: 4vh;
+      bottom: -0.01vh;
+      left: calc(50% - 10px);
+      cursor: pointer;
+    }
 
-        .boardNotices {
-            position: relative;
-            background-color: #FFF;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-            width: 88vh;
-            padding-left: 0;
-            padding-right: 0;
-            border: 2px solid #000000;
-        }
-
-        .boardNotices.expanded {
-            max-height: 1000px;
-            overflow-y: auto;
-        }
-
-        .notices {
-            position: relative;
-            background-color: transparent;
-            padding: 0;
-            border-radius: 10px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: auto;
-            word-wrap: break-word;
-            white-space: normal;
-        }
-
-        .postit {
-            position: relative;
-            width: 40vh;
-            height: auto;
-            background: url('/postit.svg') no-repeat center center;
-            background-size: cover;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .notices-content {
-            position: absolute;
-            text-align: center;
-            width: 30vh;
-            left: 5vh;
-            top: 2vh;
-        }
-
-        .notices h3 {
-            font-size: 16px;
-            font-weight: 500;
-            margin-bottom: 10px;
-            width: 30vh;
-        }
-
-        .notices p {
-            font-size: 14px;
-            font-weight: 300;
-            width: 30vh;
-        }
-
-        .seta {
-            position: absolute;
-            width: 4vh;
-            height: 4vh;
-            bottom: -0.01vh;
-            left: calc(50% - 10px);
-            cursor: pointer;
-        }
-
-        .notices-section h2 {
-            font-size: 48px;
-            font-weight: 700;
-            color: #660F56;
-            margin: 20px 0;
-            margin-bottom: 5vh;
-        }
-    </style>
+    .notices-section h2 {
+      font-size: 48px;
+      font-weight: 700;
+      color: #660F56;
+      margin: 20px 0;
+      margin-bottom: 5vh;
+    }
+  </style>
 </head>
 
 <body>
-    <header>
-        <nav>
-            <a href="/home">
-                <img src="images/icon-home.svg" alt="Home Icon">
-            </a>
-            <a href="/kanban">
-                <img src="images/icon-kanban.svg" alt="Kanban Icon">
-                <p>Company Kanban's</p>
-            </a>
-            <a href="/myprofile">
-                <img src="images/icon-mysection.svg" alt="My Section Icon">
-                <p>My section</p>
-            </a>
-            <a href="/faq">
-                <img src="images/icon-faq.svg" alt="FAQ Icon">
-                <p>FAQ</p>
-            </a>
-            <% if(user.usertype==="admin" ){ %>
-                <a href="/admin">
-                    <img src="/adm.svg" alt="ADM Icon">
-                    <p>Admin</p>
-                </a>
-                <% } %>
-        </nav>
-    </header>
-    <main>
-        <section class="intro-section">
-            <div class="text">
-                <h1>Welcome</h1>
-                <h2>
-                    <%= user.firstName %>!
-                </h2>
-            </div>
-            <h3>Start collaborating and communicating with your team now!</h3>
-            <img src="images/img-homepage.svg" alt="Homepage Illustration">
-        </section>
+  <header>
+    <nav>
+      <a href="/home">
+        <img src="images/icon-home.svg" alt="Home Icon">
+      </a>
+      <a href="/kanban">
+        <img src="images/icon-kanban.svg" alt="Kanban Icon">
+        <p>Company Kanban's</p>
+      </a>
+      <a href="/myprofile">
+        <img src="images/icon-mysection.svg" alt="My Section Icon">
+        <p>My section</p>
+      </a>
+      <a href="/faq">
+        <img src="images/icon-faq.svg" alt="FAQ Icon">
+        <p>FAQ</p>
+      </a>
+      <% if(user.usertype==="admin" ){ %>
+        <a href="/admin">
+          <img src="/adm.svg" alt="ADM Icon">
+          <p>Admin</p>
+        </a>
+        <% } %>
+    </nav>
+  </header>
+  <main>
+    <section class="intro-section">
+      <div class="text">
+        <h1>Welcome</h1>
+        <h2>
+          <%= user.firstName %>!
+        </h2>
+      </div>
+      <h3>Start collaborating and communicating with your team now!</h3>
+      <img src="images/img-homepage.svg" alt="Homepage Illustration">
+    </section>
 
-        <section class="notices-section">
-            <h2 class="boardNoticesTitle">Notice Board</h2>
-            <div class="boardNoticesContainer">
-                <img src="/pin.svg" alt="Pin" class="pin">
-                <div class="boardNotices" id="notices">
-                    <% notices.forEach(function(notice){ %>
-                        <div class="notices">
-                            <img src="/postit.svg" alt="Post-it" class="postit">
-                            <div class="notices-content">
-                                <h3>
-                                    <strong><%= notice.title %></strong>
-                                </h3>
-                                <p>
-                                    <%= notice.description %>
-                                </p>
-                            </div>
-                        </div>
-                        <% }) %>
-                </div>
-                <img src="/seta.svg" alt="Expand Button" class="seta" id="expandButton">
+    <section class="notices-section">
+      <h2 class="boardNoticesTitle">Notice Board</h2>
+      <div class="boardNoticesContainer">
+        <img src="/pin.svg" alt="Pin" class="pin">
+        <div class="boardNotices" id="notices">
+          <% notices.forEach(function(notice){ %>
+            <div class="notices">
+              <img src="/postit.svg" alt="Post-it" class="postit">
+              <div class="notices-content">
+                <h3>
+                  <strong>
+                    <%= notice.title %>
+                  </strong>
+                </h3>
+                <p>
+                  <%= notice.description %>
+                </p>
+              </div>
             </div>
-        </section>
-    </main>
+            <% }) %>
+        </div>
+        <img src="/seta.svg" alt="Expand Button" class="seta" id="expandButton">
+      </div>
+    </section>
+  </main>
 </body>
 
 <script>
-    document.getElementById('expandButton').addEventListener('click', function () {
-        const notices = document.getElementById('notices');
-        notices.classList.toggle('expanded');
-        const expandButton = document.getElementById('expandButton');
-        if (notices.classList.contains('expanded')) {
-            expandButton.src = '/seta-up.svg';
-        } else {
-            expandButton.src = '/seta.svg';
-        }
-    });
+  document.getElementById('expandButton').addEventListener('click', function () {
+    const notices = document.getElementById('notices');
+    notices.classList.toggle('expanded');
+    const expandButton = document.getElementById('expandButton');
+    if (notices.classList.contains('expanded')) {
+      expandButton.src = '/seta-up.svg';
+    } else {
+      expandButton.src = '/seta.svg';
+    }
+  });
 </script>
 
 </html>
