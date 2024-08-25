@@ -2,429 +2,572 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <style>
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-thin.woff') format('woff'),
-                url('/fonts/gotham/gotham-thin.ttf') format('truetype');
-            font-weight: 100;
-            /* Thin */
-            font-style: normal;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile and Kanbans</title>
+  <!-- Import Bootstrap 5 CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body,
+    html {
+      font-family: sans-serif;
+      overflow: auto;
+      /* or remove overflow property if set to hidden */
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-extralight.woff') format('woff'),
-                url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
-            font-weight: 200;
-            /* ExtraLight */
-            font-style: normal;
-        }
+    .header {
+      height: 5rem;
+      background-color: #280659;
+      display: flex;
+      align-items: center;
+      padding-left: 40px;
+      padding-right: 40px;
+      font-size: 24px;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-light.woff') format('woff'),
-                url('/fonts/gotham/gotham-light.ttf') format('truetype');
-            font-weight: 300;
-            /* Light */
-            font-style: normal;
-        }
+    .header-nav {
+      display: flex;
+      flex-direction: row;
+      height: 100%;
+      width: 100%;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-book.woff') format('woff'),
-                url('/fonts/gotham/gotham-book.ttf') format('truetype');
-            font-weight: 400;
-            /* Book */
-            font-style: normal;
-        }
+    .header-nav a {
+      display: flex;
+      align-items: center;
+      padding: 5px 15px;
+      text-decoration: none;
+      color: #FFF;
+      gap: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      font-weight: 400;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-medium.woff') format('woff'),
-                url('/fonts/gotham/gotham-medium.ttf') format('truetype');
-            font-weight: 500;
-            /* Medium */
-            font-style: normal;
-        }
+    .header-nav a:hover {
+      background-color: #F54952;
+      color: #FFF;
+      border-radius: 8px;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-bold.woff') format('woff'),
-                url('/fonts/gotham/gotham-bold.ttf') format('truetype');
-            font-weight: 700;
-            /* Bold */
-            font-style: normal;
-        }
+    .header-nav p {
+      margin: 0;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-black.woff') format('woff'),
-                url('/fonts/gotham/gotham-black.ttf') format('truetype');
-            font-weight: 900;
-            /* Black */
-            font-style: normal;
-        }
+    .section-title,
+    .team-title,
+    .titleKanban h1 {
+      color: #660F56;
+      font-size: 32px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
 
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
-                url('/fonts/gotham/gotham-ultra.woff') format('woff'),
-                url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
-            font-weight: 950;
-            /* Ultra */
-            font-style: normal;
-        }
+    .user-card,
+    .team-section,
+    .lista-kanban {
+      background-color: #AE2D68;
+      border-radius: 40px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
 
-        body {
-            font-family: 'Gotham', sans-serif;
-            margin: 0;
-            padding: 0;
-            overflow: visible;
-            min-height: 100vh;
-        }
+    .user-card .card,
+    .team-card .card {
+      margin-top: 20px;
+      text-align: center;
+    }
 
-        html,
-        body {
-            overflow: auto;
-        }
+    .user-card .profilei,
+    .team-card img {
+      border-radius: 50%;
+      border: 5px solid #341671;
+      object-fit: cover;
+    }
 
-        .header {
-            height: 5rem;
-            background-color: #280659;
-            display: flex;
-            align-items: center;
-            padding-left: 40px;
-            padding-right: 40px;
-            font-size: 24px;
-        }
+    .user-card .profilei {
+      width: 200px;
+      height: 200px;
+    }
 
-        .header-nav {
-            display: flex;
-            flex-direction: row;
-            height: 100%;
-            width: 100%;
-            flex-wrap: nowrap;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .user-card .image {
+      display: flex;
+      justify-content: center;
+      margin-top: -30px;
+    }
 
-        .header-nav a {
-            display: flex;
-            align-items: center;
-            padding: 5px 15px;
-            text-decoration: none;
-            color: #FFF;
-            gap: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-weight: 400;
-        }
+    .user-card .image button {
+      height: 40px;
+      width: 40px;
+      margin-left: -20px;
+      border-color: transparent;
+      border-radius: 20%;
+      background-color: #341671;
+      z-index: 3;
+      transition: scale 0.4s ease;
+    }
 
-        .header-nav a:hover {
-            background-color: #F54952;
-            color: #FFF;
-            border-radius: 8px;
-        }
+    .user-card .image button:hover {
+      scale: 1.05;
+    }
 
-        .header-nav p {
-            margin: 0;
-        }
+    .team-card {
+      background-color: #fff;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      text-align: center;
+      padding: 20px;
+    }
 
-        .main {
-            padding: 50px 40px;
-        }
+    .team-card:hover {
+      transform: scale(1.05);
+    }
 
-        .section-title {
-            color: #660F56;
-            font-size: 48px;
-            font-weight: 500;
-            margin-bottom: 20px;
-            text-align: left;
-            width: 100%;
-            font-weight: 400;
-        }
+    .team-card img {
+      width: 100px;
+      height: 100px;
+      margin-top: -50px;
+      margin-bottom: 10px;
+    }
 
-        .user-info {
-            display: flex;
-            flex-direction: column;
-            margin-left: 5vh;
-        }
+    .team-card p {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 300;
+      color: #000000;
+    }
 
-        .user-card {
-            background-color: #AE2D68;
-            border-radius: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            justify-content: center;
-            transition: transform 0.3s ease;
-            width: 800px;
-            height: 90vh;
-            overflow: visible;
-            padding: 0
-        }
+    .team-card .role {
+      font-size: 18px;
+      color: #660F56;
+      font-weight: 500;
+    }
 
-        .user-card .cardd {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin-top: 70px
-        }
+    .lista-kanban {
+      max-height: 100vh;
+      overflow-y: auto;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-around;
+      align-content: flex-start;
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
 
-        .user-card p {
-            color: #E9ECEF;
-            font-family: 'Gotham';
-            font-size: 32px;
-            font-weight: 400;
-            margin: 0
-        }
+    .card-kanban {
+      width: 260px;
+      height: 290px;
+      border-radius: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      transition: transform 0.3s ease;
+      text-align: center;
+      position: relative;
+      cursor: pointer;
+      margin-bottom: 20px;
+      background-color: #fff;
+    }
 
-        .image {
-            display: flex;
-            align-items: baseline;
-            margin-top: -30px
-        }
+    .card-kanban h2 {
+      font-size: 20px;
+      margin: 0;
+      color: #000;
+      padding-top: 160px;
+    }
 
-        .profilei {
-            border-radius: 50%;
-            border: 1vh solid #341671;
-            width: 400px;
-            height: 400px;
-            object-fit: cover;
-            margin-bottom: 15px;
-            position: relative;
-            top: 0vh;
-        }
+    .card-kanban .card-icon {
+      background-color: #3E206D;
+      border-radius: 50%;
+      width: 90px;
+      height: 90px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      top: 70px;
+      left: calc(50% - 45px);
+    }
 
-        .image button {
-            height: 80px;
-            width: 100%;
-            margin-left: -100px;
-            border-color: transparent;
-            border-radius: 20%;
-            background-color: #341671;
-            z-index: 3;
-            transition: scale 0.4 ease;
-        }
+    .card-kanban .card-icon img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
 
-        .image button:hover {
-            scale: 1.05;
-        }
+    .card-kanban .top-section {
+      background-color: #F94144;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      height: 50%;
+      position: relative;
+    }
 
-        .square {
-            background-color: #341671;
-            color: transparent;
-            height: 2px;
-            width: 150%;
+    .card-kanban:hover {
+      transform: scale(1.05);
+    }
 
-        }
+    /* Estilo do Chat */
+    .chat-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+    }
 
-        .image button img {
-            height: 75%;
-            width: 83%;
-        }
+    .chat-button {
+      background-color: #F54952;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      border: none;
+      color: white;
+      font-size: 28px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
 
+    .chat {
+      background-color: #F54952;
+      width: 500px;
+      height: 680px;
+      border-radius: 15px;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+      position: fixed;
+      bottom: 100px;
+      right: 20px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      display: none;
+    }
 
-        .user-name {
-            display: flex;
-            gap: 8px
-        }
+    .chat p {
+      font-size: 28px;
+      font-weight: 400;
+      color: white;
+      align-self: center;
+      margin: 0;
+      padding-top: 15px;
+    }
 
-        .team {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 50px;
-            flex-direction: column;
-            margin-right: 5vh;
-        }
+    .messages {
+      display: flex;
+      flex-direction: column;
+      margin-top: 15px;
+      margin-bottom: 80px;
+    }
 
-        .team-title {
-            color: #660F56;
-            font-size: 48px;
-            font-weight: 500;
-            margin-bottom: 20px;
-            text-align: left;
-            width: 100%;
-            text-shadow:
-                2px 2px 0 #280659,
-                -1px -1px 0 #280659,
-                1px -1px 0 #280659,
-                -1px 1px 0 #280659;
-        }
+    /* Balões de mensagem */
+    .messages .message {
+      background-color: #fff;
+      border-radius: 15px;
+      padding: 10px 15px;
+      margin: 10px 0;
+      position: relative;
+      min-width: 70%;
+      max-width: 80%;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-        .team-section {
-            padding: 40px;
-            background-color: #AE2D68;
-            border-radius: 40px;
-            display: inline-block;
-        }
+    .messages .message::before {
+      content: '';
+      position: absolute;
+      border-width: 10px;
+      border-style: solid;
+      display: block;
+    }
 
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 8vh;
-            justify-items: center;
-            margin-top: 5vh;
-        }
+    .messages .left {
+      align-self: flex-start;
+      margin-left: 10px;
+    }
 
-        .team-card {
-            background-color: #fff;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: transform 0.3s ease;
-            width: 37vh;
-            height: 25vh;
-            margin-top: 5vh;
-            overflow: visible;
-        }
+    .messages .left::before {
+      border-color: transparent #fff transparent transparent;
+      left: -16.5px;
+      top: 15px;
+    }
 
-        .team-card:hover {
-            transform: scale(1.05);
-        }
+    .messages .right {
+      align-self: flex-end;
+      margin-right: 10px;
+    }
 
-        .team-card img {
-            border-radius: 50%;
-            border: 1vh solid #341671;
-            width: 200px;
-            height: 200px;
-            object-fit: cover;
-            margin-bottom: -30px;
-            position: relative;
-            top: -8vh;
-        }
+    .messages .right::before {
+      border-color: transparent transparent transparent #fff;
+      right: -16.5px;
+      top: 15px;
+    }
 
-        .team-card p {
-            margin: 0;
-            font-size: 20px;
-            font-weight: 300;
-            color: #000000;
-            text-align: center;
-            text-shadow:
-                1px 1px 0 #280659,
-                -1px -1px 0 #280659,
-                1px -1px 0 #280659,
-                -1px 1px 0 #280659;
-        }
+    .line {
+      margin-top: 10px;
+      background-color: #280659;
+      height: 10px;
+    }
 
-        .team-card .role {
-            font-size: 20px;
-            color: #660F56;
-            font-weight: 500;
-        }
+    /* Estilo para o campo de mensagem */
+    .my-message {
+      display: flex;
+      align-items: center;
+      padding: 10px 15px;
+      background-color: #FFFFFF;
+      border: 2px solid #280659;
+      border-radius: 13px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+      position: absolute;
+      justify-content: space-between;
+      bottom: 0;
+      left: 0;
+    }
 
-        .team-card a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: inherit;
-            /* Herda a cor do texto */
-        }
-        .upload{
-            cursor: pointer
-        }
-    </style>
+    .my-message input {
+      border: none;
+    }
+
+    .my-message p {
+      margin: 0;
+      padding-right: 15px;
+      font-size: 34px;
+      color: #A9A9A9;
+      flex-grow: 1;
+    }
+
+    .my-message input {
+      width: 100%;
+      height: 100%;
+      outline: none;
+    }
+
+    .my-message .icon-send {
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .my-message .icon-send:hover {
+      transform: scale(1.1);
+    }
+
+    .my-message .icon-send:active {
+      transform: scale(0.9);
+    }
+  </style>
 </head>
 
 <body>
-    <header class="header">
-        <nav class="header-nav">
-            <a>
-                <img src="images/icon-home.svg" alt="">
-            </a>
-            <a>
-                <img src="images/icon-list.svg" alt="Descrição do SVG">
-                <p>Collaboration Form</p>
-            </a>
-            <a href="/kanban">
-                <img src="images/icon-kanban.svg" alt="Descrição do SVG">
-                <p>Company Kanban's</p>
-            </a>
-            <a href="/myprofile">
-                <img src="images/icon-mysection.svg" alt="Descrição do SVG">
-                <p>My section</p>
-            </a>
-            <a>
-                <img src="images/icon-faq.svg" alt="Descrição do SVG">
-                <p>FAQ</p>
-            </a>
-        </nav>
-    </header>
+  <header class="header">
+    <nav class="header-nav">
+      <a href="/home">
+        <img src="images/icon-home.svg" alt="Home Icon">
+      </a>
+      <a href="/myprofile">
+        <img src="images/icon-mysection.svg" alt="My Section Icon">
+        <p>Work Station</p>
+      </a>
+      <a href="/faq">
+        <img src="images/icon-faq.svg" alt="FAQ Icon">
+        <p>FAQ</p>
+      </a>
+      <% if(user.usertype==="admin" ){ %>
+        <a href="/admin">
+          <img src="/adm.svg" alt="ADM Icon">
+          <p>Admin</p>
+        </a>
+        <% } %>
+        <a href="/logout">
+          <img src="images/logout.svg" alt="Logout icon">
+          <p>Logout</p>
+        </a>
+    </nav>
+  </header>
 
-    <main class="main">
-        <!-- Título "My section" alinhado à esquerda -->
-        <div class="user-info">
+  <main class="container my-5">
+    <div class="row justify-content-between">
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-12">
             <h3 class="section-title">My section</h3>
-            <div class="user-card">
-                <div class="image">
-                    <img class="profilei" src="path_to_image/<%= user.image %>">
-                    <button class="upload">
-                        <img src="images/icon-upload.svg" alt="Upload" />
-                    </button>
-                </div>
-                <div class="cardd">
-                    <p>
-                        <%= user.firstName %>
-                            <%= user.lastName %>
-                    </p>
-                    <div class="square">-</div>
-                    <p>
-                        <%= user.email %>
-                    </p>
-                    <div class="square">-</div>
-                    <p class="role">
-                        <%= user.role %>
-                    </p>
-                    <div class="square">-</div>
-                </div>
+            <div class="user-card text-center">
+              <div class="image text-center">
+                <img class="profilei" src="<%= user.photo || '/images/default-profile.png' %>">
+                <form id="updatePhotoForm" action="/user/update-photo" method="POST" enctype="multipart/form-data"
+                  style="display: inline;">
+                  <input type="file" id="photoInput" name="photo" accept="image/jpeg, image/png, image/gif"
+                    style="display: none;">
+                  <button type="button" class="upload" id="uploadButton">
+                    <img src="images/icon-upload.svg" alt="Upload" />
+                  </button>
+                </form>
+              </div>
+              <div class="card">
+                <h2>
+                  <%= user.firstName %>
+                    <%= user.lastName %>
+                </h2>
+                <h2>
+                  <%= user.email %>
+                </h2>
+                <h2 class="role">
+                  <%= user.role %>
+                </h2>
+              </div>
             </div>
-        </div>
-
-        <!-- Seção do time com o título e a área da equipe -->
-        <div class="team">
-            <!-- Título "My team" centralizado acima da parte roxa -->
+          </div>
+          <div class="col-12 mt-4">
             <h3 class="team-title">My team</h3>
-
-            <!-- Seção da equipe -->
             <div class="team-section">
-                <div class="team-grid">
-                    <% coworkers.forEach(function(coworker){ %>
-                        <% if(coworker.id===user.id){ return; } %>
-                            <div class="team-card">
-                                <a href="/profile/<%= coworker.id %>">
-                                    <img src="path_to_image/<%= coworker.image %>">
-                                    <p>
-                                        <%= coworker.firstName %>
-                                            <%= coworker.lastName %>
-                                    </p>
-                                    <p class="role">
-                                        <%= coworker.role %>
-                                    </p>
-                                </a>
-                            </div>
-                            <% }) %>
-                </div>
+              <div class="row gy-4">
+                <% coworkers.forEach(function(coworker){ %>
+                  <% if(coworker.id===user.id){ return; } %>
+                    <div class="col-6">
+                      <div class="team-card">
+                        <img src="<%= coworker.photo || '/images/default-profile.png' %>"
+                          alt="<%= coworker.firstName %> <%= coworker.lastName %>">
+                        <p>
+                          <%= coworker.firstName %>
+                            <%= coworker.lastName %>
+                        </p>
+                        <p class="role">
+                          <%= coworker.role %>
+                        </p>
+                      </div>
+                    </div>
+                    <% }) %>
+              </div>
             </div>
+          </div>
         </div>
-    </main>
+      </div>
+      <div class="col-md-6">
+        <div class="titleKanban">
+          <h1>Your Boards</h1>
+        </div>
+        <section class="lista-kanban">
+          <% boards.forEach(function(board) { %>
+            <div class="card-kanban" onclick="window.location.href='/board/<%= board.id %>'">
+              <div class="top-section"></div>
+              <div class="card-icon">
+                <img src="/images/group.svg" alt="Group Icon">
+              </div>
+              <h2>
+                <%= board.name %>
+              </h2>
+            </div>
+            <% }); %>
+        </section>
+      </div>
+    </div>
+  </main>
+
+  <div class="chat-container">
+    <button id="chat-toggle-btn" class="chat-button">💬</button>
+    <div id="chat-box" class="chat" style="display: block;">
+      <p>CHAT</p>
+      <div class="line"></div>
+      <div class="messages" id="chat-messages"></div>
+      <div class="my-message">
+        <input type="text" id="chat-input" placeholder="Type your message here...">
+        <img class="icon-send" src="images/icon-send.svg" id="send-message-btn" alt="Send">
+      </div>
+    </div>
+  </div>
+
+  <!-- SuperViz SDK -->
+  <script type="module">
+    import SuperVizRoom from "https://unpkg.com/@superviz/sdk@latest";
+    import { Realtime, RealtimeComponentEvent, RealtimeComponentState } from "https://unpkg.com/@superviz/sdk@latest";
+
+    let room;
+    let channel;
+
+    async function initializeRoom(roomId, companyId, roomName, userId, userName) {
+      console.log("Room id: ", roomId);
+      console.log("Company id: ", companyId);
+      console.log("Room name: ", roomName);
+      console.log("User id: ", userId);
+      console.log("User name: ", userName);
+      try {
+        room = await SuperVizRoom('3fnmikwkbpy2hwt2c0ppqxd3zucpgz', {
+          roomId: roomId,
+          group: {
+            id: companyId,
+            name: roomName,
+          },
+          participant: {
+            id: userId,
+            name: userName,
+          },
+        });
+
+        const realtime = new Realtime();
+        room.addComponent(realtime);
+        realtime.subscribe(RealtimeComponentEvent.REALTIME_STATE_CHANGED, (state) => {
+          if (state === RealtimeComponentState.STARTED) {
+            channel = realtime.connect('chat');
+            channel.subscribe('message', displayMessage);
+          }
+        });
+
+        console.log("Room initialized successfully.");
+      } catch (error) {
+        console.error('Error initializing room:', error);
+        alert('Failed to initialize the room.');
+      }
+    }
+
+    function displayMessage(message) {
+      const chatMessages = document.getElementById('chat-messages');
+      const messageElement = document.createElement('div');
+      messageElement.className = message.data.sender === "<%= user.firstName%> <%= user.lastName%>" ? "message right" : "message left";
+      messageElement.innerHTML = `<div>${message.data.sender}</div><div>${message.data.text}</div>`;
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight; // Auto-scroll to the bottom
+    }
+
+    document.getElementById('send-message-btn').addEventListener('click', () => {
+      const chatInput = document.getElementById('chat-input');
+      const message = chatInput.value;
+      if (channel && message) {
+        channel.publish('message', { sender: "<%= user.firstName%> <%= user.lastName%>", text: message });
+        chatInput.value = '';
+      }
+    });
+
+    document.getElementById('chat-toggle-btn').addEventListener('click', () => {
+      const chatBox = document.getElementById('chat-box');
+      chatBox.style.display = chatBox.style.display === 'none' || chatBox.style.display === '' ? 'block' : 'none';
+    });
+
+    // Initialize the room on page load
+    window.addEventListener('load', () => {
+      initializeRoom('<%= company.roomId%>', '<%= company.id %>', '<%= company.name %>', '<%= userId %>', '<%= user.firstName %>');
+    });
+  </script>
+
+
 </body>
+
+<script>
+  document.getElementById('uploadButton').addEventListener('click', function () {
+    document.getElementById('photoInput').click();
+  });
+
+  document.getElementById('photoInput').addEventListener('change', function () {
+    document.getElementById('updatePhotoForm').submit();
+  });
+</script>
 
 </html>

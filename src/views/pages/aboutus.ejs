@@ -62,7 +62,8 @@
 
     .infos .home,
     .infos .about,
-    .infos .contact {
+    .infos .contact,
+    .infos .adm {
         display: flex;
         align-items: center;
         background-color: transparent;
@@ -77,13 +78,15 @@
 
     .infos .home:hover,
     .infos .about:hover,
+    .infos .contact:hover,
     .infos .contact:hover {
         text-decoration: underline;
     }
 
     .infos .home .icon,
     .infos .about .icon,
-    .infos .contact .icon {
+    .infos .contact .icon,
+    .infos .adm .icon {
         margin-right: 8px;
     }
 
@@ -237,8 +240,8 @@
         gap: 1rem;
         height: 30%;
         padding: 0;
-        margin-top: -6rem;
         margin-bottom: -4rem;
+
     }
 
     .seção-textoImg {
@@ -247,6 +250,7 @@
         justify-content: space-around;
         align-items: center;
         padding: 1rem 0 1rem 0;
+        margin-top: 3rem;
     }
 
     .texto>h3 {
