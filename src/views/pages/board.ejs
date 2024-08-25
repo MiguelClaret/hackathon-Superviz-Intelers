@@ -405,26 +405,28 @@
 <body>
   <header>
     <nav>
-      <a>
-        <img src="/images/icon-home.svg" alt="">
+      <a href="/home">
+          <img src="images/icon-home.svg" alt="Home Icon">
       </a>
       <a href="/kanban">
-        <img src="/images/icon-home.svg" alt="Descrição do SVG">
-        <p>Company Kanban's</p>
+          <img src="images/icon-kanban.svg" alt="Kanban Icon">
+          <p>Company Kanban's</p>
       </a>
-      <a>
-        <img src="/images/icon-home.svg" alt="Descrição do SVG">
-        <p>My section</p>
+      <a href="/myprofile">
+          <img src="images/icon-mysection.svg" alt="My Section Icon">
+          <p>My section</p>
       </a>
-      <a>
-        <img src="/images/icon-home.svg" alt="Descrição do SVG">
-        <p>FAQ</p>
+      <a href="/faq">
+          <img src="images/icon-faq.svg" alt="FAQ Icon">
+          <p>FAQ</p>
       </a>
+      <% if(user.usertype === "admin"){ %>
       <a href="/admin">
-        <img src="/adm.svg" alt="ADM Icon">
-        <p>Admin</p>
-    </a>
-    </nav>
+          <img src="/adm.svg" alt="ADM Icon">
+          <p>Admin</p>
+      </a>
+      <% } %>
+  </nav>
   </header>
 
   <div class="titleKanban" id="titleKanban">
