@@ -145,7 +145,7 @@ module.exports.bootstrap = async function() {
   await User.create({
     email: 'mark@meta.com',
     password: await sails.helpers.hashPassword('123'),
-    companyId: 3,
+    companyId: 1,
     firstName: 'Miguel',
     lastName: 'Claret',
     usertype: 'admin',
@@ -154,7 +154,7 @@ module.exports.bootstrap = async function() {
   await User.create({
     email: 'thaly@meta.com',
     password: await sails.helpers.hashPassword('123'),
-    companyId: 3,
+    companyId: 1,
     firstName: 'Thalyta',
     lastName: 'Viana',
     usertype: 'employee',
@@ -162,7 +162,7 @@ module.exports.bootstrap = async function() {
   await User.create({
     email: 'otavio@meta.com',
     password: await sails.helpers.hashPassword('123'),
-    companyId: 3,
+    companyId: 1,
     firstName: 'Otavio',
     lastName: 'Vasconcelos',
     usertype: 'employee',
