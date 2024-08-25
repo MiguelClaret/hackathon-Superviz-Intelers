@@ -17,7 +17,12 @@ module.exports = {
     notices: {
       collection: 'notice',
       via: 'companyId' // Corrigido para "companyId"
-    }
+    },
+
+    roomId: {
+      type: 'string',
+      allowNull: true, // To allow boards without an initial roomId
+    },
   }
-  
+
 };

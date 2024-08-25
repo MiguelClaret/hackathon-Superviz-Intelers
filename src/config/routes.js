@@ -23,7 +23,7 @@ module.exports.routes = {
   '/home': 'CompanyController.showNotices',
   '/aboutus': { view: 'pages/aboutus' },
   '/faq': { view: 'pages/faq' },
-  
+
 
   // User auth
   'GET /login': { view: 'pages/login' },
@@ -55,7 +55,8 @@ module.exports.routes = {
 
   // profiles
 
-  '/myprofile': 'UserController.getCurrentUser'
+  '/myprofile': 'UserController.getCurrentUser',
+  '/user/update-photo': 'UserController.updatePhoto'
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *
