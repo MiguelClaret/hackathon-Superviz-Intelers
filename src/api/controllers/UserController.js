@@ -6,6 +6,7 @@
  */
 
 const cloudinary = require('../../config/cloudinary');
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = {
   signup: async function (req, res) {
@@ -114,21 +115,44 @@ module.exports = {
 
   getCurrentUser: async function (req, res) {
     try {
-      const userId = req.session.userId;
+      let userId = req.session.userId;
       if (!userId) {
         return res.redirect('/login');
       }
 
       const user = await User.findOne({ id: userId });
+      sails.log.debug('user:', user)
 
-      const company = await Company.find({ id: user.companyId });
+      let company = await Company.findOne({ id: user.companyId });
+      sails.log.debug('company:', company)
+
 
       const coworkers = await User.find({ companyId: user.companyId });
 
       const boards = await Board.find({ companyId: user.companyId });
 
+      // Check if the board already has a roomId
+      let roomId = company.roomId;
+      sails.log.debug('company roomid 1:', roomId)
+      if (!roomId) {
+        // Generate a new roomId using the logic from your MeetingController#create
+        roomId = uuidv4();
 
-      return res.view('pages/profile', { user, company, coworkers, boards });
+        // Create a new room associated with this company
+        await Room.create({
+          id: roomId,
+          name: `Room for ${company.name}`,
+          companyId: user.companyId // Associate with the company's company
+        });
+
+        // Update the company with the new roomId
+        company = await Company.updateOne({ id: user.companyId }).set({ roomId });
+        sails.log.debug('company roomid 2:', company.roomId)
+      }
+
+      userId = `user-${userId}`;
+
+      return res.view('pages/profile', { user, company, coworkers, boards, userId });
     } catch (error) {
       return res.status(500).json({
         error: 'An error occurred during the process ',
@@ -144,7 +168,7 @@ module.exports = {
 
     try {
       // Handle file upload
-      req.file('photo').upload(
+        req.file('photo').upload(
         {
           maxBytes: 10000000, // Limit file size to 10MB
         },
