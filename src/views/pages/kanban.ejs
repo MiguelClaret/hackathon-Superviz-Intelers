@@ -71,7 +71,7 @@
             flex-wrap: wrap;
             align-items: flex-start;
             padding-top: 30px;
-            
+
         }
 
         .lista-kanban button {
@@ -185,7 +185,7 @@
         }
 
         .card-icon img {
-            width: 50px;  
+            width: 50px;
             height: 50px;
             object-fit: contain;  /* Garante que a imagem se ajuste ao container */
             }
@@ -235,34 +235,10 @@
             </button>
             <% }); %>
           </section>
-        
+
         </section>
     </main>
 
-
-    <script>
-        var modal = document.getElementById("boardModal");
-        var openModalBtn = document.getElementById("openModalBtn");
-        var closeBtn = document.getElementsByClassName("close")[0];
-
-
-        // Abre o modal quando o usuário clica no botão
-        openModalBtn.onclick = function () {
-            modal.style.display = "block";
-        }
-
-        // Fecha o modal quando o usuário clica no X
-        closeBtn.onclick = function () {
-            modal.style.display = "none";
-        }
-
-        // Fecha o modal quando o usuário clica fora dele
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    </script>
 </body>
 
 </html>

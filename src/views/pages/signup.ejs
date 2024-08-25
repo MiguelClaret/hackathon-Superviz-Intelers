@@ -215,7 +215,7 @@
             width: 50%;
             font-size: 24px;
             margin-top: 10px;
-            margin-bottom: 20px; 
+            margin-bottom: 20px;
             margin-right: 0px;
             margin-left: 100px;
             font-weight: 700;
@@ -256,7 +256,7 @@
             outline: none;
             border-color: #F54952;
         }
-        
+
         #registerForm div {
             color: #F1F3F5;
         }
@@ -272,43 +272,49 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="text-section">
-            <h1>Start <span>collaborating</span><br> with us</h1>
-            <img src="/loginDeco.svg" alt="Illustration" class="loginDeco">
-        </div>
-        <div class="formulario">
-            <h2>Sign up</h2>
-            <div class="form-container">
-                <form id="registerForm" action="/signup" method="POST">
-                    <input type="text" id="firstName" name="firstName" placeholder="*Name" required>
-                    <input type="text" id="lastName" name="lastName" placeholder="*Surname" required>
-                    <input type="email" id="email" name="email" placeholder="*E-mail" required>
-                    <input type="password" id="password" name="password" placeholder="*Password" required>
-                    <input type="password" id="confirm-password" name="confirm-password" placeholder="*Confirm your password" required>
-                    <input type="hidden" id="role" name="role" value="default">
-                    <input type="hidden" id="userType" name="userType" value="employee">
-                    <label for="companyId">Company:</label>
-                    <select id="companyId" name="companyId" required>
-                      <% companies.forEach(company => { %>
-                        <option value="<%= company.id %>"><%= company.name %></option>
-                      <% }); %>
-                    </select><br>
-                    <div>Already have an account? <a href="/login" target="_blank">Log in</a></div>
-                    <input type="submit" class="login" value="Sign up">
-                </form>
-            </div>
-        </div>
-    </div>
-    <script>
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            var password = document.getElementById('password').value;
-            var confirmPassword = document.getElementById('confirm-password').value;
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                event.preventDefault();
-            }
-        });
-    </script>
+  <div class="container">
+      <div class="text-section">
+          <h1>Start <span>collaborating</span><br> with us</h1>
+          <img src="/loginDeco.svg" alt="Illustration" class="loginDeco">
+      </div>
+      <div class="formulario">
+          <h2>Sign up</h2>
+          <div class="form-container">
+              <form id="registerForm" action="/signup" method="POST" enctype="multipart/form-data">
+                  <input type="text" id="firstName" name="firstName" placeholder="*Name" required>
+                  <input type="text" id="lastName" name="lastName" placeholder="*Surname" required>
+                  <input type="email" id="email" name="email" placeholder="*E-mail" required>
+                  <input type="password" id="password" name="password" placeholder="*Password" required>
+                  <input type="password" id="confirm-password" name="confirm-password" placeholder="*Confirm your password" required>
+                  <input type="hidden" id="role" name="role" value="default">
+                  <input type="hidden" id="userType" name="userType" value="employee">
+
+                  <label for="companyId">Company:</label>
+                  <select id="companyId" name="companyId" required>
+                    <% companies.forEach(company => { %>
+                      <option value="<%= company.id %>"><%= company.name %></option>
+                    <% }); %>
+                  </select><br>
+
+                  <label for="photo">Upload Profile Photo:</label>
+                  <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/gif">
+
+                  <div>Already have an account? <a href="/login" target="_blank">Log in</a></div>
+                  <input type="submit" class="login" value="Sign up">
+              </form>
+          </div>
+      </div>
+  </div>
+  <script>
+      document.getElementById('registerForm').addEventListener('submit', function(event) {
+          var password = document.getElementById('password').value;
+          var confirmPassword = document.getElementById('confirm-password').value;
+          if (password !== confirmPassword) {
+              alert('Passwords do not match.');
+              event.preventDefault();
+          }
+      });
+  </script>
 </body>
+
 </html>

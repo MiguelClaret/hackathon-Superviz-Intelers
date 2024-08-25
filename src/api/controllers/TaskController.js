@@ -92,7 +92,7 @@ module.exports = {
 
       const users = await User.find({ companyId: user.companyId })
 
-      return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId, userId, userName, roomId, users });
+      return res.view('pages/board/', { tasks, board, companyUser, boardId: selectedBoardId, userId, user, userName, roomId, users });
     } catch (error) {
       return res.status(500).json({ error: 'Error fetching tasks' });
     }
