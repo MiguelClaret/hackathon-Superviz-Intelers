@@ -73,15 +73,10 @@
 
 /* Estilo global */
 body {
-    font-family: 'Gotham';
+    font-family: 'Gotham', sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
-}
-
-main {
-    display: flex;
-    justify-content: space-between;
 }
 
 header {
@@ -127,12 +122,6 @@ header nav p {
     margin-block-end: 0;
 }
 
-section {
-    display: flex;
-    flex-direction: column;
-    padding: 200px;
-    padding-top: 50px;
-}
 
 section .text {
     display: flex;
@@ -146,14 +135,6 @@ section .text h1 {
     margin: 0;
 }
 
-section .text h2 {
-    margin: 0;
-    margin-left: 8px;
-    font-size: 48px;
-    text-transform: uppercase;
-    color: #660F56;
-    font-weight: 700;
-}
 
 h3 {
     margin: 0;
@@ -193,32 +174,7 @@ section .buttons a:hover {
     color: #000;
 }
 
-section img {
-    height: 282px;
-}
 
-/* Estilo do Chat */
-.chat {
-    background-color: #F54952;
-    width: 500px;
-    height: 680px;
-    border-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    position: relative;
-}
-
-.chat p {
-    font-size: 28px;
-    font-weight: 400;
-    color: white;
-    align-self: center;
-    margin: 0;
-    padding-top: 15px;
-}
 
 .messages {
     display: flex;

@@ -12,6 +12,7 @@
                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
             font-weight: 100;
+            /* Thin */
             font-style: normal;
         }
 
@@ -21,6 +22,7 @@
                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
             font-weight: 200;
+            /* ExtraLight */
             font-style: normal;
         }
 
@@ -30,6 +32,7 @@
                 url('/fonts/gotham/gotham-light.woff') format('woff'),
                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
             font-weight: 300;
+            /* Light */
             font-style: normal;
         }
 
@@ -39,6 +42,7 @@
                 url('/fonts/gotham/gotham-book.woff') format('woff'),
                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
             font-weight: 400;
+            /* Book */
             font-style: normal;
         }
 
@@ -48,6 +52,7 @@
                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
             font-weight: 500;
+            /* Medium */
             font-style: normal;
         }
 
@@ -57,6 +62,7 @@
                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
             font-weight: 700;
+            /* Bold */
             font-style: normal;
         }
 
@@ -66,6 +72,7 @@
                 url('/fonts/gotham/gotham-black.woff') format('woff'),
                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
             font-weight: 900;
+            /* Black */
             font-style: normal;
         }
 
@@ -75,20 +82,26 @@
                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
             font-weight: 950;
+            /* Ultra */
             font-style: normal;
         }
 
-        /* Estilo global */
         body {
             font-family: 'Gotham', sans-serif;
             margin: 0;
             padding: 0;
             overflow: hidden;
+            box-sizing: border-box;
+        }
+
+        * {
+            box-sizing: inherit;
         }
 
         main {
             display: flex;
             justify-content: space-between;
+            padding: 40px;
         }
 
         header {
@@ -129,31 +142,28 @@
             border-radius: 8px;
         }
 
-        header nav p {
-            margin-block-start: 0;
-            margin-block-end: 0;
-        }
-
-        section {
+        .intro-section {
             display: flex;
             flex-direction: column;
-            padding: 200px;
-            padding-top: 50px;
+            padding-top: 2vh;
+            width: 90vh;
+            margin-left: 6vh;
+            margin-top: 6vh;
         }
 
-        section .text {
+        .intro-section .text {
             display: flex;
             flex-direction: row;
         }
 
-        section .text h1 {
+        .intro-section .text h1 {
             color: #341671;
             font-size: 48px;
             font-weight: 300;
             margin: 0;
         }
 
-        section .text h2 {
+        .intro-section .text h2 {
             margin: 0;
             margin-left: 8px;
             font-size: 48px;
@@ -162,7 +172,7 @@
             font-weight: 700;
         }
 
-        h3 {
+        .intro-section h3 {
             margin: 0;
             margin-top: 15px;
             font-size: 26px;
@@ -170,7 +180,7 @@
             width: 454px;
         }
 
-        section .buttons {
+        .intro-section .buttons {
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -178,7 +188,7 @@
             padding: 50px 0px;
         }
 
-        section .buttons a {
+        .intro-section .buttons a {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -195,141 +205,127 @@
             cursor: pointer;
         }
 
-        section .buttons a:hover {
+        .intro-section .buttons a:hover {
             background-color: #FFF;
             color: #000;
         }
 
-        section img {
-            height: 282px;
+        .intro-section img {
+            width: 80vh;
+            margin-right: 8vh;
         }
 
-        /* Estilo do Chat */
-        .chat {
+        .notices-section {
+            display: flex;
+            flex-direction: column;
+            padding-top: 2vh;
+            width: 90vh;
+            margin-left: 6vh;
+            margin-top: 6vh;
+        }
+
+        .boardNoticesContainer {
+            position: relative;
             background-color: #F54952;
-            width: 500px;
-            height: 680px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
             padding: 20px;
-            box-sizing: border-box;
-            overflow-y: auto;
-            position: relative;
-        }
-
-        .chat p {
-            font-size: 28px;
-            font-weight: 400;
-            color: white;
-            align-self: center;
-            margin: 0;
-            padding-top: 15px;
-        }
-
-        .messages {
+            padding-top: 0;
+            border-radius: 15px;
             display: flex;
             flex-direction: column;
-            margin-top: 15px;
-            margin-bottom: 80px;
+            align-items: center;
+            border: 1px solid #341671;
+            box-shadow: 10px 8px 15px #422680;
+            padding-bottom: 5vh;
         }
 
-        /* Balões de mensagem */
-        .messages .message {
-            background-color: #fff;
-            border-radius: 15px;
-            padding: 10px 15px;
-            margin: 10px 0;
-            position: relative;
-            min-width: 70%;
-            max-width: 80%;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        .messages .message::before {
-            content: '';
+        .pin {
             position: absolute;
-            border-width: 10px;
-            border-style: solid;
-            display: block;
+            top: -26px;
+            z-index: 2;
+            width: 40px;
+            left: 0vh;
         }
 
-        .messages .left {
-            align-self: flex-start;
-            margin-left: 10px;
+        .boardNotices {
+            position: relative;
+            background-color: #FFF;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            width: 88vh;
+            padding-left: 0;
+            padding-right: 0;
+            border: 2px solid #000000;
         }
 
-        .messages .left::before {
-            border-color: transparent #fff transparent transparent;
-            left: -16.5px;
-            top: 15px;
+        .boardNotices.expanded {
+            max-height: 1000px;
+            overflow-y: auto;
         }
 
-        .messages .right {
-            align-self: flex-end;
-            margin-right: 10px;
+        .notices {
+            position: relative;
+            background-color: transparent;
+            padding: 0;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
         }
 
-        .messages .right::before {
-            border-color: transparent transparent transparent #fff;
-            right: -16.5px;
-            top: 15px;
-        }
-
-        .line {
-            margin-top: 10px;
-            background-color: #280659;
-            height: 10px;
-        }
-
-        /* Estilo para o campo de mensagem */
-        .my-message {
+        .postit {
+            position: relative;
+            width: 40vh;
+            height: auto;
+            background: url('/postit.svg') no-repeat center center;
+            background-size: cover;
             display: flex;
             align-items: center;
-            padding: 10px 15px;
-            background-color: #FFFFFF;
-            border: 2px solid #280659;
-            border-radius: 13px;
-            box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            box-sizing: border-box;
+            justify-content: center;
+        }
+
+        .notices-content {
             position: absolute;
-            justify-content: space-between;
-            bottom: 0;
-            left: 0;
+            text-align: center;
+            width: 30vh;
+            left: 5vh;
+            top: 2vh;
         }
 
-        .my-message input {
-            border: none;
+        .notices h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            width: 30vh;
         }
 
-        .my-message p {
-            margin: 0;
-            padding-right: 15px;
-            font-size: 34px;
-            color: #A9A9A9;
-            flex-grow: 1;
+        .notices p {
+            font-size: 14px;
+            font-weight: 300;
+            width: 30vh;
         }
 
-        .my-message input {
-            width: 100%;
-            height: 100%;
-            outline: none;
-        }
-
-        .my-message .icon-send {
-            width: 24px;
-            height: 24px;
+        .seta {
+            position: absolute;
+            width: 4vh;
+            height: 4vh;
+            bottom: -0.01vh;
+            left: calc(50% - 10px);
             cursor: pointer;
-            transition: transform 0.2s ease-in-out;
         }
 
-        .my-message .icon-send:hover {
-            transform: scale(1.1);
-        }
-
-        .my-message .icon-send:active {
-            transform: scale(0.9);
+        .notices-section h2{
+            font-size: 48px;
+            font-weight: 700;
+            color: #660F56;
+            margin: 20px 0;
+            margin-bottom: 5vh;
         }
     </style>
 </head>
@@ -338,43 +334,70 @@
     <header>
         <nav>
             <a>
-                <img src="images/icon-home.svg" alt="">
+                <img src="images/icon-home.svg" alt="Home Icon">
             </a>
             <a href="/kanban">
-                <img src="images/icon-kanban.svg" alt="Descrição do SVG">
+                <img src="images/icon-kanban.svg" alt="Kanban Icon">
                 <p>Company Kanban's</p>
             </a>
             <a href="/myprofile">
-                <img src="images/icon-mysection.svg" alt="Descrição do SVG">
+                <img src="images/icon-mysection.svg" alt="My Section Icon">
                 <p>My section</p>
             </a>
             <a href="/faq">
-                <img src="images/icon-faq.svg" alt="Descrição do SVG">
+                <img src="images/icon-faq.svg" alt="FAQ Icon">
                 <p>FAQ</p>
             </a>
         </nav>
     </header>
     <main>
-        <section>
+        <section class="intro-section">
             <div class="text">
                 <h1>Welcome</h1>
-                <h2><%= user.firstName %>!</h2>
+                <h2>
+                    <%= user.firstName %>!
+                </h2>
             </div>
             <h3>Start collaborating and communicating with your team now!</h3>
-            <img src="images/img-homepage.svg" alt="">
+            <img src="images/img-homepage.svg" alt="Homepage Illustration">
         </section>
 
-        <section>
-            <div class="boardNotices">
-                <% notices.forEach(function(notice){ %>
-                    <div class="notices">
-                        <h3> <%= notice.title %></h3>
-                        <p> <%= notice.description %></p>
-                    </div>
-                    <% }) %>
+        <section class="notices-section">
+            <h2 class="boardNoticesTitle">Notice Board</h2>
+            <div class="boardNoticesContainer">
+                <img src="/pin.svg" alt="Pin" class="pin">
+                <div class="boardNotices" id="notices">
+                    <% notices.forEach(function(notice){ %>
+                        <div class="notices">
+                            <img src="/postit.svg" alt="Post-it" class="postit">
+                            <div class="notices-content">
+                                <h3>
+                                    <%= notice.title %>
+                                </h3>
+                                <p>
+                                    <%= notice.description %>
+                                </p>
+                            </div>
+                        </div>
+                        <% }) %>
+                </div>
+                <img src="/seta.svg" alt="Expand Button" class="seta" id="expandButton">
             </div>
         </section>
     </main>
 </body>
+
+<script>
+    document.getElementById('expandButton').addEventListener('click', function () {
+        const notices = document.getElementById('notices');
+        notices.classList.toggle('expanded');
+        const expandButton = document.getElementById('expandButton');
+        if (notices.classList.contains('expanded')) {
+            expandButton.src = '/seta-up.svg';
+        } else {
+            expandButton.src = '/seta.svg'; 
+        }
+    });
+</script>
 
 </html>
