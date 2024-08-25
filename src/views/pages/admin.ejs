@@ -6,8 +6,84 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kanbans</title>
     <style>
-        body {
-            font-family: sans-serif;
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
+                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
+            font-weight: 100; /* Thin */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
+                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
+            font-weight: 200; /* ExtraLight */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-light.woff') format('woff'),
+                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
+            font-weight: 300; /* Light */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-book.woff') format('woff'),
+                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
+            font-weight: 400; /* Book */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
+                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
+            font-weight: 500; /* Medium */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
+                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
+            font-weight: 700; /* Bold */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-black.woff') format('woff'),
+                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
+            font-weight: 900; /* Black */
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Gotham';
+            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
+                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
+                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
+            font-weight: 950; /* Ultra */
+            font-style: normal;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Gotham';
+            overflow: auto;
         }
 
         header {
@@ -56,23 +132,211 @@
         main {
             display: flex;
             flex-direction: column;
+            padding: 70px 70px 0px 70px;
+            gap: 5vh
+        }
+
+        h1 {
+            font-size: 48px;
+            font-weight: 400;
+            color: #660F56;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            font-size: 28px;
+            font-weight: 400;
+            color: #dadada;
+            margin: 0;
+            padding: 0;
         }
 
         .creates {
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            background-color: #280659;
+            border-radius: 38px 38px 0px 0px;  
+            gap: 180px;
+            flex-wrap: wrap;   
+            min-height: 70.81vh; 
+            padding: 30px
         }
 
-        .createNotice {
+        .createBoard,
+        .createNotice,
+        .assignedRole {
+            align-items: center;
+            justify-content: center;
             display: flex;
             flex-direction: column;
+            gap: 4vh;
+            transition: transform 0.5s ease;
+            padding: 0;
+            margin:0
         }
+
+        .createBoard:hover,
+        .createNotice:hover,
+        .assignedRole:hover {
+            transform: scale(1.1);
+        }
+
+
+        .popup {
+            display: none; 
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.459); 
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; 
+            
+        }
+        
+        .popup-content {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            position: relative;
+            width: 80%;
+            max-width: 500px;
+            margin: 0 auto;
+
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            font-size: 48px;
+            cursor: pointer;
+            width: 1005;
+            align-self: right;
+            color:#280659;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+
+        .close-btn:hover {
+            transform: scale(1.2);
+        }
+
+        #name,
+        #title {
+            font-size: 48px;
+            font-family: 'Gotham';
+            color: #495057;
+            font-weight: 500;
+            border: none;
+            border-bottom: 3px solid #280659;
+            width: 100%;
+        }
+
+        #description {
+            font-size: 20px;
+            font-family: 'Gotham';
+            color: #495057;
+            font-weight: 500;
+            border-radius: 10px;
+            background-color: #e6ebf0;
+            width: 100%;
+            height: 100px;
+            outline: none;
+            border: transparent;
+            padding: 10px;
+            resize: none;
+            overflow-y: auto;
+        }
+
+        #role {
+            font-size: 28px;
+            font-family: 'Gotham';
+            color: #495057;
+            font-weight: 500;
+            border: none;
+            border-bottom: 3px solid #280659;
+            width: 100%;
+            outline:none
+        }
+
+        input::placeholder {
+            color: #CED4DA
+        }
+
+        #name:focus,
+        #title:focus {
+            outline: none;
+        }
+
+        form {
+            display: flex;              
+            flex-direction: column;     
+            align-items: center;       
+            justify-content: center;
+            gap: 3vh;                   
+            width: 100%;               
+            max-width: 500px;           
+            margin: 0 auto; 
+        }
+
+        button {
+            border:transparent;
+            cursor: pointer;
+            background-color: #280659;
+            border-radius: 10px;
+            color: #CED4DA;
+            font-size: 24px;
+            font-family: 'Gotham';
+            font-weight: 700;
+            padding: 15px;
+            transition: transform 0.5s ease;
+
+        }
+
+        button:hover {
+            transform: scale(1.1);
+        }
+
+        section {
+            display: flex;
+            width: 100%;
+            align-items: center;       
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 32px;
+            font-family: 'Gotham';
+            color: #495057;
+            font-weight: 500;
+            border: none;
+            outline:none;
+            white-space: nowrap;
+            gap: 10px
+        }
+
+        label {
+            margin-left: 8px;
+        }
+
+        select {
+            border-radius: 10px;
+            width: 100%;
+            border: 3px solid transparent;
+            transition: border-color 0.4s ease;
+            background-color: rgba(102, 15, 86, 0.15);
+            margin-right: 20px;
+            height: 40px;
+            font-size: 24px;
+            font-weight: 400;
+            outline: none
+        }
+
     </style>
 </head>
-
-
-
 <body>
 
     <header>
@@ -100,57 +364,103 @@
             <% } %>
         </nav>
     </header>
-
     <main>
         <h1> Welcome, <%= user.firstName %>!</h1>
         <div class="creates">
-
-            <div class="createBoard">
-                <h2>Create a New Board</h2>
-                <form action="/board/create" method="POST">
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required>
-                    <button type="submit">Create Board</button>
-                </form>
+            <div class="createBoard" id="openBoardPopup">
+                <h2>CREATE A BOARD KANBAN</h2>
+                <img src="images/img-kanban.svg">
             </div>
-
-            <div class="createNotice">
-                <h2>Create a New Notice</h2>
-                <form action="/notice/create" method="POST">
-                    <label for="name">Title:</label>
-                    <input type="text" id="title" name="title" required>
-
-                    <label for="name">Description:</label>
-                    <input type="text" id="description" name="description" required>
-                    <button type="submit">Create Notice</button>
-                </form>
+            <div class="popup" id="boardPopup">
+                <div class="popup-content">
+                    <span class="close-btn" id="closeBoardPopup">&times;</span>
+                    <form action="/board/create" method="POST">
+                        <input type="text" id="name" name="name" required placeholder="Add name">
+                        <button type="submit">Create Board</button>
+                    </form>
+                </div>
             </div>
-
-            <div class="assignedRole">
-                <h2>assigned a Role</h2>
-                <form action="/assignedrole" method="POST">
-                    <label for="employeeId">Assigned To:</label>
-                    <select id="employeeId" name="employeeId" required>
-                        <% employees.forEach(function(employee) { %>
-                            <% if(employee.id===user.id){ return; } %>
-
-                                <option value="<%=employee.id %>">
-                                    <%=employee.firstName %>
-                                        <%= employee.lastName%>
-                                </option>
+            <div class="createNotice" id="openNoticePopup">
+                <h2>CREATE A NOTICE</h2>
+                <img src="images/img-notice.svg">
+            </div>
+            <div class="popup" id="noticePopup">
+                <div class="popup-content">
+                    <span class="close-btn" id="closeNoticePopup">&times;</span>
+                    <form action="/notice/create" method="POST">
+                        <input type="text" id="title" name="title" required placeholder="Add title">
+                        <textarea type="text" id="description" name="description" required placeholder="Add description"></textarea>
+                        <button type="submit">Create Notice</button> 
+                    </form>
+                </div>
+            </div>
+            <div class="assignedRole" id="openRolePopup">
+                <h2>ASSIGN A ROLE</h2>
+                <img src="images/img-assign.svg">
+            </div>
+            <div class="popup" id="rolePopup">
+                <div class="popup-content">
+                    <span class="close-btn" id="closeRolePopup">&times;</span>
+                    <form action="/assignedrole" method="POST">
+                        <section>
+                            <label for="employeeId">Assign To:</label>
+                            <select id="employeeId" name="employeeId" required>
+                                <% employees.forEach(function(employee) { %>
+                                    <% if(employee.id===user.id){ return; } %>
+                                    <option value="<%=employee.id %>">
+                                        <%=employee.firstName %> <%= employee.lastName %>
+                                    </option>
                                 <% }) %>
-                    </select>
-
-                    <label for="role">Role:</label>
-                    <input type="text" id="role" name="role" required>
-                    <button type="submit">Assigned Role</button>
-                </form>
+                            </select>
+                        </section>
+                        <input type="text" id="role" name="role" required placeholder="Add role">
+                        <button type="submit">Assign Role</button>
+                    </form>
+                </div>
             </div>
         </div>
     </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function openPopup(popupId) {
+                document.getElementById(popupId).style.display = 'flex';
+            }
+        
+            function closePopup(popupId) {
+                document.getElementById(popupId).style.display = 'none';
+            }
+        
+            document.getElementById('openBoardPopup').addEventListener('click', function() {
+                openPopup('boardPopup');
+            });
 
+            document.getElementById('openNoticePopup').addEventListener('click', function() {
+                openPopup('noticePopup');
+            });
+        
+            document.getElementById('openRolePopup').addEventListener('click', function() {
+                openPopup('rolePopup');
+            });
 
-
+            document.getElementById('closeBoardPopup').addEventListener('click', function() {
+                closePopup('boardPopup');
+            });
+        
+            document.getElementById('closeNoticePopup').addEventListener('click', function() {
+                closePopup('noticePopup');
+            });
+        
+            document.getElementById('closeRolePopup').addEventListener('click', function() {
+                closePopup('rolePopup');
+            });
+        
+            window.addEventListener('click', function(event) {
+                if (event.target.classList.contains('popup')) {
+                    event.target.style.display = 'none';
+                }
+            });
+        });     
+    </script>
 </body>
-
 </html>
+
