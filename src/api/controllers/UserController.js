@@ -28,45 +28,24 @@ module.exports = {
       // Encrypt the password
       const hashedPassword = await sails.helpers.hashPassword(password);
 
-      // Handle file upload using the .upload() method
-      req.file('photo').upload({ maxBytes: 10000000 }, async (err, uploadedFiles) => {
-        if (err) {
-          sails.log.error('File upload error:', err);
-          return res.status(500).json({ error: 'File upload failed.', details: err.message });
-        }
+      let photoUrl = '';
+      // Create the new user
+      const newUser = await User.create({
+        email,
+        firstName,
+        lastName,
+        password: hashedPassword,
+        role,
+        companyId,
+        usertype,
+        photo: photoUrl,  // Store the uploaded photo URL
+      }).fetch();
 
-        let photoUrl = null;
-        if (uploadedFiles.length > 0) {
-          const filePath = uploadedFiles[0].fd;
+      // Set user session
+      req.session.userId = newUser.id;
 
-          try {
-            // Upload to Cloudinary
-            const result = await cloudinary.uploader.upload(filePath);
-            photoUrl = result.secure_url;
-          } catch (uploadErr) {
-            sails.log.error('Cloudinary upload error:', uploadErr);
-            return res.status(500).json({ error: 'Cloudinary upload failed.', details: uploadErr.message });
-          }
-        }
-
-        // Create the new user
-        const newUser = await User.create({
-          email,
-          firstName,
-          lastName,
-          password: hashedPassword,
-          role,
-          companyId,
-          usertype,
-          photo: photoUrl,  // Store the uploaded photo URL
-        }).fetch();
-
-        // Set user session
-        req.session.userId = newUser.id;
-
-        // Redirect on success
-        return res.redirect('/home');
-      });
+      // Redirect on success
+      return res.redirect('/home');
     } catch (error) {
       sails.log.error('Error occurred during signup:', error);
       return res.status(500).json({
@@ -183,7 +162,7 @@ module.exports = {
 
     try {
       // Handle file upload
-        req.file('photo').upload(
+      req.file('photo').upload(
         {
           maxBytes: 10000000, // Limit file size to 10MB
         },

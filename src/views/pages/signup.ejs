@@ -5,78 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <style>
-         @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-thin.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-thin.woff') format('woff'),
-                 url('/fonts/gotham/gotham-thin.ttf') format('truetype');
-            font-weight: 100; /* Thin */
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-extralight.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-extralight.woff') format('woff'),
-                 url('/fonts/gotham/gotham-extralight.ttf') format('truetype');
-            font-weight: 200; /* ExtraLight */
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-light.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-light.woff') format('woff'),
-                 url('/fonts/gotham/gotham-light.ttf') format('truetype');
-            font-weight: 300; /* Light */
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-book.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-book.woff') format('woff'),
-                 url('/fonts/gotham/gotham-book.ttf') format('truetype');
-            font-weight: 400; /* Book */
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-medium.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-medium.woff') format('woff'),
-                 url('/fonts/gotham/gotham-medium.ttf') format('truetype');
-            font-weight: 500; /* Medium */
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-bold.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-bold.woff') format('woff'),
-                 url('/fonts/gotham/gotham-bold.ttf') format('truetype');
-            font-weight: 700; /* Bold */
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-black.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-black.woff') format('woff'),
-                 url('/fonts/gotham/gotham-black.ttf') format('truetype');
-            font-weight: 900; /* Black */
-            font-style: normal;
-        }
-
-        @font-face {
-            font-family: 'Gotham';
-            src: url('/fonts/gotham/gotham-ultra.woff2') format('woff2'),
-                 url('/fonts/gotham/gotham-ultra.woff') format('woff'),
-                 url('/fonts/gotham/gotham-ultra.ttf') format('truetype');
-            font-weight: 950; /* Ultra */
-            font-style: normal;
-        }
-
         body {
             font-family: 'Gotham', sans-serif;
             background-color: #422680;
@@ -296,9 +224,6 @@
                       <option value="<%= company.id %>"><%= company.name %></option>
                     <% }); %>
                   </select><br>
-
-                  <label for="photo">Upload Profile Photo:</label>
-                  <input type="file" id="photo" name="photo" accept="image/jpeg, image/png, image/gif">
 
                   <div>Already have an account? <a href="/login" target="_blank">Log in</a></div>
                   <input type="submit" class="login" value="Sign up">
