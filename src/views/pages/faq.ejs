@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ&lt;/&gt;</title>
     <style>
-
-        html{
+        html {
             height: auto;
             overflow: auto;
         }
+
         header {
             height: 5rem;
             background-color: #280659;
@@ -175,32 +176,36 @@
             transition: background-color 0.3s;
 
         }
+
         .faq-item:hover {
             background-color: #DEE2E6;
         }
+
         .faq-item .question {
             display: flex;
             justify-content: space-between;
             align-items: center;
             height: 50px
-
         }
+
         .faq-item .answer {
             display: none;
             margin-top: 10px;
             color: #343A40;
             height: 100%
         }
+
         .faq-item.active .answer {
             display: block;
         }
+
         .faq-item.active .answer a {
-            color:#AE2D68;
+            color: #AE2D68;
             text-decoration: none;
             font-weight: 700
         }
 
-        .faq-item.active .answer a:hover{
+        .faq-item.active .answer a:hover {
             text-decoration: underline;
         }
 
@@ -208,11 +213,13 @@
             color: #E4415D;
             transition: transform 0.5s;
         }
+
         .faq-item.active img {
             transform: rotate(90deg);
         }
     </style>
 </head>
+
 <body>
 
     <header>
@@ -229,8 +236,8 @@
                 <p>FAQ</p>
             </a>
             <a href="/logout">
-              <img src="/images/logout.svg" alt="Logout icon">
-              <p>Logout</p>
+                <img src="/images/logout.svg" alt="Logout icon">
+                <p>Logout</p>
             </a>
         </nav>
     </header>
@@ -246,94 +253,162 @@
         </div>
 
 
-    <ul class="faq-list">
-        <li class="faq-item">
-            <div class="question">
-                <span>What is Inpulse?</span>
-                <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
-            </div>
-            <div class="answer">
-                InPulse is a collaborative platform designed to enhance team communication by providing real-time insights into user activities. With features that show who is online, typing, viewing the chat, or present in the session, InPulse helps teams stay connected and informed during collaborative work. This platform is built for teams and organizations that rely on seamless, real-time interactions to improve productivity and communication efficiency.
-            </div>
-        </li>
-        <li class="faq-item">
-            <div class="question">
-                <span>How to see informations about me and my team?</span>
-                <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
-            </div>
-            <div class="answer">
-                To view information about yourself and your team, simply click on the "My Section" button located on the top menu of the site. This will take you to a dedicated area where you can see profiles and details about your team members, as well as your own information. This section is designed to give you a comprehensive overview of who is on your team and their roles.
-            </div>
-        </li>
-        <li class="faq-item">
-            <div class="question">
-                <span>How to attend a Video Conference?</span>
-                <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
-            </div>
-            <div class="answer">
-                After logging into InPulse, you'll be directed to your "Homepage," where you'll find the "Attend a Meeting" button. By clicking this button, you'll be automatically connected to any ongoing video conference. This allows you to join meetings quickly and seamlessly without needing to navigate through multiple steps.
-            </div>
-        </li>
-        <li class="faq-item">
-            <div class="question">
-                <span>How to create a Video Conference?</span>
-                <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
-            </div>
-            <div class="answer">
-                After logging into InPulse, you'll arrive at your "Homepage." To create a video conference, simply click the "Create a Meeting" button. This will instantly set up a new meeting where you can invite participants and begin your session. The process is straightforward, allowing you to start your video conference quickly and efficiently.            </div>
-        </li>
-        <li class="faq-item">
-            <div class="question">
-                <span>What is Kanban?</span>
-                <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
-            </div>
-            <div class="answer">
-                Kanban is a visual project management tool built into InPulse's Video Conference feature. It provides an organized board where tasks are displayed in columns, representing different stages of a project. With a simple drag-and-drop interface, teams can easily track progress and collaborate more effectively, ensuring a smooth workflow from start to finish.            </div>
-        </li>
-        <li class="faq-item">
-            <div class="question">
-                <span>Who made Inpulse?</span>
-                <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
-            </div>
-            <div class="answer">
-                InPulse is a initiative created by the domINators, a team of 10 innovative university students from Inteli. Our mission is to revolutionize how people interact with technology through intuitive, user-friendly solutions. Discover more about who we are and our vision at <a href="/aboutus" target="_blank">ABOUT US
-            </div>
-        </li>
+        <ul class="faq-list">
+            <li class="faq-item">
+                <div class="question">
+                    <span>What is Inpulse?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    InPulse is a collaborative platform designed to enhance team communication by providing real-time
+                    insights into user activities. With features that show who is online, typing, viewing the chat, or
+                    present in the session, InPulse helps teams stay connected and informed during collaborative work.
+                    This platform is built for teams and organizations that rely on seamless, real-time interactions to
+                    improve productivity and communication efficiency.
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>How to View Information About Yourself and Your Team</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    To view information about yourself and your team, click the "Work Station" button in the top menu.
+                    This will direct you to a section where you can see detailed profiles of your team members and your
+                    own information, providing a comprehensive overview of roles and responsibilities within your team.
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>How to Join a Video Conference?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    To join a video conference, go to the “Work Station” and select the kanban relevant to your area. A
+                    prompt will appear asking if you want to join the ongoing video conference. Click “Join Video
+                    Conference” to participate. If you decide not to join, click “Don't Join” to continue working within
+                    the kanban. </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>What is Kanban?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    Kanban is a visual project management tool integrated with InPulse's Video Conference feature. It
+                    uses an organized board with columns to represent different stages of a project. Tasks can be moved
+                    between columns using a drag-and-drop interface, helping teams track progress and collaborate
+                    efficiently. To access your kanban, click “Work Station” and then select the kanban board from “Your
+                    Boards.”
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>Who made Inpulse?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    InPulse is a initiative created by the domINators, a team of 10 innovative university students from
+                    Inteli University. Our mission is to revolutionize how people interact with technology through intuitive,
+                    user-friendly solutions. Discover more about who we are and our vision at <a href="/aboutus"
+                        target="_blank">ABOUT US</a>
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>How to Log Out?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    To log out of your account, click the “Log out” button in the top menu. You will be redirected to
+                    the Login Page, where you can log in with a different account. </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>What is the Notice Board?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    The "Notice Board" on your homepage displays important announcements from your area's manager. This
+                    section keeps you informed about key updates and notices relevant to your team.
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>How to chat with team members?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    When you enter the “Work Station,” a chat feature will appear at the bottom right of your screen. If
+                    you wish to hide the chat, click the icon beneath it. To reopen the chat, click the same icon.
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>How to create a Kanban Board?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    As an administrator, you can create a new kanban board by clicking the “Admin” button on the menu.
+                    Navigate to the “Create a Board Kanban” section, enter a name for your board, and click “Create
+                    Board.” The new kanban will then appear in your Work Station.
+                </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>How to create a Notice?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    Administrators can post a notice by clicking the “Admin” button and selecting the “Create a Notice”
+                    section. Enter a title and description for the notice, then click “Create Notice.” The notice will
+                    be visible on the homepage of all team members. </div>
+            </li>
+            <li class="faq-item">
+                <div class="question">
+                    <span>How to assign a Role?</span>
+                    <img src="images/icon-chevron-left.svg" style="width: 20px; height: 20px;">
+                </div>
+                <div class="answer">
+                    To assign a role, go to the “Admin” section from the menu. Select the “Assign a Role” option, choose
+                    the team member and the role to be assigned, and click “Assign Role.” The assigned role will then be
+                    displayed in the team member's “Work Station.”
+            </li>
         </ul>
-</div>
+    </div>
 
-<script>
-    document.querySelectorAll('.faq-item').forEach(item => {
-        item.addEventListener('click', () => {
-            item.classList.toggle('active');
-        });
-    });
-    document.addEventListener('DOMContentLoaded', () => {
-        const searchBar = document.querySelector('.search-bar');
-        const searchIcon = document.querySelector('.search-container img');
-        const faqItems = document.querySelectorAll('.faq-item');
-
-        function searchFAQs() {
-            const query = searchBar.value.toLowerCase();
-            faqItems.forEach(item => {
-                const text = item.textContent.toLowerCase(); // Pega todo o texto do item
-                item.style.display = text.includes(query) ? 'block' : 'none'; // Mostra/esconde baseado na query
+    <script>
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
             });
-        }
+        });
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchBar = document.querySelector('.search-bar');
+            const searchIcon = document.querySelector('.search-container img');
+            const faqItems = document.querySelectorAll('.faq-item');
 
-        [searchBar, searchIcon].forEach(el => {
-            el.addEventListener('keyup', (event) => {
-                if (event.key === 'Enter') {
+            function searchFAQs() {
+                const query = searchBar.value.toLowerCase();
+                faqItems.forEach(item => {
+                    const text = item.textContent.toLowerCase(); // Pega todo o texto do item
+                    item.style.display = text.includes(query) ? 'block' : 'none'; // Mostra/esconde baseado na query
+                });
+            }
+
+            [searchBar, searchIcon].forEach(el => {
+                el.addEventListener('keyup', (event) => {
+                    if (event.key === 'Enter') {
+                        searchFAQs();
+                    }
+                });
+                el.addEventListener('click', () => {
                     searchFAQs();
-                }
-            });
-            el.addEventListener('click', () => {
-                searchFAQs();
+                });
             });
         });
-    });
     </script>
-</script>
+    </script>
 
 </body>
+
 </html>
